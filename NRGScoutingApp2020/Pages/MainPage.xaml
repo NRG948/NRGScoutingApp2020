@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="NRGScoutingApp2020.MainPage"
+             Title="2020">
+
+    <StackLayout>
+        <!-- Place new controls here -->
+        <Label Text="Below is a list" 
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />
+        <ListView
+            x:Name="matchEvents"
+            ItemsSource="{Binding matchEventsList}"
+            ItemTapped="matchEvents_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell
+                        Text="{Binding name}"
+                        Detail="{Binding date}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
