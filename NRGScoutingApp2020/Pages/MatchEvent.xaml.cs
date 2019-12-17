@@ -18,11 +18,11 @@ namespace NRGScoutingApp2020.Pages
             InitializeComponent();
 
             NavigationPage MatchPage = new NavigationPage(new Matches());
-            MatchPage.Title = Title;
+            MatchPage.Title = "Matches";
             Children.Add(MatchPage);
 
             NavigationPage RankingPage = new NavigationPage(new EventRanking());
-            RankingPage.Title = Title;
+            RankingPage.Title = "Rankings";
             Children.Add(RankingPage);
 
         }
