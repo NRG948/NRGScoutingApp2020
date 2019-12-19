@@ -38,5 +38,10 @@ namespace NRGScoutingApp2020
                 Title = matchEventItem.name
             });
         }
+
+        private void newMatch(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new TeamsList());
+        }
     }
 }
