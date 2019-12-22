@@ -6,17 +6,25 @@
              Title="Pick Team"
              ios:Page.UseSafeArea="true"
              ios:NavigationPage.PrefersLargeTitles="true">
-     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Refresh"
-                     Clicked="refreshClicked"/>
-    </ContentPage.ToolbarItems>
     <ContentPage.Content>
          <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
             <SearchBar Placeholder="Team Name/Number" />
-            <ListView IsPullToRefreshEnabled="false"
-                x:Name="MatchesList"
-                
-                CachingStrategy="RecycleElementAndDataTemplate"/>
+            <ListView IsPullToRefreshEnabled="true"
+                x:Name="TeamList"
+                CachingStrategy="RecycleElementAndDataTemplate">
+                <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ContentView Margin="0" Padding="0">
+                                        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                            <Label Text="{Binding Path=Key}" TextColor="Black" HorizontalTextAlignment="Start" />
+                                            <Label Text="{Binding Path=Value}" HorizontalTextAlignment="Start" />
+                                        </StackLayout>
+                                    </ContentView>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

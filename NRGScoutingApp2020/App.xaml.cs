@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace NRGScoutingApp2020
 {
     public partial class App : Application
     {
         public string textbox = "";
+        public static Dictionary<int, String> teamsList = new Dictionary<int, String>();
         public string text = "text";
         public App()
         {
