@@ -1,6 +1,4 @@
-﻿using NRGScoutingApp2020.Pages;
-using NRGScoutingApp2020.Storages;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;

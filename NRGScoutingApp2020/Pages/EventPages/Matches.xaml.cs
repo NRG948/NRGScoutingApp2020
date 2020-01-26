@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using static NRGScoutingApp2020.Storages.MatchEventsConstants;
+using static NRGScoutingApp2020.MatchEventsConstants;
 
 namespace NRGScoutingApp2020.Pages.EventPages
 {

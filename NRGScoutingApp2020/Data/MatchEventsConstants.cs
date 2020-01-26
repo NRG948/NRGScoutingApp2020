@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NRGScoutingApp2020.Storages
+namespace NRGScoutingApp2020
 {
     public class MatchEventsConstants
     {
