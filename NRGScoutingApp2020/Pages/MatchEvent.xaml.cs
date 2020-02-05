@@ -1,4 +1,4 @@
-﻿using NRGScoutingApp2020.Pages.EventPages;
+﻿//using NRGScoutingApp2020.Pages.EventPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,15 +16,6 @@ namespace NRGScoutingApp2020.Pages
         public MatchEvent()
         {
             InitializeComponent();
-
-            ContentPage MatchPage = new Matches();
-            MatchPage.Title = "Matches";
-            Children.Add(MatchPage);
-
-            ContentPage RankingPage = new EventRanking();
-            RankingPage.Title = "Rankings";
-            Children.Add(RankingPage);
-
         }
     }
 }

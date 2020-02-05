@@ -32,14 +32,11 @@ namespace NRGScoutingApp2020
         async private void matchEvents_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             MatchEventClass matchEventItem = e.Item as MatchEventClass;
-            await Navigation.PushAsync(new MatchEvent { 
-                Title = matchEventItem.name
-            });
+           
         }
 
         private void newMatch(object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new TeamsList());
         }
     }
 }

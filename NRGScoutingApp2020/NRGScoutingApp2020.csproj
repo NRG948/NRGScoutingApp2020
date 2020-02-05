@@ -35,11 +35,4 @@
       <HintPath>..\..\..\..\..\..\Library\Frameworks\Xamarin.Android.framework\Versions\10.0.6.2\lib\xamarin.android\xbuild-frameworks\MonoAndroid\v9.0\Mono.Android.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\DataHandling\" />
-    <Folder Include="Pages\GeneralMainPages\" />
-    <Folder Include="Pages\PitScouting\" />
-    <Folder Include="Pages\Rankings\" />
-    <Folder Include="Pages\MatchEntry\" />
-  </ItemGroup>
 </Project>
