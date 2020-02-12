@@ -8,6 +8,7 @@ namespace NRGScoutingApp2020
     {
         public string textbox = "";
         public static Dictionary<int, String> teamsList = new Dictionary<int, String>();
+        public List<MatchEventClass> eventsListObj = new List<MatchEventClass>();
         public string text = "text";
         public App()
         {

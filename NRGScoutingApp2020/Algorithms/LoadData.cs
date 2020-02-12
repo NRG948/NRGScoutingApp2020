@@ -9,7 +9,7 @@ namespace NRGScoutingApp2020.Algorithms
         /// <summary> This method load the competitions
         /// from cache to memory for the app
         /// </summary>
-        public void LoadEvents()
+        public void LoadEvents(string Jstr)
         {
 
         }
