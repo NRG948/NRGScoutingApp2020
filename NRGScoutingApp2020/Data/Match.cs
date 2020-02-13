@@ -7,7 +7,7 @@ namespace NRGScoutingApp2020.Data
     public class Match
     {
 
-        public int number;
+        public int number { get; set; }
         public Match()
         {
 
