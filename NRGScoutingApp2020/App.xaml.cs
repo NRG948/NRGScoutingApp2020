@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
 
 namespace NRGScoutingApp2020
@@ -8,7 +9,7 @@ namespace NRGScoutingApp2020
     {
         public string textbox = "";
         public static Dictionary<int, String> teamsList = new Dictionary<int, String>();
-        public List<MatchEventClass> eventsListObj = new List<MatchEventClass>();
+        public static ObservableCollection<MatchEventClass> eventsListObj = new ObservableCollection<MatchEventClass>();
         public string text = "text";
         public App()
         {

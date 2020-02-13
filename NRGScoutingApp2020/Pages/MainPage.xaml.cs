@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using static NRGScoutingApp2020.App;
 
 namespace NRGScoutingApp2020
 {
@@ -13,30 +14,48 @@ namespace NRGScoutingApp2020
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
-        public IList<MatchEventClass> matchEventsList { get; set; }
         public MainPage()
         {
             InitializeComponent();
 
-            matchEventsList = new List<MatchEventClass>();
-            matchEventsList.Add(new MatchEventClass
-            {
-                name = "GirlsGen",
-                date = "I forgot",
-                color = "NRG_Red"
-            });
+            matchEvents.ItemsSource = eventsListObj;
 
-            BindingContext = this;
         }
 
         async private void matchEvents_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             MatchEventClass matchEventItem = e.Item as MatchEventClass;
-           
+            openMatch(matchEventItem);
         }
 
-        private void newMatch(object sender, System.EventArgs e)
+        async private void openMatch(MatchEventClass competition)
         {
+
+        }
+
+        async private void newMatch(object sender, System.EventArgs e)
+        {
+            string name = await DisplayPromptAsync("Enter the name", "What is the name of the competition?");
+            name = name.Trim();
+            for (int i = 0; i < eventsListObj.Count(); i++)
+            {
+                if (eventsListObj.ElementAt(i).name == name)
+                {
+                    bool openOld = await DisplayAlert("Error: Name Repeated", "There is a competition with the same name," +
+                        " would you like to open that instead?", "Yes", "Cancel");
+                    if (openOld)
+                    {
+                        openMatch(eventsListObj.ElementAt(i)); // open old competition
+                    } 
+                    return;
+                }
+            }
+            MatchEventClass newEvent = new MatchEventClass();
+            newEvent.name = name;
+            eventsListObj.Add(newEvent);
+            openMatch(newEvent);
+            // create new competition
+        
         }
     }
 }

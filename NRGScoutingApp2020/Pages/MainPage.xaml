@@ -11,12 +11,8 @@
     </ContentPage.ToolbarItems>
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Below is a list" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
         <ListView
             x:Name="matchEvents"
-            ItemsSource="{Binding matchEventsList}"
             ItemTapped="matchEvents_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
