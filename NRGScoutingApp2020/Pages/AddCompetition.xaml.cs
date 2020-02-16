@@ -1,4 +1,5 @@
 ﻿using NRGScoutingApp2020.Algorithms;
+using NRGScoutingApp2020.Pages.MatchEventSubpage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,9 +25,21 @@ namespace NRGScoutingApp2020.Pages
             competitions.ItemsSource = eventsKeyName.Values;
         }
 
-        private void competitions_ItemTapped(object sender, ItemTappedEventArgs e)
+        async private void competitions_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            
+            string key;
+            try
+            {
+                eventsNameKey.TryGetValue(e.Item as string, out key);
+                MatchEventClass competition = DownloadData.getEventSpecific(key);
+                eventsListObj.Add(competition);
+                await Navigation.PushAsync(new MatchList(competition)).ConfigureAwait(false);
+                Navigation.RemovePage(this);
+            }
+            catch (Exception ex)
+            {
+                throw ex.InnerException;
+            }
         }
 
         /// <summary>
