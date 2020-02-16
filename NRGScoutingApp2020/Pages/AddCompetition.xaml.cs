@@ -30,8 +30,10 @@ namespace NRGScoutingApp2020.Pages
             string key;
             try
             {
-                eventsNameKey.TryGetValue(e.Item as string, out key);
+                string name = e.Item as string;
+                eventsNameKey.TryGetValue(name, out key);
                 MatchEventClass competition = DownloadData.getEventSpecific(key);
+                competition.name = name;
                 eventsListObj.Add(competition);
                 await Navigation.PushAsync(new MatchList(competition)).ConfigureAwait(false);
                 Navigation.RemovePage(this);

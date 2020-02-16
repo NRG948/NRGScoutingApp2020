@@ -15,6 +15,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
         public MatchList(MatchEventClass competition)
         {
             InitializeComponent();
+            Title = competition.name;
         }
     }
 }
