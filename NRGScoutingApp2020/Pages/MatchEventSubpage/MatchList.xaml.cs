@@ -12,8 +12,10 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MatchList : ContentPage
     {
+        MatchEventClass Competition;
         public MatchList(MatchEventClass competition)
         {
+            Competition = competition;
             InitializeComponent();
             Title = competition.name;
         }
