@@ -11,7 +11,6 @@ namespace NRGScoutingApp2020.Algorithms
         /// </summary>
         public void LoadEvents(string Jstr)
         {
-
         }
     }
 }

@@ -1,9 +1,12 @@
-﻿using System;
+﻿using NRGScoutingApp2020.Pages;
+using NRGScoutingApp2020.Pages.MatchEventSubpage;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using static NRGScoutingApp2020.App;
 
@@ -14,6 +17,7 @@ namespace NRGScoutingApp2020
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        private Task completedTask = Task.CompletedTask;
         public MainPage()
         {
             InitializeComponent();
@@ -22,40 +26,24 @@ namespace NRGScoutingApp2020
 
         }
 
-        async private void matchEvents_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void matchEvents_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             MatchEventClass matchEventItem = e.Item as MatchEventClass;
             openMatch(matchEventItem);
         }
 
-        async private void openMatch(MatchEventClass competition)
+        private void openMatch(MatchEventClass competition)
         {
-
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                // Code to run on the main threat
+                await Navigation.PushAsync(new MatchList(competition)).ConfigureAwait(false);
+            });
         }
 
         async private void newMatch(object sender, System.EventArgs e)
         {
-            string name = await DisplayPromptAsync("Enter the name", "What is the name of the competition?");
-            name = name.Trim();
-            for (int i = 0; i < eventsListObj.Count(); i++)
-            {
-                if (eventsListObj.ElementAt(i).name == name)
-                {
-                    bool openOld = await DisplayAlert("Error: Name Repeated", "There is a competition with the same name," +
-                        " would you like to open that instead?", "Yes", "Cancel");
-                    if (openOld)
-                    {
-                        openMatch(eventsListObj.ElementAt(i)); // open old competition
-                    } 
-                    return;
-                }
-            }
-            MatchEventClass newEvent = new MatchEventClass();
-            newEvent.name = name;
-            eventsListObj.Add(newEvent);
-            openMatch(newEvent);
-            // create new competition
-        
+            await Navigation.PushAsync(new AddCompetition()).ConfigureAwait(false);
         }
     }
 }

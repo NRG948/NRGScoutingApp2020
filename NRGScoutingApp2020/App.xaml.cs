@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NRGScoutingApp2020.Algorithms;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
@@ -7,28 +8,26 @@ namespace NRGScoutingApp2020
 {
     public partial class App : Application
     {
-        public string textbox = "";
         public static Dictionary<int, String> teamsList = new Dictionary<int, String>();
         public static ObservableCollection<MatchEventClass> eventsListObj = new ObservableCollection<MatchEventClass>();
-        public string text = "text";
+        public static Dictionary<string, string> eventsKeyName = new Dictionary<string, string>();
+        public static Dictionary<string, string> eventsNameKey = new Dictionary<string, string>();
+        public static Dictionary<int, string> teamsNumName = new Dictionary<int, string>();
+        // public static Dictionary<string, int> teamsNameNum = new Dictionary<string, int>();
+
         public App()
         {
             InitializeComponent();
-
+            DownloadData.startUp();
             MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()
         {
-            if (Properties.ContainsKey(text))
-            {
-                textbox = (string) Properties[text];
-            }
         }
 
         protected override void OnSleep()
         {
-            Properties[text] = textbox;
         }
 
         protected override void OnResume()
