@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NRGScoutingApp2020.Algorithms
 {
-    public class Converter
+    public static class Converter
     {
         /*
          * Convert a matchevent object to a JSON object
@@ -13,7 +13,7 @@ namespace NRGScoutingApp2020.Algorithms
          * pre: a MatchEventClass object
          * post: a JSON string
          */
-        public string eventToJSON()
+        public static string eventToJSON()
         {
             return "";
         }
@@ -25,7 +25,7 @@ namespace NRGScoutingApp2020.Algorithms
          * post: a MatchEventClass object
          */
 
-        public MatchEventClass JSONToEvent()
+        public static MatchEventClass JSONToEvent()
         {
             return new MatchEventClass();
         }
@@ -36,7 +36,7 @@ namespace NRGScoutingApp2020.Algorithms
          * pre: a Match object
          * post: a JSON string
          */
-        public string matchToJSON()
+        public static string matchToJSON()
         {
             return "";
         }
@@ -48,7 +48,7 @@ namespace NRGScoutingApp2020.Algorithms
          * post: a Match object
          */
 
-        public Match JSONToMatch()
+        public static Match JSONToMatch()
         {
             return new Match();
         }

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:matchsubpage="clr-namespace:NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage"
+             mc:Ignorable="d"
+             x:Class="NRGScoutingApp2020.Pages.MatchEventSubpage.AddNewMatch">
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar
+                x:Name="matchNum"
+                Placeholder="Enter Match Number"
+                TextChanged="matchNum_TextChanged"/>
+            <matchsubpage:PrematchView 
+                x:Name="Prematching"
+                IsEnabled="False"/>
+            <Button
+                x:Name="CreateNew"
+                Text="Create"
+                Clicked="CreateNew_Clicked" 
+                IsEnabled="False"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

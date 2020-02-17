@@ -5,9 +5,27 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="NRGScoutingApp2020.Pages.MatchEventSubpage.MatchList">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="New Match"
+            Clicked="NewMatch"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            
+            <ListView
+                x:Name="Matches"
+                ItemTapped="Matches_ItemTapped">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell
+                        Text="{Binding number}"
+                        Detail="{Binding date}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

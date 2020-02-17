@@ -11,10 +11,11 @@ namespace NRGScoutingApp2020.Data
         private int[] blueAlliance = new int[3];
         private int[] redAlliance = new int[3];
         private bool filled = false;
+        private DateTime date;
         // add Parameters here
         public Match()
         {
-
+            date = DateTime.UtcNow;
         }
 
         /// <summary>

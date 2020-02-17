@@ -4,12 +4,12 @@ using System.Text;
 
 namespace NRGScoutingApp2020.Algorithms
 {
-    public class LoadData
+    public static class LoadData
     {
         /// <summary> This method load the competitions
         /// from cache to memory for the app
         /// </summary>
-        public void LoadEvents(string Jstr)
+        public static void LoadEvents(string Jstr)
         {
         }
     }
