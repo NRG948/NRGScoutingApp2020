@@ -10,7 +10,7 @@ namespace NRGScoutingApp2020.Algorithms
         /// for the events in memory to save all of them
         /// </summary>
         /// <param name="matchEvents"></param>
-        public static void CacheEvents(List<MatchEventClass> matchEvents)
+        public static void CacheEvents()
         {
             
         }
