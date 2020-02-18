@@ -9,9 +9,8 @@ namespace NRGScoutingApp2020
     public partial class App : Application
     {
         public static Dictionary<int, String> teamsList = new Dictionary<int, String>();
-        public static ObservableCollection<MatchEventClass> eventsListObj = new ObservableCollection<MatchEventClass>();
+        public static ObservableCollection<CompetitionClass> eventsListObj = new ObservableCollection<CompetitionClass>();
         public static Dictionary<string, string> eventsKeyName = new Dictionary<string, string>();
-        public static Dictionary<string, string> eventsNameKey = new Dictionary<string, string>();
         public static Dictionary<int, string> teamsNumName = new Dictionary<int, string>();
         // public static Dictionary<string, int> teamsNameNum = new Dictionary<string, int>();
 

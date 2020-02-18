@@ -30,10 +30,9 @@ namespace NRGScoutingApp2020.Pages
             string key;
             try
             {
-                string name = e.Item as string;
-                eventsNameKey.TryGetValue(name, out key);
-                MatchEventClass competition = DownloadData.getEventSpecific(key);
-                competition.name = name;
+                KeyValuePair<string, string> pair = (KeyValuePair<string, string>) e.Item;
+                CompetitionClass competition = DownloadData.getEventSpecific(pair.Key);
+                competition.name = pair.Value;
                 eventsListObj.Add(competition);
                 await Navigation.PushAsync(new MatchList(competition)).ConfigureAwait(false);
                 Navigation.RemovePage(this);
@@ -53,11 +52,11 @@ namespace NRGScoutingApp2020.Pages
         {
             if(String.IsNullOrWhiteSpace(e.NewTextValue) || String.IsNullOrEmpty(e.NewTextValue))
             {
-                competitions.ItemsSource = eventsKeyName.Values;
+                competitions.ItemsSource = eventsKeyName;
             }
             else
             {
-                competitions.ItemsSource = eventsKeyName.Values.Where(value => value.ToLower().Trim().Contains(e.NewTextValue.ToLower().Trim()));
+                competitions.ItemsSource = eventsKeyName.Where(pair => pair.Value.ToLower().Trim().Contains(e.NewTextValue.ToLower().Trim()));
             }
         }
     }
