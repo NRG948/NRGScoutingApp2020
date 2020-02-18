@@ -118,6 +118,9 @@ namespace NRGScoutingApp2020.Algorithms
                 } while (String.IsNullOrEmpty(response));
 
                 CompetitionClass competition = new CompetitionClass();
+
+                competition.eventKey = eventKey;
+
                 JObject a = JObject.Parse(response);
 
                 foreach (KeyValuePair<string, JToken> s in a)

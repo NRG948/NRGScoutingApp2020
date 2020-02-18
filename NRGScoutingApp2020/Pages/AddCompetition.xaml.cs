@@ -2,6 +2,7 @@
 using NRGScoutingApp2020.Pages.MatchEventSubpage;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,15 +23,15 @@ namespace NRGScoutingApp2020.Pages
             {
                 DownloadData.getEventsNames();
             }
-            competitions.ItemsSource = eventsKeyName.Values;
+            competitions.ItemsSource = eventsKeyName;
         }
 
         async private void competitions_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            string key;
             try
             {
                 KeyValuePair<string, string> pair = (KeyValuePair<string, string>) e.Item;
+                eventsKeyName.Remove(pair.Key);
                 CompetitionClass competition = DownloadData.getEventSpecific(pair.Key);
                 competition.name = pair.Value;
                 eventsListObj.Add(competition);
@@ -58,6 +59,17 @@ namespace NRGScoutingApp2020.Pages
             {
                 competitions.ItemsSource = eventsKeyName.Where(pair => pair.Value.ToLower().Trim().Contains(e.NewTextValue.ToLower().Trim()));
             }
+        }
+        private bool ContainsKey(ObservableCollection<CompetitionClass> comps, string key)
+        {
+            foreach (CompetitionClass comp in comps)
+            {
+                if (comp.eventKey == key)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

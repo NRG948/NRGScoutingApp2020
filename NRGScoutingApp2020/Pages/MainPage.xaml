@@ -17,11 +17,14 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell
-                        Text="{Binding name}"
-                        Detail="{Binding date}"/>
+                        Text="{Binding Path=name}"
+                        Detail="{Binding Path=date}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button
+            x:Name="Debuggerr"
+            Clicked="Debuggerr_Clicked"/>
     </StackLayout>
 
 </ContentPage>

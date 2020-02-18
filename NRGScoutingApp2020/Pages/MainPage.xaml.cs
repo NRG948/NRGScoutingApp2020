@@ -17,7 +17,6 @@ namespace NRGScoutingApp2020
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
-        private Task completedTask = Task.CompletedTask;
         public MainPage()
         {
             InitializeComponent();
@@ -44,6 +43,15 @@ namespace NRGScoutingApp2020
         async private void newMatch(object sender, System.EventArgs e)
         {
             await Navigation.PushAsync(new AddCompetition()).ConfigureAwait(false);
+        }
+
+        private void Debuggerr_Clicked(object sender, EventArgs e)
+        {
+            foreach (CompetitionClass comp in eventsListObj)
+            {
+                Console.WriteLine(comp.name);
+
+            }
         }
     }
 }

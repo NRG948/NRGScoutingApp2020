@@ -14,7 +14,7 @@
                 ItemTapped="competitions_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding value}"/>
+                        <TextCell Text="{Binding Path=Value}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

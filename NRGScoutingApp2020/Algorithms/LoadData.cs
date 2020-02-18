@@ -65,13 +65,13 @@ namespace NRGScoutingApp2020.Algorithms
         /// return the numbers and the nicknames of the competitions in cache
         /// </summary>
         /// <returns></returns>
-        public static Dictionary<string, string> LoadTeamsList()
+        public static Dictionary<int, string> LoadTeamsList()
         {
             if (Preferences.ContainsKey("teams"))
             {
-                return JsonConvert.DeserializeObject<Dictionary<string, string>>(Preferences.Get("teams", "{}"));
+                return JsonConvert.DeserializeObject<Dictionary<int, string>>(Preferences.Get("teams", "{}"));
             }
-            return new Dictionary<string, string>();
+            return new Dictionary<int, string>();
 
         }
     }

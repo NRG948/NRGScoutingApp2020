@@ -28,18 +28,18 @@ namespace NRGScoutingApp2020.Algorithms
         /// Save teams downloaded from the server to avoid redownloading
         /// </summary>
         /// <param name="JSONTeams"></param>
-        public static void CacheTeamsList(string JSONTeams)
+        public static void CacheTeamsList(Dictionary<int, string> teams)
         {
-            Preferences.Set("teams", JSONTeams);
+            Preferences.Set("teams", JsonConvert.SerializeObject(teams));
         }
 
         /// <summary>
         /// Save 2020 events list downloaded to avoid redownloading
         /// </summary>
         /// <param name="JSONEvents"></param>
-        public static void CacheEventsList(string JSONEvents)
+        public static void CacheEventsList(Dictionary<string, string> comps)
         {
-            Preferences.Set("events", JSONEvents);
+            Preferences.Set("events", JsonConvert.SerializeObject(comps));
         }
     }
 }
