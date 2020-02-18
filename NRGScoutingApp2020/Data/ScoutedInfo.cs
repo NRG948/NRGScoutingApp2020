@@ -7,17 +7,14 @@ namespace NRGScoutingApp2020.Data
     /// <summary>
     /// class for matches scouted by scouters
     /// </summary>
-    public class MatchFilled
+    public class ScoutedInfo
     {
         public int Number { get; set; }
 
-        public int Position { get; set; }
-
         // parameters below
-        public MatchFilled(int matchNum, int pos)
+        public ScoutedInfo(int matchNum)
         {
             Number = matchNum;
-            Position = pos;
         }
 
     }

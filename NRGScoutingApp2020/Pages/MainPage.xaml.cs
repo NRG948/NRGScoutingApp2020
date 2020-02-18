@@ -53,6 +53,7 @@ namespace NRGScoutingApp2020
                 Console.WriteLine(comp.name);
 
             }
+            Preferences.Clear();
 
         }
     }

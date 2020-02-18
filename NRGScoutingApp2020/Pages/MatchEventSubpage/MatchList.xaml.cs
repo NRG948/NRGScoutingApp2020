@@ -18,7 +18,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
             Competition = competition;
             InitializeComponent();
             Title = competition.name;
-            Matches.ItemsSource = competition.matchesScouted;
+            Matches.ItemsSource = competition.matchesList.Where(match => match.isFilled);
         }
 
         async private void NewMatch(object sender, EventArgs e)

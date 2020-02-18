@@ -55,7 +55,7 @@ namespace NRGScoutingApp2020.Algorithms
                 do
                 {
                     RestRequest request = new RestRequest("/teams");
-                    request.AddJsonBody("{\"year\":2020}");
+                    request.AddJsonBody("{\"year\":2019}");
                     response = client.Post(request).Content;
                 } while (String.IsNullOrEmpty(response));
 
@@ -80,7 +80,7 @@ namespace NRGScoutingApp2020.Algorithms
                 do
                 {
                     RestRequest request = new RestRequest("/events");
-                    request.AddJsonBody("{\"year\":2020}");
+                    request.AddJsonBody("{\"year\":2019}");
                     response = client.Post(request).Content;
                 } while (String.IsNullOrEmpty(response));
 
@@ -127,11 +127,13 @@ namespace NRGScoutingApp2020.Algorithms
                 {
                     Match aMatch = new Match();
                     aMatch.number = int.Parse(s.Key);
-                    BlueRedJObject allianceInfo = JsonConvert.DeserializeObject<BlueRedJObject>(s.Value.ToString());
-                    int[] blue = allianceInfo.blueTeams.ToArray();
-                    int[] red = allianceInfo.redTeams.ToArray();
-                    aMatch.setAlliance(true, blue);
-                    aMatch.setAlliance(false, red);
+                    string daList = s.Value.ToString();
+                    Console.WriteLine(daList);
+                    BlueRedJObject allianceInfo = JsonConvert.DeserializeObject<BlueRedJObject>(daList);
+                    int[] blues = allianceInfo.blue.ToArray();
+                    int[] reds = allianceInfo.red.ToArray();
+                    aMatch.setAlliance(true, blues);
+                    aMatch.setAlliance(false, reds);
                     competition.matchesList.Add(aMatch);
                 }
                 return competition;
@@ -145,8 +147,9 @@ namespace NRGScoutingApp2020.Algorithms
 
         private class BlueRedJObject
         {
-            public List<int> blueTeams { get; set; }
-            public List<int> redTeams { get; set; }
+            public List<int> blue { get; set; }
+            public List<int> red { get; set; }
+
         }
     }
 }

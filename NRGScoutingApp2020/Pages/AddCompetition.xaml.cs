@@ -34,10 +34,17 @@ namespace NRGScoutingApp2020.Pages
                 KeyValuePair<string, string> pair = (KeyValuePair<string, string>) e.Item;
                 eventsKeyName.Remove(pair.Key);
                 CompetitionClass competition = DownloadData.getEventSpecific(pair.Key);
-                competition.name = pair.Value;
-                eventsListObj.Add(competition);
-                await Navigation.PushAsync(new MatchList(competition)).ConfigureAwait(false);
-                Navigation.RemovePage(this);
+                if (competition.matchesList.Count != 0)
+                {
+                    competition.name = pair.Value;
+                    eventsListObj.Add(competition);
+                    await Navigation.PushAsync(new MatchList(competition)).ConfigureAwait(false);
+                    Navigation.RemovePage(this);
+                }
+                else
+                {
+                    await DisplayAlert("Error", "You can not add a competition until the day before it happens", "Sksksk").ConfigureAwait(false);
+                }
             }
             catch (Exception ex)
             {

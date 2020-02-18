@@ -11,8 +11,9 @@ namespace NRGScoutingApp2020.Data
         public DateTime date;
         private int[] blueAlliance = new int[3];
         private int[] redAlliance = new int[3];
-        // add Parameters here
-        private int pos; // 0 - 2 = blue 1 - 3; 3 - 5 = red 1 - 3
+
+        public bool isFilled = false;
+        public List<ScoutedInfo> MatchScouted = new List<ScoutedInfo>();
         public Match()
         {
             date = DateTime.UtcNow;

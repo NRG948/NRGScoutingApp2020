@@ -15,8 +15,6 @@ namespace NRGScoutingApp2020
         public string name { get; set; }
         public DateTime date { get; set; }
         public string eventKey { get; set; }
-
-        public ObservableCollection<MatchFilled> matchesScouted = new ObservableCollection<MatchFilled>();
         public List<Match> matchesList = new List<Match>();
 
         public CompetitionClass()
