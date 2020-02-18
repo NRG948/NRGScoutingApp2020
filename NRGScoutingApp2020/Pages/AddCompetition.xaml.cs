@@ -22,6 +22,7 @@ namespace NRGScoutingApp2020.Pages
             if (eventsKeyName.Count == 0)
             {
                 DownloadData.getEventsNames();
+                CacheData.CacheEventsList(eventsKeyName);
             }
             competitions.ItemsSource = eventsKeyName;
         }

@@ -28,6 +28,13 @@ namespace NRGScoutingApp2020
             teamsNumName = LoadData.LoadTeamsList();
             eventsKeyName = LoadData.LoadEventsList();
             eventsListObj = LoadData.LoadEvents();
+            foreach (CompetitionClass comp in eventsListObj)
+            {
+                if (eventsKeyName.ContainsKey(comp.eventKey))
+                {
+                    eventsKeyName.Remove(comp.eventKey);
+                }
+            }
         }
 
         protected override void OnSleep()
