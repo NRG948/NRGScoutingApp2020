@@ -156,11 +156,12 @@ namespace NRGScoutingApp2020.Algorithms
 
                 JObject a = JObject.Parse(response);
 
-                foreach (KeyValuePair<string, JToken> s in a)
+                for (int i = 1; i <= a.Count; i++ )
                 {
+                    JToken s = a[i + ""];
                     Match aMatch = new Match();
-                    aMatch.number = int.Parse(s.Key);
-                    string daList = s.Value.ToString();
+                    aMatch.number = i;
+                    string daList = s.ToString();
                     Console.WriteLine(daList);
                     BlueRedJObject allianceInfo = JsonConvert.DeserializeObject<BlueRedJObject>(daList);
                     int[] blues = allianceInfo.blue.ToArray();
