@@ -12,7 +12,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EventRankings : ContentPage
     {
-        public EventRankings(MatchEventClass competition)
+        public EventRankings(CompetitionClass competition)
         {
             InitializeComponent();
         }

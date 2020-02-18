@@ -10,15 +10,16 @@ namespace NRGScoutingApp2020
     /// This is a class that stores a competition, containing the name of it,
     /// the date of it, the eventKey of it (BlueAlliance Format), and the list of matches in it.
     /// </summary>
-    public class MatchEventClass
+    public class CompetitionClass
     {
         public string name { get; set; }
         public DateTime date { get; set; }
         public string eventKey { get; set; }
 
-        public ObservableCollection<Match> matchesList = new ObservableCollection<Match>();
+        public ObservableCollection<MatchFilled> matchesScouted = new ObservableCollection<MatchFilled>();
+        public List<Match> matchesList = new List<Match>();
 
-        public MatchEventClass()
+        public CompetitionClass()
         {
             date = DateTime.UtcNow;
         }

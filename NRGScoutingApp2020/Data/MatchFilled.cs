@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NRGScoutingApp2020.Algorithms
+namespace NRGScoutingApp2020.Data
 {
-    public static class Converter
+    public class MatchFilled
     {
-
     }
 }

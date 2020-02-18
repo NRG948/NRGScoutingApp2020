@@ -12,13 +12,13 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MatchList : ContentPage
     {
-        MatchEventClass Competition;
-        public MatchList(MatchEventClass competition)
+        CompetitionClass Competition;
+        public MatchList(CompetitionClass competition)
         {
             Competition = competition;
             InitializeComponent();
             Title = competition.name;
-            Matches.ItemsSource = competition.matchesList.Where(match => match.isFilled());
+            Matches.ItemsSource = competition.matchesScouted;
         }
 
         async private void NewMatch(object sender, EventArgs e)

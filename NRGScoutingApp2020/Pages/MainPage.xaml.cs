@@ -28,11 +28,11 @@ namespace NRGScoutingApp2020
 
         private void matchEvents_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            MatchEventClass matchEventItem = e.Item as MatchEventClass;
+            CompetitionClass matchEventItem = e.Item as CompetitionClass;
             openMatch(matchEventItem);
         }
 
-        private void openMatch(MatchEventClass competition)
+        private void openMatch(CompetitionClass competition)
         {
             MainThread.BeginInvokeOnMainThread(async () =>
             {

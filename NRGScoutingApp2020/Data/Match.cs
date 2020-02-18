@@ -8,23 +8,14 @@ namespace NRGScoutingApp2020.Data
     {
 
         public int number { get; set; }
+        public DateTime date;
         private int[] blueAlliance = new int[3];
         private int[] redAlliance = new int[3];
-        private bool filled = false;
-        private DateTime date;
         // add Parameters here
+        private int pos; // 0 - 2 = blue 1 - 3; 3 - 5 = red 1 - 3
         public Match()
         {
             date = DateTime.UtcNow;
-        }
-
-        /// <summary>
-        /// Get if a match is scouted or not to determine if it should appear in a list of not
-        /// </summary>
-        /// <returns> true for it is scouted; vice versa </returns>
-        public bool isFilled ()
-        {
-            return filled;
         }
 
         /// <summary>
