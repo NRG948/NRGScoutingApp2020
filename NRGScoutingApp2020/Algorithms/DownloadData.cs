@@ -10,7 +10,7 @@ namespace NRGScoutingApp2020.Algorithms
 {
     public static class DownloadData
     {
-        private static RestClient client = new RestClient("http://api.nrg948.com");
+        private static RestClient client = new RestClient(DataConstants.SCOUTING_API_SITE);
 
         /// <summary>
         /// Setup a default headers for the Rest Client for convenience
@@ -20,6 +20,28 @@ namespace NRGScoutingApp2020.Algorithms
             client.AddDefaultHeader("API-Key", HideAPIKey.APIKey);
             client.AddDefaultHeader("Content-Type", "application/json");
         }
+
+        /// <summary>
+        /// populates a given int,String Dictionary with a given teamList Json
+        /// </summary>
+        /// <param name="json">the json string of teams</param>
+        /// <param name="list">list object to populate</param>
+        public static void populateTeamList(string json, Dictionary<int, String> list)
+        {
+            Debug.WriteLine(json);
+            Dictionary<int, String> temp = new Dictionary<int, String>(list);
+            JArray repsonse = JArray.Parse(json);
+            list.Clear();
+            foreach (var s in repsonse)
+            {
+                JObject v = s.ToObject<JObject>();
+                list.Add((int) v["team_number"], (String)v["nickname"]);
+            }
+            if(list.Count <= 500)
+            {
+                list = temp;
+            }
+        
 
         /// <summary>
         /// Update the list of team names for the app,  pulling from Shrey's server
@@ -37,14 +59,7 @@ namespace NRGScoutingApp2020.Algorithms
                 } while (String.IsNullOrEmpty(response));
 
                 // array of response
-                JArray a = JArray.Parse(response);
-
-                foreach (JObject s in a)
-                {
-                    int key = (int)s["team_number"];
-                    string value = (string)s["nickname"];
-                    App.teamsNumName.Add(key, value);
-                }
+                populateTeamList(response, App.teamsList)
             }
             catch (Exception e)
             {
