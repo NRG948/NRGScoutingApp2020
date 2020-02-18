@@ -14,6 +14,10 @@ using static NRGScoutingApp2020.App;
 namespace NRGScoutingApp2020.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
+    /// <summary>
+    /// Page for pulling a list of conpetitions
+    /// </summary>
     public partial class AddCompetition : ContentPage
     {
         public AddCompetition()
@@ -43,7 +47,7 @@ namespace NRGScoutingApp2020.Pages
                 }
                 else
                 {
-                    await DisplayAlert("Error", "You can not add a competition until the day before it happens", "Sksksk").ConfigureAwait(false);
+                    await DisplayAlert("Error", DataConstants.EmptyCompetition, "Sksksk").ConfigureAwait(false);
                 }
             }
             catch (Exception ex)

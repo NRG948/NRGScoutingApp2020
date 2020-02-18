@@ -47,20 +47,31 @@ namespace NRGScoutingApp2020.Algorithms
         /// <summary>
         /// Update the list of team names for the app,  pulling from Shrey's server
         /// </summary>
-        public static void getTeamsNames()
+        /// <returns> whether the request succeed or not </returns>
+        public static bool getTeamsNames()
         {
             try
             {
                 string response;
+                int c = 0;
                 do
                 {
                     RestRequest request = new RestRequest("/teams");
-                    request.AddJsonBody("{\"year\":2019}");
+                    request.AddJsonBody("{\"year\":" + DataConstants.APP_YEAR + "}");
                     response = client.Post(request).Content;
+
+                    c++; // I need to hide a reference somewhere you know
+
+                    if (c > 3)
+                    {
+                        return false;
+                    }
+
                 } while (String.IsNullOrEmpty(response));
 
                 // array of response
                 populateTeamList(response, App.teamsList);
+                return true;
             }
             catch (Exception e)
             {
@@ -71,17 +82,27 @@ namespace NRGScoutingApp2020.Algorithms
         /// <summary>
         /// Update the list of competition names, mainly for AddCompetition page, pulling from Shrey's server
         /// </summary>
-        public static void getEventsNames()
+        /// <returns> whether the request succeed or not </returns>
+        public static bool getEventsNames()
         {
 
             try
             {
                 string response;
+                int c = 0;
                 do
                 {
                     RestRequest request = new RestRequest("/events");
-                    request.AddJsonBody("{\"year\":2019}");
+                    request.AddJsonBody("{\"year\":" + DataConstants.APP_YEAR + "}");
                     response = client.Post(request).Content;
+
+                    c++; // I need to hide a reference somewhere you know (copy-and-pasted)
+
+                    if (c > 3)
+                    {
+                        return false;
+                    }
+
                 } while (String.IsNullOrEmpty(response));
 
                 
@@ -93,6 +114,8 @@ namespace NRGScoutingApp2020.Algorithms
                     string value = (string) s["name"];
                     App.eventsKeyName.Add(key, value);
                 }
+
+                return true;
             }
             catch (Exception e)
             {
@@ -110,11 +133,21 @@ namespace NRGScoutingApp2020.Algorithms
             try
             {
                 string response;
+                int c = 0;
+
                 do
                 {
                     RestRequest request = new RestRequest("/event/matches");
                     request.AddJsonBody("{\"event_key\": \"" + eventKey + "\",\"comp_level\": \"qm\",\"uses_sets\": false}");
                     response = client.Post(request).Content;
+
+                    c++; // I need to hide a reference somewhere you know (copy-and-pasted)
+
+                    if (c > 3)
+                    {
+                        return new CompetitionClass();
+                    }
+
                 } while (String.IsNullOrEmpty(response));
 
                 CompetitionClass competition = new CompetitionClass();
@@ -142,7 +175,6 @@ namespace NRGScoutingApp2020.Algorithms
             {
                 throw e.InnerException;
             }
-            return null;
         }
 
         private class BlueRedJObject
