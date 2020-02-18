@@ -42,6 +42,7 @@ namespace NRGScoutingApp2020
 
         async private void newMatch(object sender, System.EventArgs e)
         {
+            matchEvents.ItemsSource = eventsListObj;
             await Navigation.PushAsync(new AddCompetition()).ConfigureAwait(false);
         }
 
@@ -52,6 +53,7 @@ namespace NRGScoutingApp2020
                 Console.WriteLine(comp.name);
 
             }
+
         }
     }
 }
