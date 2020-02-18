@@ -42,6 +42,7 @@ namespace NRGScoutingApp2020.Pages
                 {
                     competition.name = pair.Value;
                     eventsListObj.Add(competition);
+                    CacheData.CacheOneEvent(competition);
                     await Navigation.PushAsync(new MatchList(competition)).ConfigureAwait(false);
                     Navigation.RemovePage(this);
                 }

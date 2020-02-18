@@ -15,13 +15,49 @@ namespace NRGScoutingApp2020.Algorithms
         /// <param name="eventsListObj"></param>
         public static void CacheEvents(ObservableCollection<CompetitionClass> eventsListObj)
         {
-            List<string> compKeys = new List<string>();
+            string compKeys = "";
             foreach (CompetitionClass competition in eventsListObj)
             {
-                Preferences.Set(competition.eventKey, JsonConvert.SerializeObject(competition));
-                compKeys.Add(competition.eventKey);
+                CacheEvent(competition);
+                compKeys += competition.eventKey + ";";
             }
-            Preferences.Set("compKeys", JsonConvert.SerializeObject(compKeys));
+            Preferences.Set("compKeys", compKeys);
+        }
+        
+        /// <summary>
+        /// Cache only one competition to storage
+        /// </summary>
+        /// <param name="comp"></param>
+        private static void CacheEvent(CompetitionClass comp)
+        {
+            Preferences.Set(comp.eventKey, JsonConvert.SerializeObject(comp));
+        }
+
+
+        /// <summary>
+        /// Stores one eventKey 
+        /// </summary>
+        /// <param name="comp"></param>
+        private static void CacheOneEventKey(CompetitionClass comp)
+        {
+            if (Preferences.ContainsKey("compKeys"))
+            {
+                Preferences.Set("compKeys", Preferences.Get("compKeys", "") + comp.eventKey + ";");
+            }
+            else
+            {
+                Preferences.Set("compKeys", comp.eventKey + ";");
+            }
+        }
+
+        /// <summary>
+        /// Cache individual competition
+        /// </summary>
+        /// <param name="comp"></param>
+        public static void CacheOneEvent(CompetitionClass comp)
+        {
+            CacheEvent(comp);
+            CacheOneEventKey(comp);
         }
 
         /// <summary>

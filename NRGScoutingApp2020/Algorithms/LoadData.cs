@@ -17,7 +17,7 @@ namespace NRGScoutingApp2020.Algorithms
         {
             if (Preferences.ContainsKey("compKeys"))
             {
-                List<string> keys = JsonConvert.DeserializeObject<List<string>>(Preferences.Get("compKeys", "{}"));
+                string[] keys = Preferences.Get("compKeys", "").Split(';');
 
                 ObservableCollection<CompetitionClass> competitions = new ObservableCollection<CompetitionClass>();
 
