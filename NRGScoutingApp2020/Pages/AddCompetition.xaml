@@ -12,7 +12,11 @@
             <ListView
                 x:Name="competitions"
                 ItemTapped="competitions_ItemTapped">
-                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding value}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
     </ContentPage.Content>

@@ -5,6 +5,7 @@ using System.Text;
 using Newtonsoft.Json.Linq;
 using NRGScoutingApp2020.Data;
 using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace NRGScoutingApp2020.Algorithms
 {
@@ -35,13 +36,13 @@ namespace NRGScoutingApp2020.Algorithms
             foreach (var s in repsonse)
             {
                 JObject v = s.ToObject<JObject>();
-                list.Add((int) v["team_number"], (String)v["nickname"]);
+                list.Add((int)v["team_number"], (String)v["nickname"]);
             }
-            if(list.Count <= 500)
+            if (list.Count <= 500)
             {
                 list = temp;
             }
-        
+        }
 
         /// <summary>
         /// Update the list of team names for the app,  pulling from Shrey's server
@@ -59,7 +60,7 @@ namespace NRGScoutingApp2020.Algorithms
                 } while (String.IsNullOrEmpty(response));
 
                 // array of response
-                populateTeamList(response, App.teamsList)
+                populateTeamList(response, App.teamsList);
             }
             catch (Exception e)
             {
@@ -91,7 +92,6 @@ namespace NRGScoutingApp2020.Algorithms
                     string key = (string) s["key"];
                     string value = (string) s["name"];
                     App.eventsKeyName.Add(key, value);
-                    App.eventsNameKey.Add(value, key);
                 }
             }
             catch (Exception e)
@@ -105,7 +105,7 @@ namespace NRGScoutingApp2020.Algorithms
         /// </summary>
         /// <param name="eventKey"></param>
         /// <returns></returns>
-        public static MatchEventClass getEventSpecific (string eventKey)
+        public static CompetitionClass getEventSpecific (string eventKey)
         {
             try
             {
@@ -117,7 +117,7 @@ namespace NRGScoutingApp2020.Algorithms
                     response = client.Post(request).Content;
                 } while (String.IsNullOrEmpty(response));
 
-                MatchEventClass competition = new MatchEventClass();
+                CompetitionClass competition = new CompetitionClass();
                 JObject a = JObject.Parse(response);
 
                 foreach (KeyValuePair<string, JToken> s in a)
