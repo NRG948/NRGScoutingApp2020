@@ -7,6 +7,16 @@
              x:Class="NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage.PrematchView">
   <ContentView.Content>
         <StackLayout>
+            <Label
+                Text="Red"
+                FontSize="Header"
+                VerticalOptions="Center"/>
+            <StackLayout x:Name="RedAlliancePos"/>
+            <Label
+                Text="Blue"
+                FontSize="Header"
+                VerticalOptions="Center"/>
+            <StackLayout x:Name="BlueAlliancePos"/>
         </StackLayout>
   </ContentView.Content>
 </ContentView>
