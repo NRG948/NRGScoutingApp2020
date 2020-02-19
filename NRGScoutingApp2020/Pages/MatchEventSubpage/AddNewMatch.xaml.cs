@@ -26,6 +26,12 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
             comp = competition;
         }
 
+        /// <summary>
+        /// if the text of the searchbar is changed and is valid,
+        /// enable the alliance selection view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void matchNum_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (String.IsNullOrWhiteSpace(e.NewTextValue) || String.IsNullOrEmpty(e.NewTextValue))

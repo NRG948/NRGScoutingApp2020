@@ -31,8 +31,13 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
 
         }
 
+        /// <summary>
+        /// place 2 * 3 (column * row) list of buttons in the view
+        /// </summary>
         public void updateCreate()
         {
+            // Error is here saying how selection is null even it is a field binded to the grid
+            selection.Children.Clear();
             int btnID = 0;
             for (int i = 0; i < 3; i++)
             {
