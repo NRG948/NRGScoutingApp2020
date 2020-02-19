@@ -13,7 +13,8 @@ namespace NRGScoutingApp2020.Data
         private int[] redAlliance = new int[3];
 
         public bool isFilled = false;
-        public List<ScoutedInfo> MatchScouted = new List<ScoutedInfo>();
+        public ScoutedInfo[] BluesScouted = new ScoutedInfo[3];
+        public ScoutedInfo[] RedsScouted = new ScoutedInfo[3];
         public Match()
         {
             date = DateTime.UtcNow;

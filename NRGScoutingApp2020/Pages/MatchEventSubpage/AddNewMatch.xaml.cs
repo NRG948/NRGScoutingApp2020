@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,17 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddNewMatch : ContentPage
     {
-        public AddNewMatch()
+        CompetitionClass comp;
+        public AddNewMatch(CompetitionClass competition)
         {
             InitializeComponent();
+
+            if (competition.matchesList.Count == 0)
+            {
+                throw new MissingMemberException();
+            }
+
+            comp = competition;
         }
 
         private void matchNum_TextChanged(object sender, TextChangedEventArgs e)
@@ -26,7 +35,18 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
             }
             else
             {
-                
+                int num = int.Parse(e.NewTextValue);
+                if (num > 0 && num <= comp.matchesList.Count)
+                {
+                    Prematching.matchHere = comp.matchesList[num - 1];
+                    Prematching.updateCreate();
+                    Prematching.IsEnabled = true;
+                    CreateNew.IsEnabled = true;
+                } else
+                {
+                    Prematching.IsEnabled = false;
+                    CreateNew.IsEnabled = false;
+                }
             }
         }
 

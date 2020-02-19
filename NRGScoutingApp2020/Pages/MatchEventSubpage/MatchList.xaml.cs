@@ -23,7 +23,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
 
         async private void NewMatch(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddNewMatch()).ConfigureAwait(false);
+            await Navigation.PushAsync(new AddNewMatch(Competition)).ConfigureAwait(false);
         }
 
         private void Matches_ItemTapped(object sender, ItemTappedEventArgs e)

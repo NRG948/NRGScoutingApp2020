@@ -11,7 +11,8 @@
             <SearchBar
                 x:Name="matchNum"
                 Placeholder="Enter Match Number"
-                TextChanged="matchNum_TextChanged"/>
+                TextChanged="matchNum_TextChanged"
+                Keyboard="Numeric"/>
             <matchsubpage:PrematchView 
                 x:Name="Prematching"
                 IsEnabled="False"/>
