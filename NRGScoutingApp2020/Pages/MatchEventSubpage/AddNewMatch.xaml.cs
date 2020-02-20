@@ -1,4 +1,5 @@
 ﻿using NRGScoutingApp2020.Data;
+using NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,7 +56,8 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
         }
 
         /// <summary>
-        /// custom click event for the buttons in the alliance selection view
+        /// custom click event for the buttons in the alliance selection view,
+        /// select a position to scout and enable the creation of new event 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -73,6 +75,8 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
             btn.Text = DataConstants.selecting;
 
             showTeamInfo();
+
+            CreateNew.IsEnabled = true;
         }
 
         /// <summary>
@@ -104,6 +108,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
         private void updateView(string newNum)
         {
             Prematching.IsVisible = false;
+            CreateNew.IsEnabled = false;
             invalidText.IsVisible = true;
             if (!String.IsNullOrWhiteSpace(newNum) && !String.IsNullOrEmpty(newNum))
             {
@@ -117,7 +122,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
                         for (int i = 0; i < 6; i++)
                         {
                             ScoutedInfo inf = comp.matchesList[matchNumber - 1].TeamsScouted[i];
-                            buttons[i].IsVisible = inf == null ? true : false;
+                            buttons[i].IsEnabled = inf == null ? true : false;
                             count += inf == null ? 0 : 1;
                         }
                         if (count == 6)
@@ -150,6 +155,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
         {
             lastSelect = selectID;
             lastMatch = matchNumber + 1;
+            Navigation.PushAsync(new scoutEvents());
         }
 
         private void continue_Clicked(object sender, EventArgs e)

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage.scoutMain">
+  <ContentView.Content>
+      <StackLayout>
+            <Frame>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Button Text="Undo" 
+                            Grid.Row="0"
+                            Grid.Column="1"/>
+                    <Label Text="0" 
+                           FontSize="40"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            VerticalOptions="CenterAndExpand" 
+                            HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="Balls" 
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            VerticalOptions="CenterAndExpand" 
+                            HorizontalOptions="CenterAndExpand"/>
+                    <Button Text="Inner" 
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"/>
+                    <Button Text="Outer" 
+                            Grid.Row="4"
+                            Grid.Column="2"
+                            Grid.ColumnSpan="2"/>
+                    <Button Text="Lower" 
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"/>
+                    <Button Text="Miss" 
+                            Grid.Row="6"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"/>
+                    <Button Text="Pick" 
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"/>
+                </Grid>
+            </Frame>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

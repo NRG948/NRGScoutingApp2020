@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage.scoutParameters">
+  <ContentView.Content>
+      <StackLayout>
+            <Frame>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Control Panel"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="Subtitle"
+                           Grid.Row="0"
+                           Grid.Column="1"
+                           Grid.ColumnSpan="2"/>
+
+                    <CheckBox 
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HorizontalOptions="End"/>
+                    <Label Text="Rotational"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="Subtitle"
+                           Grid.Row="1"
+                           Grid.Column="1"/>
+
+                    <CheckBox 
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        HorizontalOptions="End"/>
+                    <Label Text="Positional"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="Subtitle"
+                           Grid.Row="2"
+                           Grid.Column="1"/>
+
+                    <Label Text="Climb"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="Subtitle"
+                           Grid.Row="3"
+                           Grid.Column="1"
+                           Grid.ColumnSpan="2"/>
+
+                    <Label Text="Position"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="Subtitle"
+                           Grid.Row="4"
+                           Grid.Column="0"/>
+
+                    <Slider Minimum="0" Maximum="2" 
+                            ValueChanged="IntSlider_ValueChanged"
+                           Grid.Row="4"
+                           Grid.Column="1"
+                            Grid.ColumnSpan="3"/>
+
+                </Grid>
+            </Frame>
+      </StackLayout>
+  </ContentView.Content>
+</ContentView>
