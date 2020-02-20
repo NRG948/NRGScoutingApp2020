@@ -1,11 +1,14 @@
-﻿using System;
+﻿using NRGScoutingApp2020.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static NRGScoutingApp2020.App;
+
 
 namespace NRGScoutingApp2020.Pages.MatchEventSubpage
 {
@@ -19,6 +22,8 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
             InitializeComponent();
             Title = competition.name;
             Matches.ItemsSource = competition.matchesList.Where(match => match.isFilled);
+            lastMatch = -1;
+            lastSelect = -1;
         }
 
         async private void NewMatch(object sender, EventArgs e)

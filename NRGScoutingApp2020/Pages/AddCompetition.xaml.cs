@@ -28,6 +28,11 @@ namespace NRGScoutingApp2020.Pages
                 DownloadData.getEventsNames();
                 CacheData.CacheEventsList(eventsKeyName);
             }
+            if (teamsList.Count == 0)
+            {
+                DownloadData.getTeamsNames();
+                CacheData.CacheTeamsList(teamsList);
+            }
             competitions.ItemsSource = eventsKeyName;
         }
 

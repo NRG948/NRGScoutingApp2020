@@ -69,6 +69,7 @@ namespace NRGScoutingApp2020.Algorithms
         {
             if (Preferences.ContainsKey("teams"))
             {
+
                 return JsonConvert.DeserializeObject<Dictionary<int, string>>(Preferences.Get("teams", "{}"));
             }
             return new Dictionary<int, string>();

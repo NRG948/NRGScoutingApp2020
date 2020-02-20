@@ -12,8 +12,9 @@ namespace NRGScoutingApp2020
         public static ObservableCollection<CompetitionClass> eventsListObj { get ; set ; } = new ObservableCollection<CompetitionClass> ();
 
         public static Dictionary<string, string> eventsKeyName { get; set; } = new Dictionary<string, string>();
-        public static Dictionary<int, string> teamsNumName { get; set; } = new Dictionary<int, string>();
         // public static Dictionary<string, int> teamsNameNum = new Dictionary<string, int>();
+        public static int lastMatch;
+        public static int lastSelect;
 
         public App()
         {
@@ -25,9 +26,11 @@ namespace NRGScoutingApp2020
         protected override void OnStart()
         {
             // Load all data
-            teamsNumName = LoadData.LoadTeamsList();
+            teamsList = LoadData.LoadTeamsList();
             eventsKeyName = LoadData.LoadEventsList();
             eventsListObj = LoadData.LoadEvents();
+
+
             foreach (CompetitionClass comp in eventsListObj)
             {
                 if (eventsKeyName.ContainsKey(comp.eventKey))
@@ -42,7 +45,7 @@ namespace NRGScoutingApp2020
             // Cache all data
             CacheData.CacheEvents(eventsListObj);
             CacheData.CacheEventsList(eventsKeyName);
-            CacheData.CacheTeamsList(teamsNumName);
+            CacheData.CacheTeamsList(teamsList);
         }
 
         protected override void OnResume()

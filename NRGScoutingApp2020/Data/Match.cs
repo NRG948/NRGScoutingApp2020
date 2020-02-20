@@ -9,12 +9,11 @@ namespace NRGScoutingApp2020.Data
 
         public int number { get; set; }
         public DateTime date;
-        private int[] blueAlliance = new int[3];
-        private int[] redAlliance = new int[3];
+        public int[] blueAlliance = new int[3];
+        public int[] redAlliance = new int[3];
 
         public bool isFilled = false;
-        public ScoutedInfo[] BluesScouted = new ScoutedInfo[3];
-        public ScoutedInfo[] RedsScouted = new ScoutedInfo[3];
+        public ScoutedInfo[] TeamsScouted = new ScoutedInfo[6];
         public Match()
         {
             date = DateTime.UtcNow;

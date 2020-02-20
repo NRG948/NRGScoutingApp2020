@@ -3,24 +3,90 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:matchsubpage="clr-namespace:NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage"
              mc:Ignorable="d"
              x:Class="NRGScoutingApp2020.Pages.MatchEventSubpage.AddNewMatch">
     <ContentPage.Content>
         <StackLayout>
+            <Button x:Name="continue"
+                    Text="Countinue?"
+                    Clicked="continue_Clicked"
+                    IsVisible="False"/>
             <SearchBar
                 x:Name="matchNum"
                 Placeholder="Enter Match Number"
                 TextChanged="matchNum_TextChanged"
                 Keyboard="Numeric"/>
-            <matchsubpage:PrematchView 
-                x:Name="Prematching"
-                IsEnabled="False"/>
-            <Button
-                x:Name="CreateNew"
-                Text="Create"
-                Clicked="CreateNew_Clicked" 
-                IsEnabled="False"/>
+            <StackLayout x:Name="Prematching"
+                  IsVisible="False">
+                <Grid x:Name="PrematchGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="80"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Blue"
+                       FontSize="Title"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Grid.Column="1"
+                       Grid.Row="0"/>
+                    <Label Text="Red"
+                       FontSize="Title"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Grid.Column="2"
+                       Grid.Row="0"/>
+                    <Label Text="Team"
+                       FontSize="Medium"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Grid.Column="0"
+                       Grid.Row="0"/>
+                    <Label Text="1"
+                       FontSize="Large"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Grid.Column="0"
+                       Grid.Row="1"/>
+                    <Label Text="2"
+                       FontSize="Large"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Grid.Column="0"
+                       Grid.Row="2"/>
+                    <Label Text="3"
+                       FontSize="Large"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Grid.Column="0"
+                       Grid.Row="3"/>
+                </Grid>
+                <Label x:Name="teamNum"
+                   FontSize="Title"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Center"
+                   HeightRequest="60"/>
+                <Label x:Name="teamNick"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Center"
+                   HeightRequest="60"/>
+                <Button
+                    x:Name="CreateNew"
+                    Text="Create"
+                    Clicked="CreateNew_Clicked" />
+            </StackLayout>
+            
+            <Label x:Name="invalidText"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Center"
+                   Text="Enter a Match Number"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
