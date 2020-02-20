@@ -23,5 +23,14 @@ namespace NRGScoutingApp2020
 
         // Prompt Strings
         public static readonly string EmptyCompetition = "You can not add a competition until the day before it happens!";
+
+
+        /* Event Types
+         * 0: pick
+         * 1: lower
+         * 2: outer
+         * 3: inner
+         * 4: miss
+         */
     }
 }

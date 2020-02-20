@@ -12,15 +12,15 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class scoutParameters : ContentView
     {
+        string[] climbOptions = { "No Climb", "Park", "Climb", "Climb and Level"};
+        string[] penaltyOptions = { "No Card", "Yellow Card", "Red Card" };
         public scoutParameters()
         {
             InitializeComponent();
-        }
-
-        private void IntSlider_ValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            Slider s = sender as Slider;
-            s.Value = Math.Round(e.NewValue);
+            climbPicker.ItemsSource = climbOptions;
+            climbPicker.SelectedIndex = 0;
+            penaltyPicker.ItemsSource = penaltyOptions;
+            penaltyPicker.SelectedIndex = 0;
         }
     }
 }

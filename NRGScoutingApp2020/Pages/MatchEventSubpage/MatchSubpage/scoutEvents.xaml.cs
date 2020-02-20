@@ -20,6 +20,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
         public scoutEvents()
         {
             InitializeComponent();
+            eventMain.timeMonitor = timeMonitor;
         }
 
         /// <summary>
@@ -49,6 +50,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
                             watchStop.Text = "2:30:000";
                             watchClicker.Text = "Ended";
                             watchClicker.IsEnabled = false;
+                            matchProgress.Progress = 1;
                         });
                         return false;
                     }
@@ -56,6 +58,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
                     MainThread.BeginInvokeOnMainThread(() => 
                     {
                         watchStop.Text = string.Format("{0}:{1:00}:{2:000}", timee.Minutes, timee.Seconds, timee.Milliseconds);
+                        matchProgress.Progress = timee.TotalMilliseconds / endTimee.TotalMilliseconds;
                     });
                     
                     return timeMonitor.IsRunning;
@@ -74,8 +77,14 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
             watchClicker.IsEnabled = true;
             watchClicker.Text = "Start";
             watchStop.Text = "0:00:000";
+            matchProgress.Progress = 0;
         }
 
+        /// <summary>
+        /// switch between main view and parameter view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void switchView_Clicked(object sender, EventArgs e)
         {
             if (isScoutMain)

@@ -8,7 +8,7 @@
              x:Class="NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage.scoutEvents">
     <ContentPage.Content>
         <StackLayout>
-            <Grid>
+            <Grid HeightRequest="50">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -35,13 +35,19 @@
                     Grid.Column="2"
                     Grid.Row="0"/>
             </Grid>
-            <matchsubpage:scoutMain x:Name="eventMain"/>
+            <ProgressBar x:Name="matchProgress"
+                         ProgressColor="Green"
+                         Margin="20"
+                         HeightRequest="5"/>
+            <matchsubpage:scoutMain x:Name="eventMain"
+                                    HeightRequest="450"/>
+            <matchsubpage:scoutParameters x:Name="eventParameters"
+                                          HeightRequest="450"
+                                          IsVisible="False"/>
             <Button x:Name="switchView"
                 Text="Parameters"
                     Clicked="switchView_Clicked"
                     HeightRequest="60"/>
-            <matchsubpage:scoutParameters x:Name="eventParameters"
-                                          IsVisible="False"/>
 
             <Button x:Name="finishBtn"
                 Text="Done"
