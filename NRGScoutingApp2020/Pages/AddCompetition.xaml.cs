@@ -102,16 +102,5 @@ namespace NRGScoutingApp2020.Pages
                 competitions.ItemsSource = eventsKeyName.Where(pair => pair.Value.ToLower().Trim().Contains(e.NewTextValue.ToLower().Trim()));
             }
         }
-        private bool ContainsKey(ObservableCollection<CompetitionClass> comps, string key)
-        {
-            foreach (CompetitionClass comp in comps)
-            {
-                if (comp.eventKey == key)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
     }
 }
