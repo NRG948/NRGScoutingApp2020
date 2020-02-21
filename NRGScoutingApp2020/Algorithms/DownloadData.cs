@@ -112,7 +112,14 @@ namespace NRGScoutingApp2020.Algorithms
                 {
                     string key = (string) s["key"];
                     string value = (string) s["name"];
-                    App.eventsKeyName.Add(key, value);
+                    if (App.eventsKeyName.ContainsKey(key))
+                    {
+                        App.eventsKeyName[key] = value;
+                    }
+                    else
+                    {
+                        App.eventsKeyName.Add(key, value);
+                    }
                 }
 
                 return true;
