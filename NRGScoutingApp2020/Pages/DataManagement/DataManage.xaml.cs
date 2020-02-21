@@ -120,6 +120,10 @@ namespace NRGScoutingApp2020.Pages.DataManagement
                                             oldComp.matchesList[num].TeamsScouted[pos] = comp.matchesList[num].TeamsScouted[pos];
                                         }
                                     }
+                                    else
+                                    {
+                                        oldComp.matchesList[num].TeamsScouted[pos] = comp.matchesList[num].TeamsScouted[pos];
+                                    }
                                 }
                             }
                         }

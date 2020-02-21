@@ -26,27 +26,21 @@ namespace NRGScoutingApp2020.Pages
             {
                 return new Command(() =>
                 {
-                    if (eventsKeyName.Count == 0)
+                    if (DownloadData.getEventsNames())
                     {
-                        if (DownloadData.getEventsNames())
-                        {
-                            CacheData.CacheEventsList(eventsKeyName);
-                        }
-                        else
-                        {
-                            DisplayAlert("Connection Error", "Cannot get the list of competitions", "Oh no...");
-                        }
+                        CacheData.CacheEventsList(eventsKeyName);
                     }
-                    if (teamsList.Count == 0)
+                    else
                     {
-                        if (DownloadData.getTeamsNames())
-                        {
-                            CacheData.CacheTeamsList(teamsList);
-                        }
-                        else
-                        {
-                            DisplayAlert("Connection Error", "Cannot get the list of teams", "Oh no...");
-                        }
+                        DisplayAlert("Connection Error", "Cannot get the list of competitions", "Oh no...");
+                    }
+                    if (DownloadData.getTeamsNames())
+                    {
+                        CacheData.CacheTeamsList(teamsList);
+                    }
+                    else
+                    {
+                        DisplayAlert("Connection Error", "Cannot get the list of teams", "Oh no...");
                     }
                 });
             }
