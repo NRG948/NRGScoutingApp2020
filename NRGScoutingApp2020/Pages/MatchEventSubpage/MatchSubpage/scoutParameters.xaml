@@ -176,14 +176,14 @@
                                HorizontalOptions="Center"
                                VerticalOptions="Center"
                                FontSize="Title"
-                               Grid.Row="13"
+                               Grid.Row="14"
                                Grid.Column="0"
                                Grid.ColumnSpan="4"/>
                         <Editor x:Name="Commentt"
                                 
                             Placeholder="Comments Here"
                                FontSize="Small"
-                               Grid.Row="14"
+                               Grid.Row="15"
                                Grid.Column="0"
                                Grid.ColumnSpan="4"/>
                     </Grid>

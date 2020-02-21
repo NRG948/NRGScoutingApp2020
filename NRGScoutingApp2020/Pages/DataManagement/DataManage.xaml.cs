@@ -134,11 +134,13 @@ namespace NRGScoutingApp2020.Pages.DataManagement
                         CacheData.CacheOneEvent(comp);
                     }
                 }
+
             }
             catch (Exception)
             {
                 DisplayAlert("ERROR", "Invalid Format!", "sksksk");
             }
+            importTextEditor.Text = "";
         }
 
         /// <summary>

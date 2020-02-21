@@ -74,15 +74,27 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
             teamNick.Text = teamsList[tm];
         }
 
+        bool isOpening = false;
+
+        protected override void OnAppearing()
+        {
+            isOpening = false;
+            base.OnAppearing();
+        }
+
         private void openInfo_Clicked(object sender, EventArgs e)
         {
-            if (thisMatch.TeamsScouted[selectID] == null)
+            if (!isOpening)
             {
-                Navigation.PushAsync(new scoutEvents(thisMatch, selectID));
-            }
-            else
-            {
-                Navigation.PushAsync(new scoutEvents(thisMatch.TeamsScouted[selectID]));
+                isOpening = true;
+                if (thisMatch.TeamsScouted[selectID] == null)
+                {
+                    Navigation.PushAsync(new scoutEvents(thisMatch, selectID));
+                }
+                else
+                {
+                    Navigation.PushAsync(new scoutEvents(thisMatch.TeamsScouted[selectID]));
+                }
             }
         }
     }

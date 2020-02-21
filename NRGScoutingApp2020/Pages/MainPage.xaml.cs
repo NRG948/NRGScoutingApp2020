@@ -18,6 +18,7 @@ namespace NRGScoutingApp2020
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        bool isOpening = false;
         public MainPage()
         {
             InitializeComponent();
@@ -26,10 +27,20 @@ namespace NRGScoutingApp2020
 
         }
 
+        protected override void OnAppearing()
+        {
+            isOpening = false;
+            base.OnAppearing();
+        }
+
         private void matchEvents_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            CompetitionClass matchEventItem = e.Item as CompetitionClass;
-            openMatch(matchEventItem);
+            if (!isOpening)
+            {
+                isOpening = true;
+                CompetitionClass matchEventItem = e.Item as CompetitionClass;
+                openMatch(matchEventItem);
+            }
         }
 
         private void openMatch(CompetitionClass competition)

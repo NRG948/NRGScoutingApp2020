@@ -20,6 +20,7 @@ namespace NRGScoutingApp2020.Pages
     /// </summary>
     public partial class AddCompetition : ContentPage
     {
+        bool isOpening = false;
         private ICommand getList
         {
             get
@@ -42,6 +43,10 @@ namespace NRGScoutingApp2020.Pages
                     {
                         DisplayAlert("Connection Error", "Cannot get the list of teams", "Oh no...");
                     }
+                    competitions.IsRefreshing = false;
+                    competitions.ItemsSource = null;
+                    competitions.ItemsSource = eventsKeyName;
+
                 });
             }
             
@@ -58,21 +63,27 @@ namespace NRGScoutingApp2020.Pages
         {
             try
             {
-                KeyValuePair<string, string> pair = (KeyValuePair<string, string>) e.Item;
-                eventsKeyName.Remove(pair.Key);
-                CompetitionClass competition = DownloadData.getEventSpecific(pair.Key);
-                if (competition.matchesList.Count != 0)
+                if (!isOpening)
                 {
-                    competition.name = pair.Value;
-                    eventsListObj.Add(competition);
-                    CacheData.CacheOneEvent(competition);
-                    await Navigation.PushAsync(new MatchList(competition)).ConfigureAwait(false);
-                    Navigation.RemovePage(this);
+                    isOpening = true;
+                    KeyValuePair<string, string> pair = (KeyValuePair<string, string>)e.Item;
+                    eventsKeyName.Remove(pair.Key);
+                    CompetitionClass competition = DownloadData.getEventSpecific(pair.Key);
+                    if (competition.matchesList.Count != 0)
+                    {
+                        competition.name = pair.Value;
+                        eventsListObj.Add(competition);
+                        CacheData.CacheOneEvent(competition);
+                        await Navigation.PushAsync(new MatchList(competition)).ConfigureAwait(false);
+                        Navigation.RemovePage(this);
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", DataConstants.EmptyCompetition, "Sksksk").ConfigureAwait(false);
+                        isOpening = false;
+                    }
                 }
-                else
-                {
-                    await DisplayAlert("Error", DataConstants.EmptyCompetition, "Sksksk").ConfigureAwait(false);
-                }
+                
             }
             catch (Exception ex)
             {

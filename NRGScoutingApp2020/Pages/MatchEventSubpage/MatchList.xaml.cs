@@ -50,16 +50,38 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
             Matches.RefreshCommand = RefreshCommand;
         }
 
+
+        bool isOpening = false;
         async private void NewMatch(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddNewMatch(Competition)).ConfigureAwait(false);
+            if (!isOpening)
+            {
+                isOpening = true;
+                await Navigation.PushAsync(new AddNewMatch(Competition)).ConfigureAwait(false);
+            }
         }
 
-        async private void Matches_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void Matches_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            Match m = e.Item as Match;
+            if (!isOpening)
+            {
+                isOpening = true;
+                Match m = e.Item as Match;
 
-            await Navigation.PushAsync(new OpenMatch(m)).ConfigureAwait(false);
+                openMatch(m);
+            }
+        }
+        private void openMatch(Match m)
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await Navigation.PushAsync(new OpenMatch(m)).ConfigureAwait(false);
+            });
+        }
+        protected override void OnAppearing()
+        {
+            isOpening = false;
+            base.OnAppearing();
         }
         protected override void OnDisappearing()
         {

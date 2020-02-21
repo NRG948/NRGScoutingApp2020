@@ -42,7 +42,11 @@ namespace NRGScoutingApp2020.Algorithms
         {
             if (Preferences.ContainsKey("compKeys"))
             {
-                Preferences.Set("compKeys", Preferences.Get("compKeys", "") + comp.eventKey + ";");
+                string keys = Preferences.Get("compKeys", "");
+                if (!keys.Contains(comp.eventKey))
+                {
+                    Preferences.Set("compKeys", Preferences.Get("compKeys", "") + comp.eventKey + ";");
+                }
             }
             else
             {
