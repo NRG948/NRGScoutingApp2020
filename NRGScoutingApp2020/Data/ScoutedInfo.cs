@@ -16,6 +16,8 @@ namespace NRGScoutingApp2020.Data
         public double deathRange { get; set; }
         public int penaltyPick { get; set; }
         public string commentt { get; set; }
+        public int magnitudeDefend { get; set; }
+        public int magnitudeDefended { get; set; }
 
         public List<EventItem> eventList { get; set; }
 

@@ -61,5 +61,10 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
 
             await Navigation.PushAsync(new OpenMatch(m)).ConfigureAwait(false);
         }
+        protected override void OnDisappearing()
+        {
+            cacheCompetition();
+            base.OnDisappearing();
+        }
     }
 }

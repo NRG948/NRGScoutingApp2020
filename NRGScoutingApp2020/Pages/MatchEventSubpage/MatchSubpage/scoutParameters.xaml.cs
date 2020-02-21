@@ -36,6 +36,8 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
             fullScout.controlRotational = CheckConRotational.IsChecked;
             fullScout.deathRange        = SlideDeath.Value;
             fullScout.penaltyPick       = penaltyPicker.SelectedIndex;
+            fullScout.magnitudeDefend   = (int)magnitudeDefendSlider.Value;
+            fullScout.magnitudeDefended = (int)magnitudeDefendedSlider.Value;
             fullScout.commentt          = Commentt.Text;
         }
 
@@ -51,7 +53,27 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
             CheckConRotational.IsChecked    = fullScout.controlRotational;
             SlideDeath.Value                = fullScout.deathRange;
             penaltyPicker.SelectedIndex     = fullScout.penaltyPick;
+            magnitudeDefendSlider.Value     = fullScout.magnitudeDefend;
+            magnitudeDefendedSlider.Value   = fullScout.magnitudeDefended;
             Commentt.Text                   = fullScout.commentt;
+        }
+
+        private void magnitudeDefendSlider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            sliderToInteger(sender, e);
+            magnitudeDefendLabel.Text = ((int)Math.Round(e.NewValue)) + "";
+        }
+
+        private void magnitudeDefendedSlider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            sliderToInteger(sender, e);
+            magnitudeDefendedLabel.Text = ((int)Math.Round(e.NewValue)) + "";
+        }
+
+        private void sliderToInteger(object sender, ValueChangedEventArgs e)
+        {
+            Slider s = sender as Slider;
+            s.Value = Math.Round(e.NewValue);
         }
     }
 }
