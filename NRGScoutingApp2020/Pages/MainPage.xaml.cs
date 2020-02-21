@@ -1,4 +1,5 @@
 ﻿using NRGScoutingApp2020.Pages;
+using NRGScoutingApp2020.Pages.DataManagement;
 using NRGScoutingApp2020.Pages.MatchEventSubpage;
 using System;
 using System.Collections.Generic;
@@ -55,6 +56,11 @@ namespace NRGScoutingApp2020
             }
             Preferences.Clear();
 
+        }
+
+        async private void manageData(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new DataManage()).ConfigureAwait(false);
         }
     }
 }

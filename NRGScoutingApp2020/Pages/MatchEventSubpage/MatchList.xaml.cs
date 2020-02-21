@@ -22,7 +22,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
         {
             get
             {
-                return new Command(async () =>
+                return new Command(() =>
                 {
                     updateMatches();
                     cacheCompetition();
