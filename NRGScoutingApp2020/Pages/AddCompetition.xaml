@@ -11,7 +11,8 @@
             <SearchBar x:Name="SEARCH" TextChanged="SEARCH_TextChanged" Placeholder="Enter Competition Name"/>
             <ListView
                 x:Name="competitions"
-                ItemTapped="competitions_ItemTapped">
+                ItemTapped="competitions_ItemTapped"
+                IsPullToRefreshEnabled="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding Path=Value}"/>

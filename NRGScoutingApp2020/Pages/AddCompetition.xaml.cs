@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static NRGScoutingApp2020.App;
@@ -20,20 +20,44 @@ namespace NRGScoutingApp2020.Pages
     /// </summary>
     public partial class AddCompetition : ContentPage
     {
+        private ICommand getList
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    if (eventsKeyName.Count == 0)
+                    {
+                        if (DownloadData.getEventsNames())
+                        {
+                            CacheData.CacheEventsList(eventsKeyName);
+                        }
+                        else
+                        {
+                            DisplayAlert("Connection Error", "Cannot get the list of competitions", "Oh no...");
+                        }
+                    }
+                    if (teamsList.Count == 0)
+                    {
+                        if (DownloadData.getTeamsNames())
+                        {
+                            CacheData.CacheTeamsList(teamsList);
+                        }
+                        else
+                        {
+                            DisplayAlert("Connection Error", "Cannot get the list of teams", "Oh no...");
+                        }
+                    }
+                });
+            }
+            
+        }
+
         public AddCompetition()
         {
             InitializeComponent();
-            if (eventsKeyName.Count == 0)
-            {
-                DownloadData.getEventsNames();
-                CacheData.CacheEventsList(eventsKeyName);
-            }
-            if (teamsList.Count == 0)
-            {
-                DownloadData.getTeamsNames();
-                CacheData.CacheTeamsList(teamsList);
-            }
             competitions.ItemsSource = eventsKeyName;
+            competitions.RefreshCommand = getList;
         }
 
         async private void competitions_ItemTapped(object sender, ItemTappedEventArgs e)
