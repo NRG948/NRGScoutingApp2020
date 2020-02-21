@@ -1,9 +1,11 @@
-﻿using NRGScoutingApp2020.Data;
+﻿using NRGScoutingApp2020.Algorithms;
+using NRGScoutingApp2020.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -16,14 +18,36 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
     public partial class MatchList : ContentPage
     {
         CompetitionClass Competition;
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    updateMatches();
+                    cacheCompetition();
+                    Matches.IsRefreshing = false;
+                });
+            }
+        }
+
+        private void updateMatches()
+        {
+            Matches.ItemsSource = Competition.matchesList.Where(match => match.isFilled);
+        }
+
+        private void cacheCompetition()
+        {
+            CacheData.CacheOneEvent(Competition);
+        }
         public MatchList(CompetitionClass competition)
         {
-            Competition = competition;
             InitializeComponent();
+            Competition = competition;
             Title = competition.name;
-            Matches.ItemsSource = competition.matchesList.Where(match => match.isFilled);
             lastMatch = -1;
             lastSelect = -1;
+            Matches.RefreshCommand = RefreshCommand;
         }
 
         async private void NewMatch(object sender, EventArgs e)
@@ -31,9 +55,11 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
             await Navigation.PushAsync(new AddNewMatch(Competition)).ConfigureAwait(false);
         }
 
-        private void Matches_ItemTapped(object sender, ItemTappedEventArgs e)
+        async private void Matches_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            Match m = e.Item as Match;
 
+            await Navigation.PushAsync(new OpenMatch(m)).ConfigureAwait(false);
         }
     }
 }

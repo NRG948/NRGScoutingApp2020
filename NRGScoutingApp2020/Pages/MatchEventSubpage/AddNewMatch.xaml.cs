@@ -155,7 +155,8 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
         {
             lastSelect = selectID;
             lastMatch = matchNumber + 1;
-            Navigation.PushAsync(new scoutEvents());
+            Navigation.PushAsync(new scoutEvents(comp.matchesList[matchNumber - 1], selectID));
+            Navigation.RemovePage(this);
         }
 
         private void continue_Clicked(object sender, EventArgs e)

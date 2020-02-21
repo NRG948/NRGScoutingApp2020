@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using NRGScoutingApp2020.Algorithms;
+using NRGScoutingApp2020.Data;
+using System;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -17,10 +15,30 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
         TimeSpan timee;
         TimeSpan endTimee = new TimeSpan(0, 2, 30);
         bool isScoutMain = true;
-        public scoutEvents()
+
+        Match thisMatch;
+        int matchPos;
+
+        bool newScout;
+        ScoutedInfo fullScout;
+        public scoutEvents(Match m, int pos)
+        {
+            InitializeComponent();
+            thisMatch = m;
+            matchPos = pos;
+            eventMain.timeMonitor = timeMonitor;
+            newScout = true;
+            fullScout = new ScoutedInfo();
+        }
+        public scoutEvents(ScoutedInfo inf)
         {
             InitializeComponent();
             eventMain.timeMonitor = timeMonitor;
+            finishBtn.Text = "Save";
+            newScout = false;
+            fullScout = inf;
+            eventMain.setLocEventList(fullScout);
+            eventParameters.setLocParameters(fullScout);
         }
 
         /// <summary>
@@ -39,7 +57,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
             {
                 timeMonitor.Start();
                 watchClicker.Text = "Pause";
-                Device.StartTimer(TimeSpan.FromMilliseconds(50), () => 
+                Device.StartTimer(TimeSpan.FromMilliseconds(50), () =>
                 {
                     timee = timeMonitor.Elapsed;
 
@@ -55,12 +73,12 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
                         return false;
                     }
 
-                    MainThread.BeginInvokeOnMainThread(() => 
+                    MainThread.BeginInvokeOnMainThread(() =>
                     {
                         watchStop.Text = string.Format("{0}:{1:00}:{2:000}", timee.Minutes, timee.Seconds, timee.Milliseconds);
                         matchProgress.Progress = timee.TotalMilliseconds / endTimee.TotalMilliseconds;
                     });
-                    
+
                     return timeMonitor.IsRunning;
                 });
             }
@@ -102,7 +120,16 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
 
         private void finishBtn_Clicked(object sender, EventArgs e)
         {
+            eventMain.setEventList(fullScout);
+            eventParameters.setParameters(fullScout);
 
+            if (newScout)
+            {
+                thisMatch.TeamsScouted[matchPos] = fullScout;
+                thisMatch.isFilled = true;
+            }
+
+                Navigation.PopAsync();
         }
     }
 }

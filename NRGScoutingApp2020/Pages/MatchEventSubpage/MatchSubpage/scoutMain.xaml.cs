@@ -15,7 +15,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
     public partial class scoutMain : ContentView
     {
         int ballInt = 0;
-        public List<EventItem> eventList = new List<EventItem>();
+        private List<EventItem> eventList = new List<EventItem>();
         public Stopwatch timeMonitor;
 
         public scoutMain()
@@ -26,14 +26,16 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
         private void Pick_Clicked(object sender, EventArgs e)
         {
             bool success = changeBallNum(1);
-            eventList.Add(new EventItem(0, timeMonitor.Elapsed));
+            if (success)
+                eventList.Add(new EventItem(0, timeMonitor.Elapsed));
 
         }
 
         private void Lower_Clicked(object sender, EventArgs e)
         {
             bool success = changeBallNum(-1);
-            eventList.Add(new EventItem(1, timeMonitor.Elapsed));
+            if (success)
+                eventList.Add(new EventItem(1, timeMonitor.Elapsed));
 
         }
 
@@ -41,20 +43,29 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
         private void Outer_Clicked(object sender, EventArgs e)
         {
             bool success = changeBallNum(-1);
-            eventList.Add(new EventItem(2, timeMonitor.Elapsed));
+            if (success)
+                eventList.Add(new EventItem(2, timeMonitor.Elapsed));
 
         }
+
+        internal void setLocEventList(ScoutedInfo fullScout)
+        {
+            eventList = fullScout.eventList;
+        }
+
         private void Inner_Clicked(object sender, EventArgs e)
         {
             bool success = changeBallNum(-1);
-            eventList.Add(new EventItem(3, timeMonitor.Elapsed));
+            if (success)
+                eventList.Add(new EventItem(3, timeMonitor.Elapsed));
 
         }
 
         private void Miss_Clicked(object sender, EventArgs e)
         {
             bool success = changeBallNum(-1);
-            eventList.Add(new EventItem(4, timeMonitor.Elapsed));
+            if (success)
+                eventList.Add(new EventItem(4, timeMonitor.Elapsed));
 
         }
 
@@ -65,12 +76,12 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
         /// <returns> whether a change is possible </returns>
         private bool changeBallNum(int ballDif)
         {
-            Undoer.IsEnabled = true;
             int result = ballInt + ballDif;
             if (result < 0 || result > 5)
             {
                 return false;
             }
+            Undoer.IsEnabled = true;
             ballInt = result;
             CurrentBall.Text = ballInt + "";
             return true;
@@ -98,6 +109,13 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
             {
                 Undoer.IsEnabled = false;
             }
+
+            Console.WriteLine(eventList.Count);
+        }
+
+        public void setEventList(ScoutedInfo scouted)
+        {
+            scouted.eventList = eventList;
         }
     }
 }

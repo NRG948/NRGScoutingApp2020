@@ -26,8 +26,8 @@
                                Grid.Row="0"
                                Grid.Column="1"
                                Grid.ColumnSpan="2"/>
-                        <CheckBox x:FieldModifier="public"
-                            x:Name="CheckInitiation"
+                        <CheckBox 
+                            x:Name="CheckAutoInitiation"
                             Grid.Row="1"
                             Grid.Column="0"
                             HorizontalOptions="End"/>
@@ -46,7 +46,7 @@
                                Grid.Row="2"
                                Grid.Column="1"
                                Grid.ColumnSpan="2"/>
-                        <Picker x:FieldModifier="public" 
+                        <Picker 
                             x:Name="climbPicker"
                                 Title="Select Climb"
                                Grid.Row="3"
@@ -61,8 +61,8 @@
                                Grid.Column="1"
                                Grid.ColumnSpan="2"/>
 
-                        <CheckBox x:FieldModifier="public"
-                            x:Name="CheckRotational"
+                        <CheckBox 
+                            x:Name="CheckConRotational"
                             Grid.Row="5"
                             Grid.Column="0"
                             HorizontalOptions="End"/>
@@ -73,8 +73,8 @@
                                Grid.Row="5"
                                Grid.Column="1"/>
 
-                        <CheckBox x:Name="CheckPositional"
-                                  x:FieldModifier="public"
+                        <CheckBox x:Name="CheckConPositional"
+                                  
                             Grid.Row="6"
                             Grid.Column="0"
                             HorizontalOptions="End"/>
@@ -100,7 +100,7 @@
                                Grid.Row="8"
                                Grid.Column="0"/>
                         <Slider x:Name="SlideDeath"
-                                x:FieldModifier="public"
+                                
                             Minimum="0" Maximum="1" 
                                Grid.Row="8"
                                Grid.Column="1"
@@ -120,7 +120,7 @@
                                Grid.Column="1"
                                Grid.ColumnSpan="2"/>
                         <Picker x:Name="penaltyPicker"
-                                x:FieldModifier="public"
+                                
                                 Title="Select Penalty"
                                Grid.Row="10"
                                Grid.Column="1"
@@ -134,7 +134,7 @@
                                Grid.Column="0"
                                Grid.ColumnSpan="4"/>
                         <Editor x:Name="Commentt"
-                                x:FieldModifier="public"
+                                
                             Placeholder="Comments Here"
                                FontSize="Small"
                                Grid.Row="12"

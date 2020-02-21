@@ -9,13 +9,17 @@ namespace NRGScoutingApp2020.Data
     /// </summary>
     public class ScoutedInfo
     {
-        public int Number { get; set; }
+        public bool AutoInitiation { get; set; }
+        public int climbPick { get; set; }
+        public bool controlRotational { get; set; }
+        public bool controlPositional { get; set; }
+        public double deathRange { get; set; }
+        public int penaltyPick { get; set; }
+        public string commentt { get; set; }
 
-        // parameters below
-        public ScoutedInfo(int matchNum)
-        {
-            Number = matchNum;
-        }
+        public List<EventItem> eventList { get; set; }
 
-    }
+    // parameters below
+
+}
 }

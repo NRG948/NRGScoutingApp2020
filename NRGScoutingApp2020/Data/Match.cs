@@ -8,6 +8,7 @@ namespace NRGScoutingApp2020.Data
     {
 
         public int number { get; set; }
+        public string matchNum { get { return "Match " + number; } }
         public DateTime date;
         public int[] blueAlliance = new int[3];
         public int[] redAlliance = new int[3];

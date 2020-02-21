@@ -15,13 +15,13 @@
         <StackLayout>
             <ListView
                 x:Name="Matches"
-                ItemTapped="Matches_ItemTapped">
+                ItemTapped="Matches_ItemTapped"
+                IsPullToRefreshEnabled="True">
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell
-                        Text="{Binding number}"
-                        Detail="{Binding date}"/>
+                        Text="{Binding matchNum}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
 
