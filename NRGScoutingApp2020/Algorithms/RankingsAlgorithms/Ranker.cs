@@ -126,5 +126,53 @@ namespace NRGScoutingApp2020.Algorithms.RankingsAlgorithms
 
             return teamValTolList;
         }
+
+        public static List<KeyValuePair<int, double>> climbRank(Dictionary<ScoutedInfo, int> infos, int t)
+        {
+
+            List<int> teams;
+            Dictionary<int, double> teamValueTotal = new Dictionary<int, double>();
+            Dictionary<int, int> teamCount = new Dictionary<int, int>();
+
+            foreach (ScoutedInfo inf in infos.Keys)
+            {
+                int teamNum = infos[inf];
+
+                foreach (EventItem evt in inf.eventList)
+                {
+                    if (evt.type == t)
+                    {
+                        if (teamValueTotal.ContainsKey(teamNum))
+                        {
+                            teamValueTotal[teamNum] += 1;
+                        }
+                        else
+                        {
+                            teamValueTotal.Add(teamNum, 1);
+                        }
+                    }
+
+                }
+                if (teamCount.ContainsKey(teamNum))
+                {
+                    teamCount[teamNum] += 1;
+                }
+                else
+                {
+                    teamCount.Add(teamNum, 1);
+                }
+            }
+
+            foreach (int k in teamValueTotal.Keys)
+            {
+                teamValueTotal[k] /= teamCount[k];
+            }
+
+            List<KeyValuePair<int, double>> teamValTolList = teamValueTotal.ToList();
+
+            teamValTolList.Sort((tma, tmb) => tma.Value.CompareTo(tmb.Value));
+
+            return teamValTolList;
+        }
     }
 }
