@@ -82,6 +82,8 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
         {
             isOpening = false;
             base.OnAppearing();
+
+            updateMatches();
         }
         protected override void OnDisappearing()
         {

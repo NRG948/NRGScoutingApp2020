@@ -23,14 +23,14 @@ namespace NRGScoutingApp2020
         {
             InitializeComponent();
 
-            matchEvents.ItemsSource = eventsListObj;
-
         }
 
         protected override void OnAppearing()
         {
             isOpening = false;
             base.OnAppearing();
+
+            matchEvents.ItemsSource = eventsListObj;
         }
 
         private void matchEvents_ItemTapped(object sender, ItemTappedEventArgs e)
