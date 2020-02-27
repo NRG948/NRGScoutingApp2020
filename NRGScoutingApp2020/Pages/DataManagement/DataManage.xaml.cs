@@ -50,16 +50,23 @@ namespace NRGScoutingApp2020.Pages.DataManagement
 
         private void importTextEditor_TextChanged(object sender, TextChangedEventArgs e)
         {
-            try
+            if (string.IsNullOrWhiteSpace(e.NewTextValue))
             {
-                JArray arr = JArray.Parse(e.NewTextValue);
-                importDetailLabel.Text = "This contains " + arr.Count + " competitions";
-                importDetailLabel.TextColor = Color.Black;
+                importDetailLabel.Text = "";
             }
-            catch (Exception)
+            else
             {
-                importDetailLabel.Text = "ERROR";
-                importDetailLabel.TextColor = Color.Red;
+                try
+                {
+                    JArray arr = JArray.Parse(e.NewTextValue);
+                    importDetailLabel.Text = "This contains " + arr.Count + " competitions";
+                    importDetailLabel.TextColor = Color.Black;
+                }
+                catch (Exception)
+                {
+                    importDetailLabel.Text = "ERROR";
+                    importDetailLabel.TextColor = Color.Red;
+                }
             }
         }
 
@@ -100,7 +107,7 @@ namespace NRGScoutingApp2020.Pages.DataManagement
                                             choice = await DisplayActionSheet(
                                                 "Conflict file at " + comp.name + " match No." + (num + 1),
                                                 "Ignore all", null, "Overwrite", "Overwrite all", "Ignore")
-                                                .ConfigureAwait(false);
+                                                .ConfigureAwait(true);
                                             switch (choice)
                                             {
                                                 case "Overwrite":
