@@ -79,7 +79,7 @@ namespace NRGScoutingApp2020.Pages
                     }
                     else
                     {
-                        await DisplayAlert("Error", DataConstants.EmptyCompetition, "Sksksk").ConfigureAwait(false);
+                        await DisplayAlert("Error", DataConstants.EmptyCompetition, "Sksksk").ConfigureAwait(true);
                         isOpening = false;
                     }
                 }
