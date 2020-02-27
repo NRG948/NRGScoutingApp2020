@@ -29,7 +29,6 @@ namespace NRGScoutingApp2020.Algorithms
         /// <param name="list">list object to populate</param>
         public static void populateTeamList(string json, Dictionary<int, String> list)
         {
-            Debug.WriteLine(json);
             Dictionary<int, String> temp = new Dictionary<int, String>(list);
             JArray repsonse = JArray.Parse(json);
             list.Clear();
@@ -169,7 +168,6 @@ namespace NRGScoutingApp2020.Algorithms
                     Match aMatch = new Match();
                     aMatch.number = i;
                     string daList = s.ToString();
-                    Console.WriteLine(daList);
                     BlueRedJObject allianceInfo = JsonConvert.DeserializeObject<BlueRedJObject>(daList);
                     int[] blues = allianceInfo.blue.ToArray();
                     int[] reds = allianceInfo.red.ToArray();
