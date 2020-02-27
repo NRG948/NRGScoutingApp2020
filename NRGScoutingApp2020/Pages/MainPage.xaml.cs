@@ -1,4 +1,5 @@
-﻿using NRGScoutingApp2020.Pages;
+﻿using NRGScoutingApp2020.Algorithms;
+using NRGScoutingApp2020.Pages;
 using NRGScoutingApp2020.Pages.DataManagement;
 using NRGScoutingApp2020.Pages.MatchEventSubpage;
 using System;
@@ -72,6 +73,14 @@ namespace NRGScoutingApp2020
         async private void manageData(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new DataManage()).ConfigureAwait(false);
+        }
+
+        private void DeleteCompetition(object sender, EventArgs e)
+        {
+            MenuItem delete = sender as MenuItem;
+            CompetitionClass comp = delete.CommandParameter as CompetitionClass;
+            eventsListObj.Remove(comp);
+            CacheData.DeleteOneEvent(comp);
         }
     }
 }

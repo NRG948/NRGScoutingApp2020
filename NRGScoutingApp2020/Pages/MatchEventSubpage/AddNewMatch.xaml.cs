@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static NRGScoutingApp2020.App;
+using NRGScoutingApp2020.Data;
 
 namespace NRGScoutingApp2020.Pages.MatchEventSubpage
 {
@@ -34,6 +35,10 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
             {
                 Button btn = new Button
                 {
+                    BackgroundColor = Color.Gold,
+                    TextColor = Color.White,
+                    BorderColor = Color.Orange,
+                    BorderWidth = 2,
                     Text = DataConstants.canSelect,
                     StyleId = i + ""
                 };
@@ -161,7 +166,9 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
                 isOpening = true;
                 lastSelect = selectID;
                 lastMatch = matchNumber + 1;
-                Navigation.PushAsync(new scoutEvents(comp.matchesList[matchNumber - 1], selectID));
+                scoutEvents pg = new scoutEvents(comp.matchesList[matchNumber - 1], selectID);
+                pg.Title = DataConstants.alliancePosition[selectID];
+                Navigation.PushAsync(pg);
                 Navigation.RemovePage(this);
             }
         }

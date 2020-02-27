@@ -14,12 +14,21 @@
         <!-- Place new controls here -->
         <ListView
             x:Name="matchEvents"
-            ItemTapped="matchEvents_ItemTapped">
+            ItemTapped="matchEvents_ItemTapped"
+            HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell
                         Text="{Binding Path=name}"
-                        Detail="{Binding Path=date}"/>
+                        TextColor="Black"
+                        Height="64">
+                        <TextCell.ContextActions>
+                            <MenuItem Text="Delete"
+                                       IsDestructive="True"
+                                       CommandParameter="{Binding .}"
+                                        Clicked="DeleteCompetition"/> 
+                        </TextCell.ContextActions>
+                    </TextCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

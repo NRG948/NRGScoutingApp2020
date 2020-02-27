@@ -29,6 +29,10 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
             {
                 Button btn = new Button
                 {
+                    BackgroundColor = Color.Gold,
+                    TextColor = Color.White,
+                    BorderColor = Color.Orange,
+                    BorderWidth = 2,
                     Text = thisMatch.TeamsScouted[i] == null ? DataConstants.canCreate : DataConstants.canEdit,
                     StyleId = i + ""
                 };
@@ -87,14 +91,17 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
             if (!isOpening)
             {
                 isOpening = true;
+                scoutEvents pg;
                 if (thisMatch.TeamsScouted[selectID] == null)
                 {
-                    Navigation.PushAsync(new scoutEvents(thisMatch, selectID));
+                    pg = new scoutEvents(thisMatch, selectID);
                 }
                 else
                 {
-                    Navigation.PushAsync(new scoutEvents(thisMatch.TeamsScouted[selectID]));
+                    pg = new scoutEvents(thisMatch.TeamsScouted[selectID]);
                 }
+                pg.Title = DataConstants.alliancePosition[selectID];
+                Navigation.PushAsync(pg);
             }
         }
     }

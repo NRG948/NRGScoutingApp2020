@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace NRGScoutingApp2020
 {
     /// <summary>
@@ -32,5 +34,7 @@ namespace NRGScoutingApp2020
          * 3: inner
          * 4: miss
          */
+
+        public static readonly string[] alliancePosition = { "Blue 1", "Blue 2", "Blue 3", "Red 1", "Red 2", "Red 3" };
     }
 }

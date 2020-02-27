@@ -66,7 +66,7 @@
                             Grid.Row="5"
                             Grid.Column="0"
                             HorizontalOptions="End"/>
-                        <Label Text="Rotational"
+                        <Label Text="Rotation"
                                HorizontalOptions="Start"
                                VerticalOptions="Center"
                                FontSize="Subtitle"
@@ -78,7 +78,7 @@
                             Grid.Row="6"
                             Grid.Column="0"
                             HorizontalOptions="End"/>
-                        <Label Text="Positional"
+                        <Label Text="Position"
                                HorizontalOptions="Start"
                                VerticalOptions="Center"
                                FontSize="Subtitle"

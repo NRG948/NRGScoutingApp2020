@@ -57,26 +57,22 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
             if (!isOpening)
             {
                 isOpening = true;
-                await Navigation.PushAsync(new AddNewMatch(Competition)).ConfigureAwait(false);
+                AddNewMatch pg = new AddNewMatch(Competition);
+                pg.Title = "New Match";
+                await Navigation.PushAsync(pg).ConfigureAwait(false);
             }
         }
 
-        private void Matches_ItemTapped(object sender, ItemTappedEventArgs e)
+        async private void Matches_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (!isOpening)
             {
                 isOpening = true;
                 Match m = e.Item as Match;
-
-                openMatch(m);
+                OpenMatch pg = new OpenMatch(m);
+                pg.Title = m.matchNum;
+                await Navigation.PushAsync(pg).ConfigureAwait(false);
             }
-        }
-        private void openMatch(Match m)
-        {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await Navigation.PushAsync(new OpenMatch(m)).ConfigureAwait(false);
-            });
         }
         protected override void OnAppearing()
         {

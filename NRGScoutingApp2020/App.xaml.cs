@@ -20,7 +20,13 @@ namespace NRGScoutingApp2020
         {
             InitializeComponent();
             DownloadData.startUp();
-            MainPage = new NavigationPage(new MainPage());
+            MainPage mp = new MainPage();
+            MainPage = new NavigationPage(mp)
+            {
+                BarBackgroundColor = Color.IndianRed,
+                BarTextColor = Color.White,
+            }; ;
+            
         }
 
         protected override void OnStart()
