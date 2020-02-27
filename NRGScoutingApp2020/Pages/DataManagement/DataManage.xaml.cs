@@ -154,13 +154,13 @@ namespace NRGScoutingApp2020.Pages.DataManagement
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        async private void exportAsShare(object sender, EventArgs e)
+        private void exportAsShare(object sender, EventArgs e)
         {
-            await Share.RequestAsync(new ShareTextRequest
-            {
-                Text = shareText,
-                Title = "Share Competition Data"
-            });
+            //await Share.RequestAsync(new ShareTextRequest
+            //{
+            //    Text = shareText,
+            //    Title = "Share Competition Data"
+            //});
         }
         /// <summary>
         /// Copy competition json to clipboard
