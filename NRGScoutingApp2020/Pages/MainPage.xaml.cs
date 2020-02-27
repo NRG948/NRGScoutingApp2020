@@ -81,6 +81,7 @@ namespace NRGScoutingApp2020
             CompetitionClass comp = delete.CommandParameter as CompetitionClass;
             eventsListObj.Remove(comp);
             CacheData.DeleteOneEvent(comp);
+            eventsNotLocal.Add(comp.eventKey);
         }
     }
 }

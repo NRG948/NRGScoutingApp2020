@@ -12,6 +12,7 @@ namespace NRGScoutingApp2020
         public static ObservableCollection<CompetitionClass> eventsListObj { get ; set ; } = new ObservableCollection<CompetitionClass> ();
 
         public static Dictionary<string, string> eventsKeyName { get; set; } = new Dictionary<string, string>();
+        public static List<string> eventsNotLocal = new List<string>();
         // public static Dictionary<string, int> teamsNameNum = new Dictionary<string, int>();
         public static int lastMatch;
         public static int lastSelect;
@@ -35,13 +36,14 @@ namespace NRGScoutingApp2020
             teamsList = LoadData.LoadTeamsList();
             eventsKeyName = LoadData.LoadEventsList();
             eventsListObj = LoadData.LoadEvents();
+            eventsNotLocal = new List<string>(eventsKeyName.Keys);
 
 
             foreach (CompetitionClass comp in eventsListObj)
             {
-                if (eventsKeyName.ContainsKey(comp.eventKey))
+                if (eventsNotLocal.Contains(comp.eventKey))
                 {
-                    eventsKeyName.Remove(comp.eventKey);
+                    eventsNotLocal.Remove(comp.eventKey);
                 }
             }
         }

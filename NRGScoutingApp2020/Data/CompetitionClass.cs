@@ -13,13 +13,11 @@ namespace NRGScoutingApp2020
     public class CompetitionClass
     {
         public string name { get; set; }
-        public DateTime date { get; set; }
         public string eventKey { get; set; }
         public List<Match> matchesList = new List<Match>();
 
         public CompetitionClass()
         {
-            date = DateTime.UtcNow;
         }
         public override string ToString()
         {

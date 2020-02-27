@@ -2,8 +2,6 @@
 using Newtonsoft.Json.Linq;
 using NRGScoutingApp2020.Algorithms;
 using NRGScoutingApp2020.Data;
-using Plugin.Share;
-using Plugin.Share.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,6 +12,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static NRGScoutingApp2020.App;
+using Xamarin.Essentials;
 
 namespace NRGScoutingApp2020.Pages.DataManagement
 {
@@ -148,37 +147,22 @@ namespace NRGScoutingApp2020.Pages.DataManagement
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void exportAsShare(object sender, EventArgs e)
+        async private void exportAsShare(object sender, EventArgs e)
         {
-            if (!CrossShare.IsSupported)
+            await Share.RequestAsync(new ShareTextRequest
             {
-                DisplayAlert("Sorry", "This device does not support the share option", "sksksk");
-            } 
-            else
-            {
-                CrossShare.Current.Share(new ShareMessage {
-                    Text = shareText,
-                    Title = "Competition Data"
-                });
-
-            }
+                Text = shareText,
+                Title = "Share Competition Data"
+            }).ConfigureAwait(false);
         }
         /// <summary>
         /// Copy competition json to clipboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void exportAsCopy(object sender, EventArgs e)
+        async private void exportAsCopy(object sender, EventArgs e)
         {
-            
-            if (!CrossShare.Current.SupportsClipboard)
-            {
-                DisplayAlert("Sorry", "This device does not support the copy option", "sksksk");
-            } 
-            else
-            {
-                CrossShare.Current.SetClipboardText(shareText, "CompetitionData");
-            }
+            await Clipboard.SetTextAsync(shareText).ConfigureAwait(false);
         }
         
     }

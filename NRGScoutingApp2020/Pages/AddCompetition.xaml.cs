@@ -45,7 +45,7 @@ namespace NRGScoutingApp2020.Pages
                     }
                     competitions.IsRefreshing = false;
                     competitions.ItemsSource = null;
-                    competitions.ItemsSource = eventsKeyName;
+                    competitions.ItemsSource = eventsKeyName.Where(pair => eventsNotLocal.Contains(pair.Key));
 
                 });
             }
@@ -55,7 +55,7 @@ namespace NRGScoutingApp2020.Pages
         public AddCompetition()
         {
             InitializeComponent();
-            competitions.ItemsSource = eventsKeyName;
+            competitions.ItemsSource = eventsKeyName.Where(pair => eventsNotLocal.Contains(pair.Key));
             competitions.RefreshCommand = getList;
         }
 
@@ -66,9 +66,9 @@ namespace NRGScoutingApp2020.Pages
                 if (!isOpening)
                 {
                     isOpening = true;
-                    KeyValuePair<string, string> pair = (KeyValuePair<string, string>)e.Item;
-                    eventsKeyName.Remove(pair.Key);
+                    KeyValuePair<string, string> pair = (KeyValuePair<string, string>) e.Item;
                     CompetitionClass competition = DownloadData.getEventSpecific(pair.Key);
+                    eventsNotLocal.Remove(pair.Key);
                     if (competition.matchesList.Count != 0)
                     {
                         competition.name = pair.Value;
