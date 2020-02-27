@@ -50,8 +50,6 @@ namespace NRGScoutingApp2020
         {
             // Cache all data
             CacheData.CacheEvents(eventsListObj);
-            CacheData.CacheEventsList(eventsKeyName);
-            CacheData.CacheTeamsList(teamsList);
         }
 
         protected override void OnResume()
