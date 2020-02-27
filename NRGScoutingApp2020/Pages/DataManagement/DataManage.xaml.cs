@@ -160,7 +160,7 @@ namespace NRGScoutingApp2020.Pages.DataManagement
             {
                 Text = shareText,
                 Title = "Share Competition Data"
-            }).ConfigureAwait(false);
+            }).ConfigureAwait(true);
         }
         /// <summary>
         /// Copy competition json to clipboard
