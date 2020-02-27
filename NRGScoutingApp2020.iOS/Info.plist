@@ -25,7 +25,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>NRGScoutingApp2020</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.NRG.Scouting.2020</string>
+	<string>com.NRG.ScoutingApp.2020</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
