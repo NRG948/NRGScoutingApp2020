@@ -6,6 +6,6 @@ namespace NRGScoutingApp2020.Data
 {
     public static class HideAPIKey
     {
-        public static string APIKey = "";
+        public static string APIKey = Environment.GetEnvironmentVariable("SERVER_API_KEY");
     }
 }
