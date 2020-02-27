@@ -36,5 +36,7 @@ namespace NRGScoutingApp2020
          */
 
         public static readonly string[] alliancePosition = { "Blue 1", "Blue 2", "Blue 3", "Red 1", "Red 2", "Red 3" };
+
+        public static readonly string[] rankPickerText = { "accuracy" , "lower", "outer", "inner", "climb" };
     }
 }

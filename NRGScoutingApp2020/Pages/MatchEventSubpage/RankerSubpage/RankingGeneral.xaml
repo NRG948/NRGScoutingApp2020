@@ -6,9 +6,20 @@
              mc:Ignorable="d"
              x:Class="NRGScoutingApp2020.Pages.MatchEventSubpage.RankerSubpage.RankingGeneral">
     <ContentPage.Content>
-        <StackLayout>
-            <ListView>
-                
+        <StackLayout Padding="10">
+            <Picker x:Name="rankPicker"
+                    SelectedIndexChanged="rankPicker_SelectedIndexChanged"
+                Title="Select a rank"/>
+            <ListView
+                x:Name="rankList">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell
+                            Text="{Binding Path=Key}"
+                            Detail="{Binding Path=Value}"
+                            TextColor="Black"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
     </ContentPage.Content>

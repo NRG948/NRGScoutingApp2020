@@ -102,6 +102,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
                 }
                 pg.Title = DataConstants.alliancePosition[selectID];
                 Navigation.PushAsync(pg);
+                Navigation.RemovePage(this);
             }
         }
     }

@@ -68,7 +68,7 @@ namespace NRGScoutingApp2020.Algorithms.RankingsAlgorithms
             switch (t)
             {
                 case 0:
-                    break;
+                    return accuracyRank(infos);
                 case 1:
                 case 2:
                 case 3:
@@ -78,7 +78,6 @@ namespace NRGScoutingApp2020.Algorithms.RankingsAlgorithms
                 default:
                     return new List<KeyValuePair<int, double>>();
             }
-            return null;
         }
 
         public static List<KeyValuePair<int, double>> shootNumberRank(Dictionary<ScoutedInfo, int> infos, int t)
@@ -87,6 +86,7 @@ namespace NRGScoutingApp2020.Algorithms.RankingsAlgorithms
             List<int> teams;
             Dictionary<int, double> teamValueTotal = new Dictionary<int, double>();
             Dictionary<int, int> teamCount = new Dictionary<int, int>();
+            Dictionary<int, double> teamValueAvg = new Dictionary<int, double>();
 
             foreach (ScoutedInfo inf in infos.Keys)
             {
@@ -112,12 +112,12 @@ namespace NRGScoutingApp2020.Algorithms.RankingsAlgorithms
 
             foreach (int k in teamValueTotal.Keys)
             {
-                teamValueTotal[k] /= teamCount[k];
+                teamValueAvg.Add(k, teamValueTotal[k] / teamCount[k]);
             }
 
-            List<KeyValuePair<int, double>> teamValTolList = teamValueTotal.ToList();
+            List<KeyValuePair<int, double>> teamValTolList = teamValueAvg.ToList();
 
-            teamValTolList.Sort((tma, tmb) => tma.Value.CompareTo(tmb.Value));
+            teamValTolList.Sort((tma, tmb) => tmb.Value.CompareTo(tma.Value));
 
             return teamValTolList;
         }
@@ -128,6 +128,7 @@ namespace NRGScoutingApp2020.Algorithms.RankingsAlgorithms
             List<int> teams;
             Dictionary<int, double> teamValueTotal = new Dictionary<int, double>();
             Dictionary<int, int> teamCount = new Dictionary<int, int>();
+            Dictionary<int, double> teamValueAvg = new Dictionary<int, double>();
 
             foreach (ScoutedInfo inf in infos.Keys)
             {
@@ -146,12 +147,12 @@ namespace NRGScoutingApp2020.Algorithms.RankingsAlgorithms
 
             foreach (int k in teamValueTotal.Keys)
             {
-                teamValueTotal[k] /= teamCount[k];
+                teamValueAvg.Add(k, teamValueTotal[k] / teamCount[k]);
             }
 
-            List<KeyValuePair<int, double>> teamValTolList = teamValueTotal.ToList();
+            List<KeyValuePair<int, double>> teamValTolList = teamValueAvg.ToList();
 
-            teamValTolList.Sort((tma, tmb) => tma.Value.CompareTo(tmb.Value));
+            teamValTolList.Sort((tma, tmb) => tmb.Value.CompareTo(tma.Value));
 
             return teamValTolList;
         }
@@ -161,6 +162,7 @@ namespace NRGScoutingApp2020.Algorithms.RankingsAlgorithms
             List<int> teams;
             Dictionary<int, double> madeIn = new Dictionary<int, double>();
             Dictionary<int, int> madeTotal = new Dictionary<int, int>();
+            Dictionary<int, double> accuracy = new Dictionary<int, double>();
 
             foreach (ScoutedInfo inf in infos.Keys)
             {
@@ -189,12 +191,15 @@ namespace NRGScoutingApp2020.Algorithms.RankingsAlgorithms
 
             foreach (int k in madeIn.Keys)
             {
-                madeIn[k] /= madeTotal[k];
+                if (madeTotal[k] > 0)
+                {
+                    accuracy.Add(k, madeIn[k] / madeTotal[k]);
+                }
             }
 
-            List<KeyValuePair<int, double>> teamValTolList = madeIn.ToList();
+            List<KeyValuePair<int, double>> teamValTolList = accuracy.ToList();
 
-            teamValTolList.Sort((tma, tmb) => tma.Value.CompareTo(tmb.Value));
+            teamValTolList.Sort((tma, tmb) => tmb.Value.CompareTo(tma.Value));
 
             return teamValTolList;
         }

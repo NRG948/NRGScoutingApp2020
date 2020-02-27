@@ -1,5 +1,6 @@
 ﻿using NRGScoutingApp2020.Algorithms;
 using NRGScoutingApp2020.Data;
+using NRGScoutingApp2020.Pages.MatchEventSubpage.RankerSubpage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -85,6 +86,17 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
         {
             cacheCompetition();
             base.OnDisappearing();
+        }
+
+        async private void generateRankings(object sender, EventArgs e)
+        {
+            if (!isOpening)
+            {
+                isOpening = true;
+                RankingGeneral pg = new RankingGeneral(Competition);
+                pg.Title = "Rankings";
+                await Navigation.PushAsync(pg).ConfigureAwait(false);
+            }
         }
     }
 }

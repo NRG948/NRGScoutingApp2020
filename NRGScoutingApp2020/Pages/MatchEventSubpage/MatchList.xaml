@@ -10,6 +10,10 @@
         <ToolbarItem 
             Text="New Match"
             Clicked="NewMatch"/>
+        <ToolbarItem 
+            Text="Generate Rankings"
+            Order="Secondary"
+            Clicked="generateRankings"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>

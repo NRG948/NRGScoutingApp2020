@@ -26,9 +26,10 @@ namespace NRGScoutingApp2020.Pages.DataManagement
             InitializeComponent();
         }
 
-        protected void OnDisappearing()
+        protected override void OnDisappearing()
         {
-
+            CacheData.CacheEvents(eventsListObj);
+            base.OnDisappearing();
         }
 
         private void ChangeImportExport(object sender, EventArgs e)
