@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:matchsubpage="clr-namespace:NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage"
+             mc:Ignorable="d"
+             x:Class="NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage.scoutEvents">
+    <ContentPage.Content>
+        <StackLayout
+            Padding="10">
+            <Grid HeightRequest="50">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Button x:Name="watchClicker"
+                    BackgroundColor="Gold"
+                    TextColor="White"
+                    BorderColor="Orange"
+                    BorderWidth="2"
+                    CornerRadius="10"
+                    Text="Start"
+                    Grid.Column="0"
+                    Grid.Row="0" 
+                    Clicked="watchClicker_Clicked"/>
+                <Button x:Name="Resetter"
+                    BackgroundColor="Gold"
+                    TextColor="White"
+                    BorderColor="Orange"
+                    BorderWidth="2"
+                    CornerRadius="10"
+                    Text="Reset" 
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Clicked="Resetter_Clicked"/>
+                <Label x:Name="watchStop"
+                    Text="0:00:000"
+                    FontSize="Title"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" 
+                    Grid.Column="2"
+                    Grid.Row="0"/>
+            </Grid>
+            <ProgressBar x:Name="matchProgress"
+                         ProgressColor="Green"
+                         Margin="20"
+                         HeightRequest="5"/>
+            <matchsubpage:scoutMain x:Name="eventMain"
+                                    HeightRequest="450"/>
+            <matchsubpage:scoutParameters x:Name="eventParameters"
+                                          HeightRequest="450"
+                                          IsVisible="False"/>
+            <Button x:Name="switchView"
+                    BackgroundColor="Gold"
+                    TextColor="White"
+                    BorderColor="Orange"
+                    BorderWidth="2"
+                    CornerRadius="10"
+                Text="Parameters"
+                    Clicked="switchView_Clicked"
+                    HeightRequest="60"/>
+
+            <Button x:Name="finishBtn"
+                    BackgroundColor="IndianRed"
+                    TextColor="White"
+                    BorderColor="PaleVioletRed"
+                    BorderWidth="2"
+                    CornerRadius="10"
+                Text="Done"
+                    Clicked="finishBtn_Clicked"
+                    HorizontalOptions="Center"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

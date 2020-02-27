@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage.scoutMain">
+  <ContentView.Content>
+      <StackLayout>
+            <Frame>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Button x:Name="Undoer"
+                            Text="Undo" 
+                            BackgroundColor="IndianRed"
+                            TextColor="White"
+                            Clicked="Undo_Clicked"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            IsEnabled="False"/>
+                    <Label x:Name="CurrentBall"
+                           Text="0" 
+                           FontSize="40"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            VerticalOptions="CenterAndExpand" 
+                            HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="Balls" 
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            VerticalOptions="CenterAndExpand" 
+                            HorizontalOptions="CenterAndExpand"/>
+                    <Button Text="Pick" 
+                            BackgroundColor="Gold"
+                            TextColor="White"
+                            Clicked="Pick_Clicked"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"/>
+                    <Button Text="Inner" 
+                            BackgroundColor="Gold"
+                            TextColor="White"
+                            Clicked="Inner_Clicked"
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            HorizontalOptions="Center"/>
+                    <Button Text="Outer" 
+                            BackgroundColor="Gold"
+                            TextColor="White"
+                            Clicked="Outer_Clicked"
+                            Grid.Row="4"
+                            Grid.Column="2"
+                            Grid.ColumnSpan="2"
+                            HorizontalOptions="Center"/>
+                    <Button Text="Lower" 
+                            BackgroundColor="Gold"
+                            TextColor="White"
+                            Clicked="Lower_Clicked"
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            HorizontalOptions="Center"/>
+                    <Button Text="Miss" 
+                            BackgroundColor="Gold"
+                            TextColor="White"
+                            Clicked="Miss_Clicked"
+                            Grid.Row="6"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"/>
+                </Grid>
+            </Frame>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

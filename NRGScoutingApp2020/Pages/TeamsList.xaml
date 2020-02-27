@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NRGScoutingApp2020.Pages.TeamsList"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             Title="Pick Team"
+             ios:Page.UseSafeArea="true"
+             ios:NavigationPage.PrefersLargeTitles="true">
+    <ContentPage.Content>
+         <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+            <SearchBar Placeholder="Team Name/Number" />
+            <ListView IsPullToRefreshEnabled="true"
+                x:Name="TeamList"
+                CachingStrategy="RecycleElementAndDataTemplate">
+                <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ContentView Margin="0" Padding="0">
+                                        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                            <Label Text="{Binding Path=Key}" TextColor="Black" HorizontalTextAlignment="Start" />
+                                            <Label Text="{Binding Path=Value}" HorizontalTextAlignment="Start" />
+                                        </StackLayout>
+                                    </ContentView>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+
+<!--TextChanged="SearchBar_OnTextChanged"
+ItemTapped="Handle_ItemTapped"-->

@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using static NRGScoutingApp2020.Storages.MatchEventsConstants;
 
-namespace NRGScoutingApp2020.Pages.EventPages
+namespace NRGScoutingApp2020.Pages.MatchEventSubpage.RankerSubpage
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Matches : ContentPage
+    public partial class RankingGeneral : ContentPage
     {
-        public Matches()
+        CompetitionClass comp;
+        public RankingGeneral(CompetitionClass competition)
         {
             InitializeComponent();
-            matchView.ItemsSource = matchList;
+            comp = competition;
+            
         }
     }
 }

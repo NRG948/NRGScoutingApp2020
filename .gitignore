@@ -338,3 +338,24 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+NRGScoutingApp2020.Android/.DS_Store
+
+NRGScoutingApp2020/.DS_Store
+
+NRGScoutingApp2020.iOS/.DS_Store
+
+# Add on
+Makefile.in
+*.usertasks
+config.make
+config.status
+aclocal.m4
+install-sh
+autom4te.cache/
+*.tar.gz
+tarballs/
+test-results/
+Thumbs.db
+*.dmg
+*.app
+NRGScoutingApp2020/Data/HideAPIKey.cs

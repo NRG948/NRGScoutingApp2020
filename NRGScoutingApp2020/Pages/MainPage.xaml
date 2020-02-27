@@ -6,24 +6,35 @@
              mc:Ignorable="d"
              x:Class="NRGScoutingApp2020.MainPage"
              Title="2020">
-
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New Entry" Order="Secondary" Clicked="newMatch"/>
+        <ToolbarItem Text="Manage Data" Order="Secondary" Clicked="manageData"/>
+    </ContentPage.ToolbarItems>
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Below is a list" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
         <ListView
             x:Name="matchEvents"
-            ItemsSource="{Binding matchEventsList}"
-            ItemTapped="matchEvents_ItemTapped">
+            ItemTapped="matchEvents_ItemTapped"
+            HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell
-                        Text="{Binding name}"
-                        Detail="{Binding date}"/>
+                        Text="{Binding Path=name}"
+                        TextColor="Black"
+                        Height="64">
+                        <TextCell.ContextActions>
+                            <MenuItem Text="Delete"
+                                       IsDestructive="True"
+                                       CommandParameter="{Binding .}"
+                                        Clicked="DeleteCompetition"/> 
+                        </TextCell.ContextActions>
+                    </TextCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button
+            x:Name="Debuggerr"
+            Clicked="Debuggerr_Clicked"/>
     </StackLayout>
 
 </ContentPage>

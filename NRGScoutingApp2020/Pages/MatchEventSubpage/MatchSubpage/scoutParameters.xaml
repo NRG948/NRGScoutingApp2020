@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage.scoutParameters">
+  <ContentView.Content>
+      <StackLayout>
+            <Frame>
+                <ScrollView>
+
+                    <Grid x:Name="parameterGrid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+
+                        <Label Text="Auto"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="Title"
+                               Grid.Row="0"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="2"/>
+                        <CheckBox 
+                            x:Name="CheckAutoInitiation"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            HorizontalOptions="End"/>
+                        <Label Text="Cross Initiation Line"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               FontSize="Subtitle"
+                               Grid.Row="1"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="2"/>
+
+                        <Label Text="Climb"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="Title"
+                               Grid.Row="2"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="2"/>
+                        <Picker 
+                            x:Name="climbPicker"
+                                Title="Select Climb"
+                               Grid.Row="3"
+                               Grid.Column="1"
+                                Grid.ColumnSpan="2"/>
+
+                        <Label Text="Control Panel"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="Title"
+                               Grid.Row="4"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="2"/>
+
+                        <CheckBox 
+                            x:Name="CheckConRotational"
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            HorizontalOptions="End"/>
+                        <Label Text="Rotation"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               FontSize="Subtitle"
+                               Grid.Row="5"
+                               Grid.Column="1"/>
+
+                        <CheckBox x:Name="CheckConPositional"
+                                  
+                            Grid.Row="6"
+                            Grid.Column="0"
+                            HorizontalOptions="End"/>
+                        <Label Text="Position"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               FontSize="Subtitle"
+                               Grid.Row="6"
+                               Grid.Column="1"/>
+
+                        <Label Text="Defense"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="Title"
+                               Grid.Row="7"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="2"/>
+                        <Label Text="Defend Others"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="Subtitle"
+                               Grid.Row="8"
+                               Grid.Column="0"/>
+                        <Slider x:Name="magnitudeDefendSlider"
+                                ValueChanged="magnitudeDefendSlider_ValueChanged"
+                            Minimum="0" Maximum="5" 
+                               Grid.Row="8"
+                               Grid.Column="1"
+                                Grid.ColumnSpan="2"/>
+                        <Label x:Name="magnitudeDefendLabel"
+                            Text="0"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="Subtitle"
+                               Grid.Row="8"
+                               Grid.Column="3"/>
+                        <Label Text="Is Defended"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="Subtitle"
+                               Grid.Row="9"
+                               Grid.Column="0"/>
+                        <Slider x:Name="magnitudeDefendedSlider"
+                                ValueChanged="magnitudeDefendedSlider_ValueChanged"
+                            Minimum="0" Maximum="5" 
+                               Grid.Row="9"
+                               Grid.Column="1"
+                                Grid.ColumnSpan="2"/>
+                        <Label x:Name="magnitudeDefendedLabel"
+                            Text="0"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="Subtitle"
+                               Grid.Row="9"
+                               Grid.Column="3"/>
+
+                        <Label Text="Death"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="Title"
+                               Grid.Row="10"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="2"/>
+
+                        <Label Text="No Death"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="Subtitle"
+                               Grid.Row="11"
+                               Grid.Column="0"/>
+                        <Slider x:Name="SlideDeath"
+                                
+                            Minimum="0" Maximum="1" 
+                               Grid.Row="11"
+                               Grid.Column="1"
+                                Grid.ColumnSpan="2"/>
+                        <Label Text="Full Death"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="Subtitle"
+                               Grid.Row="11"
+                               Grid.Column="3"/>
+
+                        <Label Text="Penalty"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="Title"
+                               Grid.Row="12"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="2"/>
+                        <Picker x:Name="penaltyPicker"
+                                
+                                Title="Select Penalty"
+                               Grid.Row="13"
+                               Grid.Column="1"
+                                Grid.ColumnSpan="2"/>
+
+                        <Label Text="Additional Comments"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="Title"
+                               Grid.Row="14"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="4"/>
+                        <Editor x:Name="Commentt"
+                                
+                            Placeholder="Comments Here"
+                               FontSize="Small"
+                               Grid.Row="15"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="4"/>
+                    </Grid>
+                </ScrollView>
+            </Frame>
+      </StackLayout>
+  </ContentView.Content>
+</ContentView>

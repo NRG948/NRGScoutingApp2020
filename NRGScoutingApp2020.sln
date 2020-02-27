@@ -7,7 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRGScoutingApp2020.Android"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRGScoutingApp2020.iOS", "NRGScoutingApp2020.iOS\NRGScoutingApp2020.iOS.csproj", "{1531B3F4-9B18-45D0-8FB1-4F4E48822A7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRGScoutingApp2020", "NRGScoutingApp2020\NRGScoutingApp2020.csproj", "{FF24DC63-52B3-4404-87DC-07A213D90ABA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NRGScoutingApp2020", "NRGScoutingApp2020\NRGScoutingApp2020.csproj", "{FF24DC63-52B3-4404-87DC-07A213D90ABA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{42D8B900-B1CE-4F0D-A2D9-0EEAFB11AEE1}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

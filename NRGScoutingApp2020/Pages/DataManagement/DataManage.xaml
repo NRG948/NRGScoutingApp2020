@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="NRGScoutingApp2020.Pages.DataManagement.DataManage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Button x:Name="importBtn"
+                    Text="Import"
+                       VerticalOptions="Center"
+                        BackgroundColor="LightSkyBlue"
+                        Clicked="ChangeImportExport"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        IsEnabled="false"/>
+                <Button x:Name="exportBtn"
+                    Text="Export"
+                       VerticalOptions="Center"
+                        BackgroundColor="PaleVioletRed"
+                        Clicked="ChangeImportExport"
+                        Grid.Row="0"
+                        Grid.Column="1"/>
+            </Grid>
+            <Frame x:Name="importFrame"
+                   BackgroundColor="LightSkyBlue">
+                <StackLayout>
+                    <Label Text="Enter import text below"/>
+                    <Editor x:Name="importTextEditor"
+                            TextChanged="importTextEditor_TextChanged"/>
+                    <Label x:Name="importDetailLabel"/>
+                    <Button Text="confirm"
+                            BackgroundColor="LightGoldenrodYellow"
+                            Clicked="importConfirm"/>
+                </StackLayout>
+            </Frame>
+            <Frame x:Name="exportFrame"
+                   BackgroundColor="PaleVioletRed"
+                   IsVisible="False">
+                <StackLayout>
+                    <Label Text="Export by:"/>
+                    <Grid>
+                        <Button Text="Share"
+                            BackgroundColor="LightGoldenrodYellow"
+                            Clicked="exportAsShare"
+                                Grid.Row="0"
+                                Grid.Column="0"/>
+                        <Button Text="Copy"
+                            BackgroundColor="LightGoldenrodYellow"
+                            Clicked="exportAsCopy"
+                                Grid.Row="0"
+                                Grid.Column="1"/>
+                    </Grid>
+                    <Label x:Name="exportDetailLabel"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

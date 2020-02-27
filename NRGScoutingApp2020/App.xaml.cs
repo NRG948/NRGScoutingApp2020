@@ -1,31 +1,57 @@
-﻿using System;
+﻿using NRGScoutingApp2020.Algorithms;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace NRGScoutingApp2020
 {
     public partial class App : Application
     {
-        public string textbox = "";
-        public string text = "text";
+        public static Dictionary<int, String> teamsList { get; set; } = new Dictionary<int, String>();
+        public static ObservableCollection<CompetitionClass> eventsListObj { get ; set ; } = new ObservableCollection<CompetitionClass> ();
+
+        public static Dictionary<string, string> eventsKeyName { get; set; } = new Dictionary<string, string>();
+        public static List<string> eventsNotLocal = new List<string>();
+        // public static Dictionary<string, int> teamsNameNum = new Dictionary<string, int>();
+        public static int lastMatch;
+        public static int lastSelect;
+
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage(new MainPage());
+            DownloadData.startUp();
+            MainPage mp = new MainPage();
+            MainPage = new NavigationPage(mp)
+            {
+                BarBackgroundColor = Color.IndianRed,
+                BarTextColor = Color.White,
+            }; ;
+            
         }
 
         protected override void OnStart()
         {
-            if (Properties.ContainsKey(text))
+            // Load all data
+            teamsList = LoadData.LoadTeamsList();
+            eventsKeyName = LoadData.LoadEventsList();
+            eventsListObj = LoadData.LoadEvents();
+            eventsNotLocal = new List<string>(eventsKeyName.Keys);
+
+
+            foreach (CompetitionClass comp in eventsListObj)
             {
-                textbox = (string) Properties[text];
+                if (eventsNotLocal.Contains(comp.eventKey))
+                {
+                    eventsNotLocal.Remove(comp.eventKey);
+                }
             }
         }
 
         protected override void OnSleep()
         {
-            Properties[text] = textbox;
+            // Cache all data
+            CacheData.CacheEvents(eventsListObj);
         }
 
         protected override void OnResume()

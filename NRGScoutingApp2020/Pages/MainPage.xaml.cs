@@ -1,12 +1,16 @@
-﻿using NRGScoutingApp2020.Pages;
-using NRGScoutingApp2020.Storages;
+﻿using NRGScoutingApp2020.Algorithms;
+using NRGScoutingApp2020.Pages;
+using NRGScoutingApp2020.Pages.DataManagement;
+using NRGScoutingApp2020.Pages.MatchEventSubpage;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
+using static NRGScoutingApp2020.App;
 
 namespace NRGScoutingApp2020
 {
@@ -15,28 +19,69 @@ namespace NRGScoutingApp2020
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
-        public IList<MatchEventClass> matchEventsList { get; set; }
+        bool isOpening = false;
         public MainPage()
         {
             InitializeComponent();
 
-            matchEventsList = new List<MatchEventClass>();
-            matchEventsList.Add(new MatchEventClass
-            {
-                name = "GirlsGen",
-                date = "I forgot",
-                color = "NRG_Red"
-            });
-
-            BindingContext = this;
         }
 
-        async private void matchEvents_ItemTapped(object sender, ItemTappedEventArgs e)
+        protected override void OnAppearing()
         {
-            MatchEventClass matchEventItem = e.Item as MatchEventClass;
-            await Navigation.PushAsync(new MatchEvent { 
-                Title = matchEventItem.name
+            isOpening = false;
+            base.OnAppearing();
+
+            matchEvents.ItemsSource = eventsListObj;
+        }
+
+        private void matchEvents_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (!isOpening)
+            {
+                isOpening = true;
+                CompetitionClass matchEventItem = e.Item as CompetitionClass;
+                openMatch(matchEventItem);
+            }
+        }
+
+        private void openMatch(CompetitionClass competition)
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                // Code to run on the main threat
+                await Navigation.PushAsync(new MatchList(competition)).ConfigureAwait(false);
             });
+        }
+
+        async private void newMatch(object sender, System.EventArgs e)
+        {
+            matchEvents.ItemsSource = eventsListObj; 
+            await Navigation.PushAsync(new AddCompetition()).ConfigureAwait(false);
+        }
+
+        private void Debuggerr_Clicked(object sender, EventArgs e)
+        {
+            foreach (CompetitionClass comp in eventsListObj)
+            {
+                Console.WriteLine(comp.name);
+
+            }
+            Preferences.Clear();
+
+        }
+
+        async private void manageData(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new DataManage()).ConfigureAwait(false);
+        }
+
+        private void DeleteCompetition(object sender, EventArgs e)
+        {
+            MenuItem delete = sender as MenuItem;
+            CompetitionClass comp = delete.CommandParameter as CompetitionClass;
+            eventsListObj.Remove(comp);
+            CacheData.DeleteOneEvent(comp);
+            eventsNotLocal.Add(comp.eventKey);
         }
     }
 }
