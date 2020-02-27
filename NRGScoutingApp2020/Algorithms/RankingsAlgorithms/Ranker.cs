@@ -18,7 +18,11 @@ namespace NRGScoutingApp2020.Algorithms.RankingsAlgorithms
             infs = getInformations(competition);
         }
 
-
+        /// <summary>
+        /// Get all the information object in the competition
+        /// </summary>
+        /// <param name="comp"> the competition </param>
+        /// <returns> the list of ScoutedInfo objects paired with the team number </returns>
         public static Dictionary<ScoutedInfo, int> getInformations(CompetitionClass comp)
         {
             Dictionary<ScoutedInfo, int> infos = new Dictionary<ScoutedInfo, int>();
@@ -66,13 +70,11 @@ namespace NRGScoutingApp2020.Algorithms.RankingsAlgorithms
                 case 0:
                     break;
                 case 1:
-                    return shootNumberRank(infos, t);
                 case 2:
-                    return shootNumberRank(infos, t);
                 case 3:
                     return shootNumberRank(infos, t);
                 case 4:
-                    break;
+                    return climbRank(infos);
                 default:
                     return new List<KeyValuePair<int, double>>();
             }
@@ -90,29 +92,22 @@ namespace NRGScoutingApp2020.Algorithms.RankingsAlgorithms
             {
                 int teamNum = infos[inf];
 
+                if (!teamValueTotal.ContainsKey(teamNum))
+                {
+                    teamValueTotal[teamNum] = 0;
+                    teamCount[teamNum] = 0;
+                }
+
                 foreach (EventItem evt in inf.eventList)
                 {
                     if (evt.type == t)
                     {
-                        if (teamValueTotal.ContainsKey(teamNum))
-                        {
-                            teamValueTotal[teamNum] += 1;
-                        }
-                        else
-                        {
-                            teamValueTotal.Add(teamNum, 1);
-                        }
+                        teamValueTotal[teamNum] += 1;
                     }
 
                 }
-                if (teamCount.ContainsKey(teamNum))
-                {
-                    teamCount[teamNum] += 1;
-                }
-                else
-                {
-                    teamCount.Add(teamNum, 1);
-                }
+
+                teamCount[teamNum] += 1;
             }
 
             foreach (int k in teamValueTotal.Keys)
@@ -127,7 +122,7 @@ namespace NRGScoutingApp2020.Algorithms.RankingsAlgorithms
             return teamValTolList;
         }
 
-        public static List<KeyValuePair<int, double>> climbRank(Dictionary<ScoutedInfo, int> infos, int t)
+        public static List<KeyValuePair<int, double>> climbRank(Dictionary<ScoutedInfo, int> infos)
         {
 
             List<int> teams;
@@ -138,29 +133,15 @@ namespace NRGScoutingApp2020.Algorithms.RankingsAlgorithms
             {
                 int teamNum = infos[inf];
 
-                foreach (EventItem evt in inf.eventList)
+                if (!teamValueTotal.ContainsKey(teamNum))
                 {
-                    if (evt.type == t)
-                    {
-                        if (teamValueTotal.ContainsKey(teamNum))
-                        {
-                            teamValueTotal[teamNum] += 1;
-                        }
-                        else
-                        {
-                            teamValueTotal.Add(teamNum, 1);
-                        }
-                    }
+                    teamValueTotal[teamNum] = 0;
+                    teamCount[teamNum] = 0;
+                }
 
-                }
-                if (teamCount.ContainsKey(teamNum))
-                {
-                    teamCount[teamNum] += 1;
-                }
-                else
-                {
-                    teamCount.Add(teamNum, 1);
-                }
+                teamValueTotal[teamNum] += inf.climbPick;
+
+                teamCount[teamNum] += 1;
             }
 
             foreach (int k in teamValueTotal.Keys)
@@ -169,6 +150,49 @@ namespace NRGScoutingApp2020.Algorithms.RankingsAlgorithms
             }
 
             List<KeyValuePair<int, double>> teamValTolList = teamValueTotal.ToList();
+
+            teamValTolList.Sort((tma, tmb) => tma.Value.CompareTo(tmb.Value));
+
+            return teamValTolList;
+        }
+
+        public static List<KeyValuePair<int, double>> accuracyRank(Dictionary<ScoutedInfo, int> infos)
+        {
+            List<int> teams;
+            Dictionary<int, double> madeIn = new Dictionary<int, double>();
+            Dictionary<int, int> madeTotal = new Dictionary<int, int>();
+
+            foreach (ScoutedInfo inf in infos.Keys)
+            {
+                int teamNum = infos[inf];
+
+                if (!madeIn.ContainsKey(teamNum))
+                {
+                    madeIn[teamNum] = 0;
+                    madeTotal[teamNum] = 0;
+                }
+
+                foreach (EventItem evt in inf.eventList)
+                {
+                    if (evt.type > 0)
+                    {
+                        madeTotal[teamNum] += 1;
+                        if (evt.type <= 3)
+                        {
+                            madeIn[teamNum] += 1;
+                        }
+                    }
+
+                }
+
+            }
+
+            foreach (int k in madeIn.Keys)
+            {
+                madeIn[k] /= madeTotal[k];
+            }
+
+            List<KeyValuePair<int, double>> teamValTolList = madeIn.ToList();
 
             teamValTolList.Sort((tma, tmb) => tma.Value.CompareTo(tmb.Value));
 

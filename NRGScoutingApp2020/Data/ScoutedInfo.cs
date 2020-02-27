@@ -9,7 +9,14 @@ namespace NRGScoutingApp2020.Data
     /// </summary>
     public class ScoutedInfo
     {
+        /// <summary>
+        /// If the robot has cross the initiation line
+        /// </summary>
         public bool AutoInitiation { get; set; }
+
+        /// <summary>
+        /// The level of climb 
+        /// </summary>
         public int climbPick { get; set; }
         public bool controlRotational { get; set; }
         public bool controlPositional { get; set; }
