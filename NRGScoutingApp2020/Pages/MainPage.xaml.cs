@@ -59,16 +59,6 @@ namespace NRGScoutingApp2020
             await Navigation.PushAsync(new AddCompetition()).ConfigureAwait(false);
         }
 
-        private void Debuggerr_Clicked(object sender, EventArgs e)
-        {
-            foreach (CompetitionClass comp in eventsListObj)
-            {
-                Console.WriteLine(comp.name);
-
-            }
-            Preferences.Clear();
-
-        }
 
         async private void manageData(object sender, EventArgs e)
         {

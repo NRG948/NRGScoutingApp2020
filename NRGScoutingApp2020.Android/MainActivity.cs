@@ -6,6 +6,10 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+
 
 namespace NRGScoutingApp2020.Droid
 {
@@ -21,6 +25,10 @@ namespace NRGScoutingApp2020.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+            AppCenter.Start(System.Environment.GetEnvironmentVariable("APPCENTER_SECRET_KEY"), typeof(Analytics), typeof(Crashes));
+
+
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

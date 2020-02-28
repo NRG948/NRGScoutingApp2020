@@ -26,15 +26,12 @@
                             <MenuItem Text="Delete"
                                        IsDestructive="True"
                                        CommandParameter="{Binding .}"
-                                        Clicked="DeleteCompetition"/> 
+                                        Clicked="DeleteCompetition"/>
                         </TextCell.ContextActions>
                     </TextCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button
-            x:Name="Debuggerr"
-            Clicked="Debuggerr_Clicked"/>
     </StackLayout>
 
 </ContentPage>
