@@ -103,8 +103,6 @@ namespace NRGScoutingApp2020.Algorithms
                     }
 
                 } while (String.IsNullOrEmpty(response));
-
-                Console.WriteLine(HideAPIKey.getAPIKey());
                 
                 JArray a = JArray.Parse(response);
 
