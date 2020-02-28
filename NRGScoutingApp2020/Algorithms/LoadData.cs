@@ -20,13 +20,18 @@ namespace NRGScoutingApp2020.Algorithms
                 string[] keys = Preferences.Get("compKeys", "").Split(';');
 
                 ObservableCollection<CompetitionClass> competitions = new ObservableCollection<CompetitionClass>();
+                List<string> openedList = new List<string>();
 
                 foreach (string key in keys)
                 {
-                    CompetitionClass comp = LoadEvent(key);
-                    if (comp != null)
+                    if (!openedList.Contains(key))
                     {
-                        competitions.Add(comp);
+                        openedList.Add(key);
+                        CompetitionClass comp = LoadEvent(key);
+                        if (comp != null)
+                        {
+                            competitions.Add(comp);
+                        }
                     }
                 }
                 return competitions;
