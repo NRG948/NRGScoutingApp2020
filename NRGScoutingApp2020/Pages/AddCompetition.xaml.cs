@@ -30,6 +30,16 @@ namespace NRGScoutingApp2020.Pages
                     if (DownloadData.getEventsNames())
                     {
                         CacheData.CacheEventsList(eventsKeyName);
+
+                        eventsNotLocal = new List<string>(eventsKeyName.Keys);
+
+                        foreach (CompetitionClass comp in eventsListObj)
+                        {
+                            if (eventsNotLocal.Contains(comp.eventKey))
+                            {
+                                eventsNotLocal.Remove(comp.eventKey);
+                            }
+                        }
                     }
                     else
                     {
@@ -51,10 +61,22 @@ namespace NRGScoutingApp2020.Pages
             }
             
         }
+        
 
         public AddCompetition()
         {
             InitializeComponent();
+
+            eventsNotLocal = new List<string>(eventsKeyName.Keys);
+
+            foreach (CompetitionClass comp in eventsListObj)
+            {
+                if (eventsNotLocal.Contains(comp.eventKey))
+                {
+                    eventsNotLocal.Remove(comp.eventKey);
+                }
+            }
+
             competitions.ItemsSource = eventsKeyName.Where(pair => eventsNotLocal.Contains(pair.Key));
             competitions.RefreshCommand = getList;
         }
@@ -79,7 +101,7 @@ namespace NRGScoutingApp2020.Pages
                     }
                     else
                     {
-                        await DisplayAlert("Error", DataConstants.EmptyCompetition, "Sksksk").ConfigureAwait(false);
+                        await DisplayAlert("Error", DataConstants.EmptyCompetition, "Sksksk").ConfigureAwait(true);
                         isOpening = false;
                     }
                 }

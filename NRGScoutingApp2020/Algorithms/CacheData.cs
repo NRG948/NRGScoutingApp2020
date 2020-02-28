@@ -80,8 +80,6 @@ namespace NRGScoutingApp2020.Algorithms
             {
                 int compKeyInd = keys.IndexOf(comp.eventKey);
                 string newKeys = keys.Substring(0, compKeyInd) + keys.Substring(compKeyInd + comp.eventKey.Length + 1);
-                Console.WriteLine(keys);
-                Console.WriteLine(newKeys);
                 Preferences.Set("compKeys", newKeys);
                 Preferences.Remove(comp.eventKey);
             }

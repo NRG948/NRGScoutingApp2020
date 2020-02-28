@@ -109,8 +109,6 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
             {
                 Undoer.IsEnabled = false;
             }
-
-            Console.WriteLine(eventList.Count);
         }
 
         public void setEventList(ScoutedInfo scouted)

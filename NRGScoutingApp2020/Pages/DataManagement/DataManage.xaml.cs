@@ -20,7 +20,7 @@ namespace NRGScoutingApp2020.Pages.DataManagement
     public partial class DataManage : ContentPage
     {
         private bool isImport = true;
-        private string shareText;
+        private string shareText = "";
         public DataManage()
         {
             InitializeComponent();
@@ -159,9 +159,8 @@ namespace NRGScoutingApp2020.Pages.DataManagement
         {
             await Share.RequestAsync(new ShareTextRequest
             {
-                Text = shareText,
-                Title = "Share Competition Data"
-            }).ConfigureAwait(false);
+                Text = shareText
+            });
         }
         /// <summary>
         /// Copy competition json to clipboard
