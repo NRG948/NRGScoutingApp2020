@@ -18,7 +18,7 @@ namespace NRGScoutingApp2020.Algorithms
         /// </summary>
         public static void startUp()
         {
-            client.AddDefaultHeader("API-Key", HideAPIKey.APIKey);
+            client.AddDefaultHeader("API-Key", HideAPIKey.getAPIKey());
             client.AddDefaultHeader("Content-Type", "application/json");
         }
 
@@ -104,6 +104,7 @@ namespace NRGScoutingApp2020.Algorithms
 
                 } while (String.IsNullOrEmpty(response));
 
+                Console.WriteLine(HideAPIKey.getAPIKey());
                 
                 JArray a = JArray.Parse(response);
 
