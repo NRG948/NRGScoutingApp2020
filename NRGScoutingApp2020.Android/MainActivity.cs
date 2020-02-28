@@ -26,7 +26,7 @@ namespace NRGScoutingApp2020.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
-            AppCenter.Start("75997a82-8114-42e1-9a9a-0bdb4cc210b6", typeof(Analytics), typeof(Crashes));
+            AppCenter.Start(System.Environment.GetEnvironmentVariable("APPCENTER_SECRET_KEY"), typeof(Analytics), typeof(Crashes));
 
 
             LoadApplication(new App());
