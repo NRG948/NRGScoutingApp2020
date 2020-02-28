@@ -61,10 +61,22 @@ namespace NRGScoutingApp2020.Pages
             }
             
         }
+        
 
         public AddCompetition()
         {
             InitializeComponent();
+
+            eventsNotLocal = new List<string>(eventsKeyName.Keys);
+
+            foreach (CompetitionClass comp in eventsListObj)
+            {
+                if (eventsNotLocal.Contains(comp.eventKey))
+                {
+                    eventsNotLocal.Remove(comp.eventKey);
+                }
+            }
+
             competitions.ItemsSource = eventsKeyName.Where(pair => eventsNotLocal.Contains(pair.Key));
             competitions.RefreshCommand = getList;
         }

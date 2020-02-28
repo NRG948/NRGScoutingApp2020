@@ -36,16 +36,6 @@ namespace NRGScoutingApp2020
             teamsList = LoadData.LoadTeamsList();
             eventsKeyName = LoadData.LoadEventsList();
             eventsListObj = LoadData.LoadEvents();
-            eventsNotLocal = new List<string>(eventsKeyName.Keys);
-
-
-            foreach (CompetitionClass comp in eventsListObj)
-            {
-                if (eventsNotLocal.Contains(comp.eventKey))
-                {
-                    eventsNotLocal.Remove(comp.eventKey);
-                }
-            }
         }
 
         protected override void OnSleep()
