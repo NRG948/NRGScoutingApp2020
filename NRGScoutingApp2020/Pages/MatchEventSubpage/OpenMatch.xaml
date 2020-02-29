@@ -6,8 +6,8 @@
              mc:Ignorable="d"
              x:Class="NRGScoutingApp2020.Pages.MatchEventSubpage.OpenMatch">
     <ContentPage.Content>
-        <StackLayout>
-            <Grid x:Name="PrematchGrid">
+        <StackLayout Padding="20">
+            <Grid x:Name="PrematchGrid" Padding="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="80"/>

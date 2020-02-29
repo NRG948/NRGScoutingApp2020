@@ -19,8 +19,6 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.RankerSubpage
         public TeamDetail(CompetitionClass competition, Dictionary<ScoutedInfo, int> infos, int num)
         {
             InitializeComponent();
-            comp = competition;
-            TeamNum = num;
 
             performance = new TeamPerformance(competition, infos, num);
 
@@ -31,9 +29,10 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.RankerSubpage
                     Text = performance.getValue(i) + "",
                     FontSize = 25,
                     TextColor = Color.IndianRed,
-                    HorizontalOptions = LayoutOptions.StartAndExpand
+                    HorizontalOptions = LayoutOptions.StartAndExpand,
+                    VerticalOptions = LayoutOptions.Center
                 };
-                dataGrid.Children.Add(datalbl, i, 1);
+                dataGrid.Children.Add(datalbl, 1, i);
             }
 
             attendedList.ItemsSource = performance.GetMatches();

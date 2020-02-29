@@ -14,40 +14,46 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Label Text="Accuracy"
-                       FontSize="25"
+                       FontSize="Title"
                        Grid.Column="0"
                        Grid.Row="0"
                        HorizontalOptions="End"
+                       VerticalOptions="Center"
                        TextColor="IndianRed"/>
                 <Label Text="Lower"
-                       FontSize="25"
+                       FontSize="Title"
                        Grid.Column="0"
                        Grid.Row="1"
                        HorizontalOptions="End"
+                       VerticalOptions="Center"
                        TextColor="IndianRed"/>
                 <Label Text="Outer"
-                       FontSize="25"
+                       FontSize="Title"
                        Grid.Column="0"
                        Grid.Row="2"
                        HorizontalOptions="End"
+                       VerticalOptions="Center"
                        TextColor="IndianRed"/>
                 <Label Text="Inner"
-                       FontSize="25"
+                       FontSize="Title"
                        Grid.Column="0"
                        Grid.Row="3"
                        HorizontalOptions="End"
+                       VerticalOptions="Center"
                        TextColor="IndianRed"/>
                 <Label Text="Climb"
-                       FontSize="25"
+                       FontSize="Title"
                        Grid.Column="0"
                        Grid.Row="4"
                        HorizontalOptions="End"
+                       VerticalOptions="Center"
                        TextColor="IndianRed"/>
             </Grid>
             <ListView x:Name="attendedList">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell
+                            TextColor="DarkBlue"
                         Text="{Binding matchNum}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>

@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="NRGScoutingApp2020.Pages.MatchEventSubpage.AddNewMatch">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="20">
             <Button x:Name="continue"
                     Text="Countinue?"
                     Clicked="continue_Clicked"
