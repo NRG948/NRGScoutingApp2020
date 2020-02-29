@@ -63,6 +63,9 @@
     <EmbeddedResource Update="Pages\MatchEventSubpage\RankerSubpage\RankingGeneral.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Pages\MatchEventSubpage\RankerSubpage\TeamDetail.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Mono.Android">

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="NRGScoutingApp2020.Pages.MatchEventSubpage.RankerSubpage.TeamDetail">
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Grid x:Name="dataGrid"
+                WidthRequest="200">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Accuracy"
+                       FontSize="25"
+                       Grid.Column="0"
+                       Grid.Row="0"
+                       HorizontalOptions="End"
+                       TextColor="IndianRed"/>
+                <Label Text="Lower"
+                       FontSize="25"
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       HorizontalOptions="End"
+                       TextColor="IndianRed"/>
+                <Label Text="Outer"
+                       FontSize="25"
+                       Grid.Column="0"
+                       Grid.Row="2"
+                       HorizontalOptions="End"
+                       TextColor="IndianRed"/>
+                <Label Text="Inner"
+                       FontSize="25"
+                       Grid.Column="0"
+                       Grid.Row="3"
+                       HorizontalOptions="End"
+                       TextColor="IndianRed"/>
+                <Label Text="Climb"
+                       FontSize="25"
+                       Grid.Column="0"
+                       Grid.Row="4"
+                       HorizontalOptions="End"
+                       TextColor="IndianRed"/>
+            </Grid>
+            <ListView x:Name="attendedList">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell
+                        Text="{Binding matchNum}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

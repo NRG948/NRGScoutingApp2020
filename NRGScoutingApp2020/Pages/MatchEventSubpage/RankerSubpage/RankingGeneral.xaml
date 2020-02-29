@@ -11,7 +11,8 @@
                     SelectedIndexChanged="rankPicker_SelectedIndexChanged"
                 Title="Select a rank"/>
             <ListView
-                x:Name="rankList">
+                x:Name="rankList"
+                ItemTapped="rankList_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell

@@ -43,6 +43,11 @@ namespace NRGScoutingApp2020.Algorithms.RankingsAlgorithms
             return infos;
         }
 
+        public Dictionary<ScoutedInfo, int> getInformations()
+        {
+            return infs;
+        }
+
         public List<KeyValuePair<int, double>> competitionRank(int t)
         {
             if (t >= 5 || t < 0)
