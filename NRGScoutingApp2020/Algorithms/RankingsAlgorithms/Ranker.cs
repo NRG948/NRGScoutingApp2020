@@ -195,6 +195,10 @@ namespace NRGScoutingApp2020.Algorithms.RankingsAlgorithms
                 {
                     accuracy.Add(k, madeIn[k] / madeTotal[k]);
                 }
+                else
+                {
+                    accuracy.Add(k, 0);
+                }
             }
 
             List<KeyValuePair<int, double>> teamValTolList = accuracy.ToList();
