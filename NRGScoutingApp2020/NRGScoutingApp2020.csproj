@@ -51,10 +51,16 @@
     <EmbeddedResource Update="Pages\MatchEventSubpage\MatchSubpage\scoutEvents.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Pages\MatchEventSubpage\MatchSubpage\scoutList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\MatchEventSubpage\MatchSubpage\scoutMain.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\MatchEventSubpage\MatchSubpage\scoutParameters.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\MatchEventSubpage\MatchSubpage\scoutView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\MatchEventSubpage\OpenMatch.xaml">
