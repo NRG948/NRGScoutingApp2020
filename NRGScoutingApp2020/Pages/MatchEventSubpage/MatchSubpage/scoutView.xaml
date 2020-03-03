@@ -13,7 +13,7 @@
                         <DataTemplate>
                             <ViewCell>
                                 <Grid Padding="5">
-                                    <Label Text="{Binding }"
+                                    <Label Text="{Binding Path=typeStr}"/>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
