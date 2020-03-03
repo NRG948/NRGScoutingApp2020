@@ -11,9 +11,11 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <matchsubpage:scoutList x:Name="eventListView"/>
+            <matchsubpage:scoutList x:Name="eventListView"
+                                              VerticalOptions="CenterAndExpand"/>
             <matchsubpage:scoutParametersView x:Name="eventParametersView"
-                                          IsVisible="False"/>
+                                          IsVisible="False"
+                                              VerticalOptions="CenterAndExpand"/>
             <Button x:Name="switchView"
                     BackgroundColor="Gold"
                     TextColor="White"
@@ -32,7 +34,8 @@
                     CornerRadius="10"
                     Text="Back"
                     Clicked="finishBtn_Clicked"
-                    HorizontalOptions="Center"/>
+                    HorizontalOptions="Center"
+                    HeightRequest="60"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

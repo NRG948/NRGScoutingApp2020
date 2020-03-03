@@ -9,102 +9,114 @@
         <ScrollView>
 
             <StackLayout>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+                <Frame Padding="5">
 
-                    <Label Text="Cross Initiation Line"
-                           HorizontalOptions="Start"
-                           VerticalOptions="Center"
-                           Grid.Row="0"
-                           Grid.Column="0"/>
-                    <Label x:Name="initiationText"
-                           HorizontalOptions="Start"
-                           VerticalOptions="Center"
-                           Grid.Row="0"
-                           Grid.Column="1"/>
+                    <Grid Padding="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
 
-                    <Label Text="Climb"
-                           HorizontalOptions="Start"
-                           VerticalOptions="Center"
-                           Grid.Row="1"
-                           Grid.Column="0"/>
-                    <Label x:Name="climbText"
-                           HorizontalOptions="Start"
-                           VerticalOptions="Center"
-                           Grid.Row="1"
-                           Grid.Column="1"/>
+                        <Label Text="Cross Initiation Line"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               Grid.Row="0"
+                               Grid.Column="0"/>
+                        <Label x:Name="initiationText"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               Grid.Row="0"
+                               Grid.Column="1"/>
 
-                    <Label Text="Control Panel"
-                           HorizontalOptions="Start"
-                           VerticalOptions="Center"
-                           Grid.Row="2"
-                           Grid.Column="0"/>
-                    <Label x:Name="panelText"
-                           HorizontalOptions="Start"
-                           VerticalOptions="Center"
-                           Grid.Row="2"
-                           Grid.Column="1"/>
+                        <Label Text="Climb"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               Grid.Row="1"
+                               Grid.Column="0"/>
+                        <Label x:Name="climbText"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               Grid.Row="1"
+                               Grid.Column="1"/>
+
+                        <Label Text="Control Panel"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               Grid.Row="2"
+                               Grid.Column="0"/>
+                        <Label x:Name="panelText"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               Grid.Row="2"
+                               Grid.Column="1"/>
 
 
-                    <Label Text="Defend Others"
-                           HorizontalOptions="Start"
-                           VerticalOptions="Center"
-                           Grid.Row="3"
-                           Grid.Column="0"/>
-                    <Label x:Name="defendText"
-                           HorizontalOptions="Start"
-                           VerticalOptions="Center"
-                           Grid.Row="3"
-                           Grid.Column="1"/>
+                        <Label Text="Defend Others"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               Grid.Row="3"
+                               Grid.Column="0"/>
+                        <Label x:Name="defendText"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               Grid.Row="3"
+                               Grid.Column="1"/>
 
 
-                    <Label Text="Is Defended"
-                           HorizontalOptions="Start"
-                           VerticalOptions="Center"
-                           Grid.Row="4"
-                           Grid.Column="0"/>
-                    <Label x:Name="defendedText"
-                           HorizontalOptions="Start"
-                           VerticalOptions="Center"
-                           Grid.Row="4"
-                           Grid.Column="1"/>
+                        <Label Text="Is Defended"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               Grid.Row="4"
+                               Grid.Column="0"/>
+                        <Label x:Name="defendedText"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               Grid.Row="4"
+                               Grid.Column="1"/>
 
-                    <Label Text="Death"
-                           HorizontalOptions="Start"
-                           VerticalOptions="Center"
-                           Grid.Row="5"
-                           Grid.Column="0"/>
-                    <Label x:Name="deathText"
-                           HorizontalOptions="Start"
-                           VerticalOptions="Center"
-                           Grid.Row="5"
-                           Grid.Column="1"/>
+                        <Label Text="Death"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               Grid.Row="5"
+                               Grid.Column="0"/>
+                        <Label x:Name="deathText"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               Grid.Row="5"
+                               Grid.Column="1"/>
 
-                    <Label Text="Penalty"
-                           HorizontalOptions="Start"
-                           VerticalOptions="Center"
-                           Grid.Row="6"
-                           Grid.Column="0"/>
-                    <Label x:Name="penaltyText"
-                           HorizontalOptions="Start"
-                           VerticalOptions="Center"
-                           Grid.Row="6"
-                           Grid.Column="1"/>
+                        <Label Text="Penalty"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               Grid.Row="6"
+                               Grid.Column="0"/>
+                        <Label x:Name="penaltyText"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               Grid.Row="6"
+                               Grid.Column="1"/>
 
-                    <Label Text="Comment"
-                           HorizontalOptions="Start"
-                           VerticalOptions="Center"
-                           Grid.Row="7"
-                           Grid.Column="0"/>
-                    <Label x:Name="commentt"
-                           HorizontalOptions="Start"
-                           VerticalOptions="Center"
-                           Grid.Row="7"
-                           Grid.Column="1"/>
-                </Grid>
+                        <Label Text="Comment"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               Grid.Row="7"
+                               Grid.Column="0"/>
+                        <Label x:Name="commentt"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               Grid.Row="7"
+                               Grid.Column="1"/>
+                    </Grid>
+                </Frame>
             </StackLayout>
         </ScrollView>
   </ContentView.Content>

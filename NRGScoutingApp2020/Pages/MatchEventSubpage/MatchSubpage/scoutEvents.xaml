@@ -50,9 +50,11 @@
                          ProgressColor="Green"
                          Margin="20"
                          HeightRequest="5"/>
-            <matchsubpage:scoutMain x:Name="eventMain"/>
+            <matchsubpage:scoutMain x:Name="eventMain"
+                                    VerticalOptions="CenterAndExpand"/>
             <matchsubpage:scoutParameters x:Name="eventParameters"
-                                          IsVisible="False"/>
+                                          IsVisible="False"
+                                          VerticalOptions="CenterAndExpand"/>
             <Button x:Name="switchView"
                     BackgroundColor="Gold"
                     TextColor="White"

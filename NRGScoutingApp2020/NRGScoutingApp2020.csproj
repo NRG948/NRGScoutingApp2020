@@ -12,11 +12,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AppCenter" Version="3.0.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis" Version="3.4.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="Plugin.Share" Version="7.1.1" />
     <PackageReference Include="RestSharp" Version="106.10.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />
