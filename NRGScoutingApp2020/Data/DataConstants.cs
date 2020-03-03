@@ -20,8 +20,9 @@ namespace NRGScoutingApp2020
         // Button texts
         public static readonly string canSelect = "select";
         public static readonly string selecting = "selecting";
-        public static readonly string canEdit = "edit";
+        public static readonly string canView = "view";
         public static readonly string canCreate = "create";
+        public static readonly string scouted = "scouted";
 
         // Prompt Strings
         public static readonly string EmptyCompetition = "You can not add a competition until the day before it happens!";
@@ -38,5 +39,9 @@ namespace NRGScoutingApp2020
         public static readonly string[] alliancePosition = { "Blue 1", "Blue 2", "Blue 3", "Red 1", "Red 2", "Red 3" };
 
         public static readonly string[] rankPickerText = { "accuracy" , "lower", "outer", "inner", "climb" };
+
+        public static readonly string[] actionTypeList = { "Pick", "Lower", "Outer", "Inner", "Miss"};
+
+        public static readonly int[] typeToBallChanged = { 1, -1, -1, -1, -1 };
     }
 }

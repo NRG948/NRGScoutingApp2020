@@ -39,7 +39,6 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
                     TextColor = Color.White,
                     BorderColor = Color.Orange,
                     BorderWidth = 2,
-                    Text = DataConstants.canSelect,
                     StyleId = i + ""
                 };
                 btn.Clicked += DynamicClickedEvent;
@@ -128,6 +127,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
                         {
                             ScoutedInfo inf = comp.matchesList[matchNumber - 1].TeamsScouted[i];
                             buttons[i].IsEnabled = inf == null ? true : false;
+                            buttons[i].Text = inf == null ? DataConstants.canSelect : DataConstants.scouted;
                             count += inf == null ? 0 : 1;
                         }
                         if (count == 6)

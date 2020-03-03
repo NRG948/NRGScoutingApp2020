@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NRGScoutingApp2020.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,10 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class scoutView : ContentPage
     {
-        public scoutView()
+        List<EventItem> itms;
+        public scoutView(List<EventItem> items)
         {
+            itms = items;
             InitializeComponent();
         }
     }

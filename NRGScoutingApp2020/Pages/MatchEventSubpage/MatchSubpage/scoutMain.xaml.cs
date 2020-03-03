@@ -25,48 +25,61 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
 
         private void Pick_Clicked(object sender, EventArgs e)
         {
-            bool success = changeBallNum(1);
-            if (success)
-                eventList.Add(new EventItem(0, timeMonitor.Elapsed));
+            int t = 0;
+            changeBallAssist(DataConstants.typeToBallChanged[t], t);
 
         }
 
         private void Lower_Clicked(object sender, EventArgs e)
         {
-            bool success = changeBallNum(-1);
-            if (success)
-                eventList.Add(new EventItem(1, timeMonitor.Elapsed));
+            int t = 1;
+            changeBallAssist(DataConstants.typeToBallChanged[t], t);
 
         }
 
 
         private void Outer_Clicked(object sender, EventArgs e)
         {
-            bool success = changeBallNum(-1);
-            if (success)
-                eventList.Add(new EventItem(2, timeMonitor.Elapsed));
-
+            int t = 2;
+            changeBallAssist(DataConstants.typeToBallChanged[t], t);
         }
 
+
+        private void Inner_Clicked(object sender, EventArgs e)
+        {
+            int t = 3;
+            changeBallAssist(DataConstants.typeToBallChanged[t], t);
+        }
+        private void Miss_Clicked(object sender, EventArgs e)
+        {
+            int t = 4;
+            changeBallAssist(DataConstants.typeToBallChanged[t], t);
+        }
         internal void setLocEventList(ScoutedInfo fullScout)
         {
             eventList = fullScout.eventList;
         }
 
-        private void Inner_Clicked(object sender, EventArgs e)
+        /// <summary>
+        /// helper method to change the ball number through button clicks
+        /// </summary>
+        /// <param name="ballDif"></param>
+        /// <param name="type"></param>
+        private void changeBallAssist(int ballDif, int type)
         {
-            bool success = changeBallNum(-1);
+            bool success = changeBallNum(ballDif);
             if (success)
-                eventList.Add(new EventItem(3, timeMonitor.Elapsed));
-
-        }
-
-        private void Miss_Clicked(object sender, EventArgs e)
-        {
-            bool success = changeBallNum(-1);
-            if (success)
-                eventList.Add(new EventItem(4, timeMonitor.Elapsed));
-
+            {
+                if (eventList.Count > 0)
+                {
+                    if (eventList[eventList.Count - 1].type == type)
+                    {
+                        eventList[eventList.Count - 1].spans.Add(timeMonitor.Elapsed);
+                        return;
+                    }
+                }
+                eventList.Add(new EventItem(type, timeMonitor.Elapsed));
+            }
         }
 
         /// <summary>
@@ -95,15 +108,12 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
             }
 
             EventItem lastEvent = eventList[eventList.Count - 1];
-            if (lastEvent.type == 0)
+            changeBallNum(-lastEvent.ballChanged);
+            lastEvent.spans.RemoveAt(lastEvent.spans.Count - 1);
+            if (lastEvent.spans.Count == 0)
             {
-                changeBallNum(-1);
+                eventList.RemoveAt(eventList.Count - 1);
             }
-            else
-            {
-                changeBallNum(1);
-            }
-            eventList.RemoveAt(eventList.Count - 1);
 
             if (eventList.Count == 0)
             {

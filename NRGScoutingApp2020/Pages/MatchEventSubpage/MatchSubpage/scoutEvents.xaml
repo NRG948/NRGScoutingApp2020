@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <StackLayout
             Padding="10">
-            <Grid HeightRequest="50">
+            <Grid HeightRequest="60">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -50,10 +50,8 @@
                          ProgressColor="Green"
                          Margin="20"
                          HeightRequest="5"/>
-            <matchsubpage:scoutMain x:Name="eventMain"
-                                    HeightRequest="450"/>
+            <matchsubpage:scoutMain x:Name="eventMain"/>
             <matchsubpage:scoutParameters x:Name="eventParameters"
-                                          HeightRequest="450"
                                           IsVisible="False"/>
             <Button x:Name="switchView"
                     BackgroundColor="Gold"

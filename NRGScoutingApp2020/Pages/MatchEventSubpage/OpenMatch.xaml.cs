@@ -33,7 +33,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
                     TextColor = Color.White,
                     BorderColor = Color.Orange,
                     BorderWidth = 2,
-                    Text = thisMatch.TeamsScouted[i] == null ? DataConstants.canCreate : DataConstants.canEdit,
+                    Text = thisMatch.TeamsScouted[i] == null ? DataConstants.canCreate : DataConstants.canView,
                     StyleId = i + ""
                 };
                 btn.Clicked += DynamicClickedEvent;

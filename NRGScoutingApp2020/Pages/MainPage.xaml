@@ -7,8 +7,8 @@
              x:Class="NRGScoutingApp2020.MainPage"
              Title="2020">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="New Entry" Order="Secondary" Clicked="newMatch"/>
-        <ToolbarItem Text="Manage Data" Order="Secondary" Clicked="manageData"/>
+        <ToolbarItem Text="New Competition" Order="Secondary" Clicked="newMatch"/>
+        <ToolbarItem Text="Export/Import Data" Order="Secondary" Clicked="manageData"/>
     </ContentPage.ToolbarItems>
     <StackLayout>
         <!-- Place new controls here -->

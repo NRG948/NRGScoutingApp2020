@@ -20,6 +20,7 @@ namespace NRGScoutingApp2020.Algorithms
         {
             client.AddDefaultHeader("API-Key", HideAPIKey.getAPIKey());
             client.AddDefaultHeader("Content-Type", "application/json");
+            client.Proxy = null;
         }
 
         /// <summary>
