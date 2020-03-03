@@ -23,6 +23,9 @@ namespace NRGScoutingApp2020
         public static readonly string canView = "view";
         public static readonly string canCreate = "create";
         public static readonly string scouted = "scouted";
+        public static readonly string main = "main";
+        public static readonly string parameter = "parameter";
+        public static readonly string events = "events";
 
         // Prompt Strings
         public static readonly string EmptyCompetition = "You can not add a competition until the day before it happens!";
@@ -43,5 +46,8 @@ namespace NRGScoutingApp2020
         public static readonly string[] actionTypeList = { "Pick", "Lower", "Outer", "Inner", "Miss"};
 
         public static readonly int[] typeToBallChanged = { 1, -1, -1, -1, -1 };
+
+        public static readonly string[] climbOptions = { "No Climb", "Park", "Climb", "Climb and Level" };
+        public static readonly string[] penaltyOptions = { "No Card", "Yellow Card", "Red Card" };
     }
 }

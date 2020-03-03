@@ -1,5 +1,6 @@
 ﻿using NRGScoutingApp2020.Algorithms.RankingsAlgorithms;
 using NRGScoutingApp2020.Data;
+using NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,20 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.RankerSubpage
             base.OnAppearing();
             isOpening = false;
         }
-
+        private void attendedList_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (!isOpening)
+            {
+                isOpening = true;
+                Match m = e.Item as Match;
+                int ind = m.indexOf(performance.teamNum);
+                if (ind > 0)
+                {
+                    scoutView pg = new scoutView(m.TeamsScouted[ind]);
+                    pg.Title = DataConstants.alliancePosition[ind];
+                    Navigation.PushAsync(pg);
+                }
+            }
+        }
     }
 }

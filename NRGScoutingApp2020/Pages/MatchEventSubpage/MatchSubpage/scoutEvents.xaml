@@ -59,7 +59,7 @@
                     BorderColor="Orange"
                     BorderWidth="2"
                     CornerRadius="10"
-                Text="Parameters"
+                    Text="Parameters"
                     Clicked="switchView_Clicked"
                     HeightRequest="60"/>
 

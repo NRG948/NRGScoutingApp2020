@@ -91,14 +91,14 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
             if (!isOpening)
             {
                 isOpening = true;
-                scoutEvents pg;
+                ContentPage pg;
                 if (thisMatch.TeamsScouted[selectID] == null)
                 {
                     pg = new scoutEvents(thisMatch, selectID);
                 }
                 else
                 {
-                    pg = new scoutEvents(thisMatch.TeamsScouted[selectID]);
+                    pg = new scoutView(thisMatch.TeamsScouted[selectID]);
                 }
                 pg.Title = DataConstants.alliancePosition[selectID];
                 Navigation.PushAsync(pg);

@@ -7,7 +7,33 @@
              x:Class="NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage.scoutList">
   <ContentView.Content>
       <StackLayout>
-          <Label Text="Hello Xamarin.Forms!" />
+            <Frame>
+                <ListView x:Name="eventList">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="5">
+                                    <Label Text="{Binding Path=typeStr}"
+                                           Grid.Column="0"
+                                           Grid.Row="0"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"/>
+                                    <Label Text="{Binding Path=count}"
+                                           Grid.Column="1"
+                                           Grid.Row="0"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"/>
+                                    <Label Text="{Binding Path=firstTime}"
+                                           Grid.Column="2"
+                                           Grid.Row="0"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Frame>
       </StackLayout>
   </ContentView.Content>
 </ContentView>

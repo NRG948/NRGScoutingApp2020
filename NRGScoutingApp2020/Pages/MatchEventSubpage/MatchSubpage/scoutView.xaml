@@ -3,23 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:matchsubpage="clr-namespace:NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage"
              mc:Ignorable="d"
              x:Class="NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage.scoutView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Clicked="EditClicked"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <Frame>
-                <ListView>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid Padding="5">
-                                    <Label Text="{Binding Path=typeStr}"/>
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Frame>
+            <matchsubpage:scoutList x:Name="eventListView"/>
+            <matchsubpage:scoutParametersView x:Name="eventParametersView"
+                                          IsVisible="False"/>
+            <Button x:Name="switchView"
+                    BackgroundColor="Gold"
+                    TextColor="White"
+                    BorderColor="Orange"
+                    BorderWidth="2"
+                    CornerRadius="10"
+                    Text="Parameters"
+                    Clicked="switchView_Clicked"
+                    HeightRequest="60"/>
+
+            <Button x:Name="finishBtn"
+                    BackgroundColor="IndianRed"
+                    TextColor="White"
+                    BorderColor="PaleVioletRed"
+                    BorderWidth="2"
+                    CornerRadius="10"
+                    Text="Back"
+                    Clicked="finishBtn_Clicked"
+                    HorizontalOptions="Center"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

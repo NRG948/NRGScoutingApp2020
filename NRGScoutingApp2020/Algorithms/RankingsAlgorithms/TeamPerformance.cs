@@ -7,7 +7,7 @@ namespace NRGScoutingApp2020.Algorithms.RankingsAlgorithms
 {
     public class TeamPerformance
     {
-        private int teamNum;
+        public int teamNum { get; }
         private CompetitionClass comp;
         private List<ScoutedInfo> teamInfos = new List<ScoutedInfo>();
         public TeamPerformance(CompetitionClass competition, Dictionary<ScoutedInfo, int> infos, int num)

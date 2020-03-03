@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NRGScoutingApp2020.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,10 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
         public scoutList()
         {
             InitializeComponent();
+        }
+        public void updateList(List<EventItem> items)
+        {
+            eventList.ItemsSource = items;
         }
     }
 }

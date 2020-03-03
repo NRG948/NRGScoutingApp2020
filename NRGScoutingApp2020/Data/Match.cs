@@ -71,5 +71,20 @@ namespace NRGScoutingApp2020.Data
             }
         }
 
+        public int indexOf (int teamNum)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                if (teamNum == blueAlliance[i])
+                {
+                    return i;
+                }
+                if (teamNum == redAlliance[i])
+                {
+                    return i + 3;
+                }
+            }
+            return -1;
+        }
     }
 }

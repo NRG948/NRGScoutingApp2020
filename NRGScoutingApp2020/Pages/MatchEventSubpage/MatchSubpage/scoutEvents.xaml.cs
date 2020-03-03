@@ -107,11 +107,11 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
         {
             if (isScoutMain)
             {
-                switchView.Text = "Main";
+                switchView.Text = DataConstants.main;
             }
             else
             {
-                switchView.Text = "Parameters";
+                switchView.Text = DataConstants.parameter;
             }
             isScoutMain = !isScoutMain;
             eventMain.IsVisible = isScoutMain;

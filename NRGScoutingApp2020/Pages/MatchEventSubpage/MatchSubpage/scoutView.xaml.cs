@@ -13,11 +13,53 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class scoutView : ContentPage
     {
-        List<EventItem> itms;
-        public scoutView(List<EventItem> items)
+        ScoutedInfo inf;
+        public scoutView(ScoutedInfo info)
         {
-            itms = items;
             InitializeComponent();
+            inf = info;
+        }
+
+        protected override void OnAppearing()
+        {
+            eventListView.updateList(inf.eventList);
+            eventParametersView.updateParas(inf);
+            isOpening = false;
+            base.OnAppearing();
+        }
+
+        bool isViewingEvents = true;
+
+        private void switchView_Clicked(object sender, EventArgs e)
+        {
+            if (isViewingEvents)
+            {
+                switchView.Text = DataConstants.events;
+            }
+            else
+            {
+                switchView.Text = DataConstants.parameter;
+            }
+            isViewingEvents = !isViewingEvents;
+            eventListView.IsVisible = isViewingEvents;
+            eventParametersView.IsVisible = !isViewingEvents;
+        }
+
+        private void finishBtn_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
+        }
+
+        bool isOpening = false;
+        private void EditClicked(object sender, EventArgs e)
+        {
+            if (!isOpening)
+            {
+                isOpening = true;
+                scoutEvents pg = new scoutEvents(inf);
+                pg.Title = this.Title;
+                Navigation.PushAsync(pg, false);
+            }
         }
     }
 }
