@@ -56,7 +56,7 @@ namespace NRGScoutingApp2020.Algorithms
                 int c = 0;
                 do
                 {
-                    RestRequest request = new RestRequest("/teams");
+                    RestRequest request = new RestRequest("/teams", Method.POST);
                     request.AddJsonBody("{\"year\":" + DataConstants.APP_YEAR + "}");
                     response = client.Post(request).Content;
 
@@ -92,7 +92,7 @@ namespace NRGScoutingApp2020.Algorithms
                 int c = 0;
                 do
                 {
-                    RestRequest request = new RestRequest("/events");
+                    RestRequest request = new RestRequest("/events", Method.POST);
                     request.AddJsonBody("{\"year\":" + DataConstants.APP_YEAR + "}");
                     response = client.Post(request).Content;
 
@@ -143,7 +143,7 @@ namespace NRGScoutingApp2020.Algorithms
 
                 do
                 {
-                    RestRequest request = new RestRequest("/event/matches");
+                    RestRequest request = new RestRequest("/event/matches", Method.POST);
                     request.AddJsonBody("{\"event_key\": \"" + eventKey + "\",\"comp_level\": \"qm\",\"uses_sets\": false}");
                     response = client.Post(request).Content;
 
