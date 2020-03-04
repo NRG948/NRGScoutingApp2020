@@ -113,7 +113,7 @@ namespace NRGScoutingApp2020.Pages.DataManagement
                                     if (choice.Length == 0)
                                     {
                                         choice = await DisplayActionSheet(
-                                            "Conflict File at " + oldcomp.name + " Match No." + (matchF.Key + 1),
+                                            "Conflict File at " + oldcomp.name + " Match No." + matchF.Key,
                                             "Ignore All", null, "Overwrite", "Overwrite All", "Ignore")
                                             .ConfigureAwait(true);
                                     }
