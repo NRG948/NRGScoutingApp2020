@@ -69,7 +69,7 @@ namespace NRGScoutingApp2020.Pages.DataManagement
             {
                 try
                 {
-                    JArray arr = JArray.Parse(e.NewTextValue);
+                    JObject arr = JObject.Parse(e.NewTextValue);
                     importDetailLabel.Text = "This contains " + arr.Count + " competitions";
                     importDetailLabel.TextColor = Color.Black;
                 }
@@ -108,7 +108,7 @@ namespace NRGScoutingApp2020.Pages.DataManagement
                         {
                             foreach(KeyValuePair<int, ScoutedInfo> scoutedF in matchF.Value)
                             {
-                                if (oldcomp.matchesList[matchF.Key].TeamsScouted[scoutedF.Key] != null)
+                                if (oldcomp.matchesList[matchF.Key - 1].TeamsScouted[scoutedF.Key] != null)
                                 {
                                     if (choice.Length == 0)
                                     {
@@ -122,10 +122,10 @@ namespace NRGScoutingApp2020.Pages.DataManagement
                             switch (choice)
                             {
                                 case "Overwrite All":
-                                    oldcomp.matchesList[matchF.Key].setInfos(matchF.Value);
+                                    oldcomp.matchesList[matchF.Key - 1].setInfos(matchF.Value);
                                     break;
                                 case "Overwrite":
-                                    oldcomp.matchesList[matchF.Key].setInfos(matchF.Value);
+                                    oldcomp.matchesList[matchF.Key - 1].setInfos(matchF.Value);
                                     choice = "";
                                     break;
                                 case "Ignore":
