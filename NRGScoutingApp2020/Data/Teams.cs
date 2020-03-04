@@ -29,7 +29,7 @@ namespace NRGScoutingApp2020.Data
             }
         }
 
-            public static async void refreshTeams()
+            public static void refreshTeams()
         {
             String key = Environment.GetEnvironmentVariable(DataConstants.SCOUTING_API_NAME);
             key = DataConstants.SCOUTING_API_KEY;

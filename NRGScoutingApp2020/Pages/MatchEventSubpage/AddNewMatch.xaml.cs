@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static NRGScoutingApp2020.App;
-using NRGScoutingApp2020.Data;
 
 namespace NRGScoutingApp2020.Pages.MatchEventSubpage
 {

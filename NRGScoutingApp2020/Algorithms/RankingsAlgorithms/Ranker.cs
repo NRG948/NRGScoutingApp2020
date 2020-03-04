@@ -87,8 +87,6 @@ namespace NRGScoutingApp2020.Algorithms.RankingsAlgorithms
 
         public static List<KeyValuePair<int, double>> shootNumberRank(Dictionary<ScoutedInfo, int> infos, int t)
         {
-
-            List<int> teams;
             Dictionary<int, double> teamValueTotal = new Dictionary<int, double>();
             Dictionary<int, int> teamCount = new Dictionary<int, int>();
             Dictionary<int, double> teamValueAvg = new Dictionary<int, double>();
@@ -129,8 +127,6 @@ namespace NRGScoutingApp2020.Algorithms.RankingsAlgorithms
 
         public static List<KeyValuePair<int, double>> climbRank(Dictionary<ScoutedInfo, int> infos)
         {
-
-            List<int> teams;
             Dictionary<int, double> teamValueTotal = new Dictionary<int, double>();
             Dictionary<int, int> teamCount = new Dictionary<int, int>();
             Dictionary<int, double> teamValueAvg = new Dictionary<int, double>();
@@ -164,7 +160,6 @@ namespace NRGScoutingApp2020.Algorithms.RankingsAlgorithms
 
         public static List<KeyValuePair<int, double>> accuracyRank(Dictionary<ScoutedInfo, int> infos)
         {
-            List<int> teams;
             Dictionary<int, double> madeIn = new Dictionary<int, double>();
             Dictionary<int, int> madeTotal = new Dictionary<int, int>();
             Dictionary<int, double> accuracy = new Dictionary<int, double>();
