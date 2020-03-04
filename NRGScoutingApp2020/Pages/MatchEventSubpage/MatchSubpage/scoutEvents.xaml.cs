@@ -41,6 +41,20 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
             eventParameters.setLocParameters(fullScout);
         }
 
+        public scoutEvents(ScoutedInfo inf, bool isPara)
+        {
+            InitializeComponent();
+            eventMain.timeMonitor = timeMonitor;
+            finishBtn.Text = "Save";
+            newScout = false;
+            fullScout = inf;
+            eventMain.setLocEventList(fullScout);
+            eventParameters.setLocParameters(fullScout);
+            if (isPara)
+            {
+                switchVieAction();
+            }
+        }
         /// <summary>
         /// Start/Pause the stopwatch to indicate the time 
         /// </summary>
@@ -105,6 +119,11 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
         /// <param name="e"></param>
         private void switchView_Clicked(object sender, EventArgs e)
         {
+            switchVieAction();
+        }
+
+        private void switchVieAction()
+        {
             if (isScoutMain)
             {
                 switchView.Text = DataConstants.main;
@@ -116,6 +135,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
             isScoutMain = !isScoutMain;
             eventMain.IsVisible = isScoutMain;
             eventParameters.IsVisible = !isScoutMain;
+
         }
 
         private void finishBtn_Clicked(object sender, EventArgs e)

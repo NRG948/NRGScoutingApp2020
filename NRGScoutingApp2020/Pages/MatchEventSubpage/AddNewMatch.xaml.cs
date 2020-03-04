@@ -88,8 +88,8 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
         /// </summary>
         private void showTeamInfo()
         {
-            int tm = selectID >= 3 ? comp.matchesList[matchNumber - 1].getTeamAtPos(false, selectID - 2)
-                : comp.matchesList[matchNumber - 1].getTeamAtPos(true, selectID + 1);
+            int tm = selectID >= 3 ? comp.matchesList[matchNumber].getTeamAtPos(false, selectID - 2)
+                : comp.matchesList[matchNumber].getTeamAtPos(true, selectID + 1);
 
             teamNum.Text = tm + "";
             teamNick.Text = teamsList[tm];
@@ -125,7 +125,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
                         int count = 0;
                         for (int i = 0; i < 6; i++)
                         {
-                            ScoutedInfo inf = comp.matchesList[matchNumber - 1].TeamsScouted[i];
+                            ScoutedInfo inf = comp.matchesList[matchNumber].TeamsScouted[i];
                             buttons[i].IsEnabled = inf == null ? true : false;
                             buttons[i].Text = inf == null ? DataConstants.canSelect : DataConstants.scouted;
                             count += inf == null ? 0 : 1;
@@ -166,7 +166,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
                 isOpening = true;
                 lastSelect = selectID;
                 lastMatch = matchNumber + 1;
-                scoutEvents pg = new scoutEvents(comp.matchesList[matchNumber - 1], selectID);
+                scoutEvents pg = new scoutEvents(comp.matchesList[matchNumber], selectID);
                 pg.Title = DataConstants.alliancePosition[selectID];
                 Navigation.PushAsync(pg);
                 Navigation.RemovePage(this);

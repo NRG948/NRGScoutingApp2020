@@ -56,7 +56,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
             if (!isOpening)
             {
                 isOpening = true;
-                scoutEvents pg = new scoutEvents(inf);
+                scoutEvents pg = new scoutEvents(inf, !isViewingEvents);
                 pg.Title = this.Title;
                 Navigation.PushAsync(pg, false);
             }

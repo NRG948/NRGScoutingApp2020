@@ -18,6 +18,29 @@ namespace NRGScoutingApp2020.Data
         {
         }
 
+        public Dictionary<int, ScoutedInfo> getInfosFormatted()
+        {
+            Dictionary<int, ScoutedInfo> formattedMatch = new Dictionary<int, ScoutedInfo>();
+            for (int i = 0; i < 6; i++)
+            {
+                if (TeamsScouted[i] != null)
+                {
+                    formattedMatch.Add(i, TeamsScouted[i]);
+                }
+
+            }
+
+            return formattedMatch;
+        }
+
+        public void setInfos(Dictionary<int, ScoutedInfo> formattedMatch)
+        {
+            foreach (KeyValuePair<int, ScoutedInfo> pair in formattedMatch)
+            {
+                TeamsScouted[pair.Key] = pair.Value;
+            }
+        }
+
         /// <summary>
         /// Sets both sides of the alliance
         /// </summary>

@@ -52,7 +52,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.RankerSubpage
                 isOpening = true;
                 Match m = e.Item as Match;
                 int ind = m.indexOf(performance.teamNum);
-                if (ind > 0)
+                if (ind >= 0)
                 {
                     scoutView pg = new scoutView(m.TeamsScouted[ind]);
                     pg.Title = DataConstants.alliancePosition[ind];

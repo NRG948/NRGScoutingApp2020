@@ -19,6 +19,28 @@ namespace NRGScoutingApp2020
         public CompetitionClass()
         {
         }
+
+        public Dictionary<int, Dictionary<int, ScoutedInfo>> getMatchesFormatted()
+        {
+            Dictionary<int, Dictionary<int, ScoutedInfo>> compFormatted = new Dictionary<int, Dictionary<int, ScoutedInfo>>();
+            foreach (Match m in matchesList)
+            {
+                if (m.isFilled)
+                {
+                    compFormatted.Add(m.number, m.getInfosFormatted());
+                }
+            }
+            return compFormatted;
+        }
+
+        public void setMatches(Dictionary<int, Dictionary<int, ScoutedInfo>> compFormatted)
+        {
+            foreach (KeyValuePair<int, Dictionary<int, ScoutedInfo>> pair in compFormatted)
+            {
+                matchesList[pair.Key].setInfos(pair.Value);
+            }
+
+        }
         public override string ToString()
         {
             return name;

@@ -44,7 +44,13 @@ namespace NRGScoutingApp2020.Pages.DataManagement
 
             } else
             {
-                shareText = JsonConvert.SerializeObject(eventsListObj);
+                Dictionary<string, Dictionary<int, Dictionary<int, ScoutedInfo>>> compsFormatted =
+                    new Dictionary<string, Dictionary<int, Dictionary<int, ScoutedInfo>>>();
+                foreach (CompetitionClass comp in eventsListObj)
+                {
+                    compsFormatted.Add(comp.eventKey, comp.getMatchesFormatted());
+                }
+                shareText = JsonConvert.SerializeObject(compsFormatted);
                 exportDetailLabel.Text = "You will share data of " + eventsListObj.Count + " competitions";
             }
         }
@@ -85,62 +91,113 @@ namespace NRGScoutingApp2020.Pages.DataManagement
                 {
                     oldCompKeys.Add(comp.eventKey);
                 }
-                ObservableCollection<CompetitionClass> newComps = 
-                    JsonConvert.DeserializeObject<ObservableCollection<CompetitionClass>>(importTextEditor.Text);
+                Dictionary<string, Dictionary<int, Dictionary<int, ScoutedInfo>>> compsFormatted = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<int, Dictionary<int, ScoutedInfo>>>>(importTextEditor.Text);
 
                 string choice = "";
 
-                foreach (CompetitionClass comp in newComps)
+                foreach (KeyValuePair<string, Dictionary<int, Dictionary<int, ScoutedInfo>>> compF in compsFormatted)
                 {
-                    if (oldCompKeys.Contains(comp.eventKey))
+                    if (oldCompKeys.Contains(compF.Key))
                     {
-                        CompetitionClass oldComp = eventsListObj[oldCompKeys.IndexOf(comp.eventKey)];
-                        for (int num = 0; num < comp.matchesList.Count; num++)
+                        CompetitionClass oldcomp = eventsListObj[oldCompKeys.IndexOf(compF.Key)];
+                        foreach (KeyValuePair<int, Dictionary<int, ScoutedInfo>> matchF in compF.Value)
                         {
-                            for (int pos = 0; pos < 6; pos ++)
+                            foreach(KeyValuePair<int, ScoutedInfo> scoutedF in matchF.Value)
                             {
-                                if (comp.matchesList[num].TeamsScouted[pos] != null)
+                                if (oldcomp.matchesList[matchF.Key].TeamsScouted[scoutedF.Key] != null)
                                 {
-                                    if (oldComp.matchesList[num].TeamsScouted[pos] != null)
+                                    if (choice.Length == 0)
                                     {
-                                        if (choice.Length == 0)
-                                        {
-                                            choice = await DisplayActionSheet(
-                                                "Conflict file at " + comp.name + " match No." + (num + 1),
-                                                "Ignore all", null, "Overwrite", "Overwrite all", "Ignore")
-                                                .ConfigureAwait(true);
-                                            switch (choice)
-                                            {
-                                                case "Overwrite":
-                                                    oldComp.matchesList[num].TeamsScouted[pos] = comp.matchesList[num].TeamsScouted[pos];
-                                                    choice = "";
-                                                    break;
-                                                case "Ignore":
-                                                    choice = "";
-                                                    break;
-                                                default:
-                                                    break;
-                                            }
-                                        }
-                                        if (choice == "Overwrite all")
-                                        {
-                                            oldComp.matchesList[num].TeamsScouted[pos] = comp.matchesList[num].TeamsScouted[pos];
-                                        }
-                                    }
-                                    else
-                                    {
-                                        oldComp.matchesList[num].TeamsScouted[pos] = comp.matchesList[num].TeamsScouted[pos];
+                                        choice = await DisplayActionSheet(
+                                            "Conflict File at " + oldcomp.name + " Match No." + (matchF.Key + 1),
+                                            "Ignore All", null, "Overwrite", "Overwrite All", "Ignore")
+                                            .ConfigureAwait(true);
                                     }
                                 }
+                            }
+                            switch (choice)
+                            {
+                                case "Overwrite All":
+                                    oldcomp.matchesList[matchF.Key].setInfos(matchF.Value);
+                                    break;
+                                case "Overwrite":
+                                    oldcomp.matchesList[matchF.Key].setInfos(matchF.Value);
+                                    choice = "";
+                                    break;
+                                case "Ignore":
+                                    choice = "";
+                                    break;
+                                default:
+                                    break;
                             }
                         }
                     }
                     else
                     {
+                        CompetitionClass comp = DownloadData.getEventSpecific(compF.Key);
+                        comp.setMatches(compF.Value);
                         eventsListObj.Add(comp);
                         CacheData.CacheOneEvent(comp);
                     }
                 }
+
+
+                //ObservableCollection<CompetitionClass> newComps = 
+                //    JsonConvert.DeserializeObject<ObservableCollection<CompetitionClass>>(importTextEditor.Text);
+
+                //string choice = "";
+
+                //foreach (CompetitionClass comp in newComps)
+                //{
+                //    if (oldCompKeys.Contains(comp.eventKey))
+                //    {
+                //        CompetitionClass oldComp = eventsListObj[oldCompKeys.IndexOf(comp.eventKey)];
+                //        for (int num = 0; num < comp.matchesList.Count; num++)
+                //        {
+                //            for (int pos = 0; pos < 6; pos ++)
+                //            {
+                //                if (comp.matchesList[num].TeamsScouted[pos] != null)
+                //                {
+                //                    if (oldComp.matchesList[num].TeamsScouted[pos] != null)
+                //                    {
+                //                        if (choice.Length == 0)
+                //                        {
+                //                            choice = await DisplayActionSheet(
+                //                                "Conflict file at " + comp.name + " match No." + (num + 1),
+                //                                "Ignore all", null, "Overwrite", "Overwrite all", "Ignore")
+                //                                .ConfigureAwait(true);
+                //                            switch (choice)
+                //                            {
+                //                                case "Overwrite":
+                //                                    oldComp.matchesList[num].TeamsScouted[pos] = comp.matchesList[num].TeamsScouted[pos];
+                //                                    choice = "";
+                //                                    break;
+                //                                case "Ignore":
+                //                                    choice = "";
+                //                                    break;
+                //                                default:
+                //                                    break;
+                //                            }
+                //                        }
+                //                        if (choice == "Overwrite all")
+                //                        {
+                //                            oldComp.matchesList[num].TeamsScouted[pos] = comp.matchesList[num].TeamsScouted[pos];
+                //                        }
+                //                    }
+                //                    else
+                //                    {
+                //                        oldComp.matchesList[num].TeamsScouted[pos] = comp.matchesList[num].TeamsScouted[pos];
+                //                    }
+                //                }
+                //            }
+                //        }
+                //    }
+                //    else
+                //    {
+                //        eventsListObj.Add(comp);
+                //        CacheData.CacheOneEvent(comp);
+                //    }
+                //}
 
             }
             catch (Exception)
