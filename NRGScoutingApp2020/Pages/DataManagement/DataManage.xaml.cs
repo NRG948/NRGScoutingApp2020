@@ -48,10 +48,14 @@ namespace NRGScoutingApp2020.Pages.DataManagement
                     new Dictionary<string, Dictionary<int, Dictionary<int, ScoutedInfo>>>();
                 foreach (CompetitionClass comp in eventsListObj)
                 {
-                    compsFormatted.Add(comp.eventKey, comp.getMatchesFormatted());
+                    Dictionary<int, Dictionary<int, ScoutedInfo>> compF = comp.getMatchesFormatted();
+                    if (compF.Count > 0)
+                    {
+                        compsFormatted.Add(comp.eventKey, comp.getMatchesFormatted());
+                    }
                 }
                 shareText = JsonConvert.SerializeObject(compsFormatted);
-                exportDetailLabel.Text = "You will share data of " + eventsListObj.Count + " competitions";
+                exportDetailLabel.Text = "You will share data of " + compsFormatted.Count + " competitions";
             }
         }
 
