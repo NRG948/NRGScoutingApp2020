@@ -10,12 +10,17 @@
         <ToolbarItem Text="Edit" Clicked="EditClicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
+        <Grid Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
             <matchsubpage:scoutList x:Name="eventListView"
-                                              VerticalOptions="CenterAndExpand"/>
+                                    Grid.Row="0"/>
             <matchsubpage:scoutParametersView x:Name="eventParametersView"
                                           IsVisible="False"
-                                              VerticalOptions="CenterAndExpand"/>
+                                              Grid.Row="0"/>
             <Button x:Name="switchView"
                     BackgroundColor="Gold"
                     TextColor="White"
@@ -24,7 +29,7 @@
                     CornerRadius="10"
                     Text="Parameters"
                     Clicked="switchView_Clicked"
-                    HeightRequest="60"/>
+                    Grid.Row="1"/>
 
             <Button x:Name="finishBtn"
                     BackgroundColor="IndianRed"
@@ -35,7 +40,7 @@
                     Text="Back"
                     Clicked="finishBtn_Clicked"
                     HorizontalOptions="Center"
-                    HeightRequest="60"/>
-        </StackLayout>
+                    Grid.Row="2"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

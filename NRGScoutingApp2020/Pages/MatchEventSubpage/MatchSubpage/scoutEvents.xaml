@@ -7,9 +7,17 @@
              mc:Ignorable="d"
              x:Class="NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage.scoutEvents">
     <ContentPage.Content>
-        <StackLayout
+        <Grid
             Padding="10">
-            <Grid HeightRequest="60">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -49,12 +57,12 @@
             <ProgressBar x:Name="matchProgress"
                          ProgressColor="Green"
                          Margin="20"
-                         HeightRequest="5"/>
+                         Grid.Row="1"/>
             <matchsubpage:scoutMain x:Name="eventMain"
-                                    VerticalOptions="CenterAndExpand"/>
+                                    Grid.Row="2"/>
             <matchsubpage:scoutParameters x:Name="eventParameters"
                                           IsVisible="False"
-                                          VerticalOptions="CenterAndExpand"/>
+                                          Grid.Row="2"/>
             <Button x:Name="switchView"
                     BackgroundColor="Gold"
                     TextColor="White"
@@ -63,7 +71,7 @@
                     CornerRadius="10"
                     Text="Parameters"
                     Clicked="switchView_Clicked"
-                    HeightRequest="60"/>
+                    Grid.Row="3"/>
 
             <Button x:Name="finishBtn"
                     BackgroundColor="IndianRed"
@@ -73,7 +81,8 @@
                     CornerRadius="10"
                 Text="Done"
                     Clicked="finishBtn_Clicked"
-                    HorizontalOptions="Center"/>
-        </StackLayout>
+                    HorizontalOptions="Center"
+                    Grid.Row="4"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
