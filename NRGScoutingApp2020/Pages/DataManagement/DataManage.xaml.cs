@@ -138,10 +138,18 @@ namespace NRGScoutingApp2020.Pages.DataManagement
                     }
                     else
                     {
-                        CompetitionClass comp = DownloadData.getEventSpecific(compF.Key);
-                        comp.setMatches(compF.Value);
-                        eventsListObj.Add(comp);
-                        CacheData.CacheOneEvent(comp);
+                        if (eventsKeyName.ContainsKey(compF.Key))
+                        {
+                            CompetitionClass comp = DownloadData.getEventSpecific(compF.Key);
+                            comp.setMatches(compF.Value);
+                            comp.name = eventsKeyName[compF.Key];
+                            eventsListObj.Add(comp);
+                            CacheData.CacheOneEvent(comp);
+                        }
+                        else
+                        {
+                            DisplayAlert("ERROR", "You have not downloaded the competition list for the competition key: " + compF.Key, "sksksk");
+                        }
                     }
                 }
 
