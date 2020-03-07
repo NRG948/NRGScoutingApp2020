@@ -20,11 +20,9 @@ namespace NRGScoutingApp2020
     public partial class MatchScout : ContentPage
     {
         bool isOpening = false;
-        MainPage p;
         public MatchScout()
         {
             InitializeComponent();
-            p = Parent as MainPage;
         }
 
         protected override void OnAppearing()
@@ -33,13 +31,6 @@ namespace NRGScoutingApp2020
             base.OnAppearing();
 
             matchEvents.ItemsSource = eventsListObj;
-            p.IsVisible = true;
-        }
-
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-            p.IsVisible = false;
         }
 
         private void matchEvents_ItemTapped(object sender, ItemTappedEventArgs e)
