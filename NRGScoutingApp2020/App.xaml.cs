@@ -1,4 +1,5 @@
 ﻿using NRGScoutingApp2020.Algorithms;
+using NRGScoutingApp2020.Pages;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,11 +23,7 @@ namespace NRGScoutingApp2020
             InitializeComponent();
             DownloadData.startUp();
             MainPage mp = new MainPage();
-            MainPage = new NavigationPage(mp)
-            {
-                BarBackgroundColor = Color.IndianRed,
-                BarTextColor = Color.White,
-            }; ;
+            MainPage = mp;
             
         }
 

@@ -35,6 +35,9 @@
     <EmbeddedResource Update="Pages\EventPages\Matches.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Pages\MainPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\MatchEventSubpage\AddNewMatch.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -62,13 +65,22 @@
     <EmbeddedResource Update="Pages\MatchEventSubpage\OpenMatch.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\MatchEventSubpage\PitScoutSubpage\PitScoutMain.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Pages\MatchEventSubpage\RankerSubpage\RankingGeneral.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\MatchEventSubpage\RankerSubpage\TeamDetail.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\PitScout.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\PitScoutSubpage\AddNewTeam.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\PitScoutSubpage\PitResponsePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\PitScoutSubpage\TeamResponsesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -76,5 +88,10 @@
     <Reference Include="Mono.Android">
       <HintPath>..\..\..\..\..\..\Library\Frameworks\Xamarin.Android.framework\Versions\10.0.6.2\lib\xamarin.android\xbuild-frameworks\MonoAndroid\v9.0\Mono.Android.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Pages\MatchScout.xaml.cs">
+      <DependentUpon>MatchScout.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

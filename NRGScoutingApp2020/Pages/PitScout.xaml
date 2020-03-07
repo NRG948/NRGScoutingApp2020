@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="NRGScoutingApp2020.Pages.PitScout"
+             Title="2020 Pit Scout">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New Team" Order="Secondary" Clicked="addTeam"/>
+        <ToolbarItem Text="Export/Import Pit Scout Data" Order="Secondary" Clicked="exportImport"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar TextChanged="SearchBar_TextChanged"
+                       Placeholder="Search Team Here"/>
+            <ListView x:Name="teamsList">
+            
+            </ListView>
+        </StackLayout>
+            
+    </ContentPage.Content>
+</ContentPage>

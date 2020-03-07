@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="NRGScoutingApp2020.MatchScout"
+             Title="2020 Match Scout">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New Competition" Order="Secondary" Clicked="newMatch"/>
+        <ToolbarItem Text="Export/Import Match Scout Data" Order="Secondary" Clicked="manageData"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <!-- Place new controls here -->
+        <ListView
+            x:Name="matchEvents"
+            ItemTapped="matchEvents_ItemTapped"
+            HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell
+                        Text="{Binding Path=name}"
+                        TextColor="Black"
+                        Height="64">
+                        <TextCell.ContextActions>
+                            <MenuItem Text="Delete"
+                                       IsDestructive="True"
+                                       CommandParameter="{Binding .}"
+                                        Clicked="DeleteCompetition"/>
+                        </TextCell.ContextActions>
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

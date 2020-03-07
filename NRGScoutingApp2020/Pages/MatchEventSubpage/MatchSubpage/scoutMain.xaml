@@ -12,6 +12,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="10" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
@@ -19,9 +20,8 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="2*" />
                         <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
                         <RowDefinition Height="10" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Button x:Name="Undoer"
@@ -30,59 +30,62 @@
                             TextColor="White"
                             Clicked="Undo_Clicked"
                             Grid.Row="0"
-                            Grid.Column="1"
-                            Grid.ColumnSpan="2"
+                            Grid.Column="0"
                             IsEnabled="False"/>
                     <Label x:Name="CurrentBall"
                            Text="0" 
                            FontSize="40"
                             Grid.Row="1"
-                            Grid.Column="1"
+                            Grid.Column="0"
+                           Grid.RowSpan="2"
                             VerticalOptions="CenterAndExpand" 
                             HorizontalOptions="CenterAndExpand"/>
                     <Label Text="Balls" 
                             Grid.Row="1"
-                            Grid.Column="2"
+                            Grid.Column="1"
+                           Grid.RowSpan="2"
                             VerticalOptions="CenterAndExpand" 
                             HorizontalOptions="CenterAndExpand"/>
                     <Button Text="Pick" 
-                            BackgroundColor="Gold"
+                            BackgroundColor="Goldenrod"
                             TextColor="White"
                             Clicked="Pick_Clicked"
-                            Grid.Row="2"
-                            Grid.Column="1"
-                            Grid.ColumnSpan="2"/>
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Grid.RowSpan="4"/>
                     <Button Text="Inner" 
                             BackgroundColor="Gold"
                             TextColor="White"
                             Clicked="Inner_Clicked"
-                            Grid.Row="4"
-                            Grid.Column="0"
-                            Grid.ColumnSpan="2"
+                            Grid.Row="1"
+                            Grid.Column="3"
                             HorizontalOptions="Center"/>
                     <Button Text="Outer" 
                             BackgroundColor="Gold"
                             TextColor="White"
                             Clicked="Outer_Clicked"
-                            Grid.Row="4"
-                            Grid.Column="2"
-                            Grid.ColumnSpan="2"
+                            Grid.Row="1"
+                            Grid.Column="4"
                             HorizontalOptions="Center"/>
                     <Button Text="Lower" 
                             BackgroundColor="Gold"
                             TextColor="White"
                             Clicked="Lower_Clicked"
-                            Grid.Row="5"
-                            Grid.Column="1"
+                            Grid.Row="2"
+                            Grid.Column="3"
                             Grid.ColumnSpan="2"
+                            Grid.RowSpan="2"
                             HorizontalOptions="Center"/>
                     <Button Text="Miss" 
-                            BackgroundColor="Gold"
+                            BackgroundColor="Goldenrod"
                             TextColor="White"
                             Clicked="Miss_Clicked"
-                            Grid.Row="6"
-                            Grid.Column="1"
-                            Grid.ColumnSpan="2"/>
+                            Grid.Row="5"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="2"
+                            Grid.RowSpan="2"
+                            />
                 </Grid>
             </Frame>
         </StackLayout>

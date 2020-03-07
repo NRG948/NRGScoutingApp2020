@@ -174,9 +174,16 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage
 
         private void continue_Clicked(object sender, EventArgs e)
         {
+            
             matchNum.Text = lastMatch + "";
             updateView(lastMatch + "");
-            selectID = lastSelect;
+            if (comp.matchesList[lastMatch - 1].TeamsScouted[lastSelect] == null)
+            {
+                selectID = lastSelect;
+                buttons[selectID].IsEnabled = false;
+                buttons[selectID].Text = DataConstants.selecting;
+                CreateNew.IsEnabled = true;
+            }
             showTeamInfo();
             @continue.IsVisible = false;
         }

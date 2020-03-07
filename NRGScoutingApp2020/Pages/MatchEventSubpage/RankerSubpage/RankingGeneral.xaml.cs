@@ -43,7 +43,7 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.RankerSubpage
             if (!isOpening)
             {
                 isOpening = true;
-                KeyValuePair<int, double> teamValue = (KeyValuePair<int, double>) e.Item;
+                KeyValuePair<int, string> teamValue = (KeyValuePair<int, string>) e.Item;
                 int teamNum = teamValue.Key;
                 TeamDetail pg = new TeamDetail(comp, r.getInformations(), teamNum);
                 pg.Title = teamsList[teamNum];
