@@ -16,19 +16,9 @@ namespace NRGScoutingApp2020.Pages
         {
             InitializeComponent();
             MatchScout mtsc = new MatchScout();
-            Children.Add(new NavigationPage(mtsc)
-            {
-                BarBackgroundColor = Color.IndianRed,
-                BarTextColor = Color.White,
-                Title = "Match Scout"
-            });
+            Children.Add(mtsc);
             PitScout ptsc = new PitScout();
-            Children.Add(new NavigationPage(ptsc)
-            {
-                BarBackgroundColor = Color.IndianRed,
-                BarTextColor = Color.White,
-                Title = "Pit Scout"
-            });
+            Children.Add(ptsc);
         }
     }
 }

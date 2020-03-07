@@ -9,5 +9,5 @@
              x:Class="NRGScoutingApp2020.Pages.MainPage"
             BarBackgroundColor="White"
             BarTextColor="IndianRed"
-            >
+            Title="2020">
 </TabbedPage>

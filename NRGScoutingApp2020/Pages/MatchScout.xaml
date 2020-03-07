@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="NRGScoutingApp2020.MatchScout"
-             Title="2020 Match Scout">
+             Title="Match Scout">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="New Competition" Order="Secondary" Clicked="newMatch"/>
         <ToolbarItem Text="Export/Import Match Scout Data" Order="Secondary" Clicked="manageData"/>
