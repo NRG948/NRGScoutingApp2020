@@ -15,7 +15,6 @@
             <SearchBar TextChanged="SearchBar_TextChanged"
                        Placeholder="Search Team Here"/>
             <ListView x:Name="teamsList">
-            
             </ListView>
         </StackLayout>
             

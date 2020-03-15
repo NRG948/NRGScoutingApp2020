@@ -1,5 +1,6 @@
 ﻿using NRGScoutingApp2020.Algorithms;
 using NRGScoutingApp2020.Data;
+using NRGScoutingApp2020.PageTemplete;
 using System;
 using System.Diagnostics;
 using Xamarin.Essentials;
@@ -9,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class scoutEvents : ContentPage
+    public partial class scoutEvents : AlertableContentPage
     {
         Stopwatch timeMonitor = new Stopwatch();
         TimeSpan timee;
@@ -24,15 +25,18 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
         public scoutEvents(Match m, int pos)
         {
             InitializeComponent();
+            InitializeBackAction();
             thisMatch = m;
             matchPos = pos;
             eventMain.timeMonitor = timeMonitor;
             newScout = true;
             fullScout = new ScoutedInfo();
         }
-        public scoutEvents(ScoutedInfo inf)
+
+        private void setBasicComponents(ScoutedInfo inf)
         {
             InitializeComponent();
+            InitializeBackAction();
             eventMain.timeMonitor = timeMonitor;
             finishBtn.Text = "Save";
             newScout = false;
@@ -41,15 +45,14 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
             eventParameters.setLocParameters(fullScout);
         }
 
+        public scoutEvents(ScoutedInfo inf)
+        {
+            setBasicComponents(inf);
+        }
+
         public scoutEvents(ScoutedInfo inf, bool isPara)
         {
-            InitializeComponent();
-            eventMain.timeMonitor = timeMonitor;
-            finishBtn.Text = "Save";
-            newScout = false;
-            fullScout = inf;
-            eventMain.setLocEventList(fullScout);
-            eventParameters.setLocParameters(fullScout);
+            setBasicComponents(inf);
             if (isPara)
             {
                 switchVieAction();
@@ -151,5 +154,6 @@ namespace NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage
 
                 Navigation.PopAsync();
         }
+
     }
 }

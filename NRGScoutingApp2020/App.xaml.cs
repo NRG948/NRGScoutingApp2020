@@ -1,4 +1,5 @@
 ﻿using NRGScoutingApp2020.Algorithms;
+using NRGScoutingApp2020.Data;
 using NRGScoutingApp2020.Pages;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,8 @@ namespace NRGScoutingApp2020
     {
         public static Dictionary<int, String> teamsList { get; set; } = new Dictionary<int, String>();
         public static ObservableCollection<CompetitionClass> eventsListObj { get ; set ; } = new ObservableCollection<CompetitionClass> ();
-
+        public static ObservableCollection<TeamClass> teamsListObj { get; set; } = new ObservableCollection<TeamClass>();
+        public static List<int> teamsLocal = new List<int>();
         public static Dictionary<string, string> eventsKeyName { get; set; } = new Dictionary<string, string>();
         public static List<string> eventsNotLocal = new List<string>();
         // public static Dictionary<string, int> teamsNameNum = new Dictionary<string, int>();

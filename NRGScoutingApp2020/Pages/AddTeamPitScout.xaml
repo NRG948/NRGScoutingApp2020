@@ -4,12 +4,15 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="NRGScoutingApp2020.Pages.PitScoutSubpage.AddNewTeam">
+             x:Class="NRGScoutingApp2020.Pages.AddTeamPitScout">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <SearchBar x:Name="SEARCH" TextChanged="SEARCH_TextChanged" Placeholder="Enter Competition Name"/>
+            <ListView
+                x:Name="teams"
+                ItemTapped="teams_ItemTapped"
+                IsPullToRefreshEnabled="True">
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,10 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<pagetemplete:AlertableContentPage
+    xmlns:pagetemplete="clr-namespace:NRGScoutingApp2020.PageTemplete"
+    xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:matchsubpage="clr-namespace:NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage"
              mc:Ignorable="d"
+            EnableBackConfimation="True"
              x:Class="NRGScoutingApp2020.Pages.MatchEventSubpage.MatchSubpage.scoutEvents">
     <ContentPage.Content>
         <Grid
@@ -85,4 +88,4 @@
                     Grid.Row="4"/>
         </Grid>
     </ContentPage.Content>
-</ContentPage>
+</pagetemplete:AlertableContentPage>

@@ -9,7 +9,8 @@ using Android.OS;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
-
+using System.Linq;
+using NRGScoutingApp2020.PageTemplete;
 
 namespace NRGScoutingApp2020.Droid
 {
@@ -28,14 +29,56 @@ namespace NRGScoutingApp2020.Droid
 
             AppCenter.Start(System.Environment.GetEnvironmentVariable("APPCENTER_SECRET_KEY"), typeof(Analytics), typeof(Crashes));
 
+            Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+            if (toolbar != null)
+            {
+                SetSupportActionBar(toolbar);
+            }
 
             LoadApplication(new App());
         }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+
+            Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+            if (toolbar != null)
+            {
+                SetSupportActionBar(toolbar);
+            }
+        }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            if (item.ItemId == 16908332)
+            {
+                var currentPage = Xamarin.Forms.Application.Current.MainPage.Navigation.NavigationStack.LastOrDefault() as AlertableContentPage;
+                if (currentPage?.backAction != null)
+                {
+                    currentPage?.backAction.Invoke();
+                    return false;
+                }
+            }
+            return base.OnOptionsItemSelected(item);
+        }
+
+        public override void OnBackPressed()
+        {
+            var currentPage = Xamarin.Forms.Application.Current.MainPage.Navigation.NavigationStack.LastOrDefault() as AlertableContentPage;
+            if (currentPage?.backAction != null)
+            {
+                currentPage?.backAction.Invoke();
+                return;
+            }
+            base.OnBackPressed();
         }
     }
 }
